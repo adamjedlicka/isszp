@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>{{.Name}}</title>
+
+	<link href="/static/css/bootstrap.css" rel="stylesheet">
+	<link href="/static/css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+
+			<div class="btn-group pull-left">
+				<a href="/" class="btn btn-default navbar-btn">ISSZP</a>
+				<a class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="/">Home</a></li>
+					<li><a href="/tasks">Tasks</a></li>
+					<li><a href="/firms">Firms</a></li>
+					<li role="separator" class="divider"></li>
+					{{if .IsLoggedIn}}
+					<li><a href="/logout">Log out</a></li>
+					{{else}}
+					<li><a href="/login">Log in</a></li>
+					{{end}}
+				</ul>
+			</div>
+
+			<div class="navbar-text pull-left">{{.Name}}</div>
+
+			{{if .IsLoggedIn}}
+			<div class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">{{.UserName}}</a></div>
+			{{end}}
+
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="container-fluid col-lg-8 col-lg-push-2">
+				{{block "content" .}}{{end}}
+			</div>
+			<div class="container-fluid col-sm-6 col-lg-2 col-lg-pull-8">
+				{{block "contentleft" .}}{{end}}
+			</div>
+			<div class="container-fluid col-sm-6 col-lg-2">
+				{{block "contentright" .}}{{end}}
+			</div>
+		</div>
+	</div>
+
+	<script src="/static/js/jquery-3.2.0.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/main.js"></script>
+
+</body>
+
+</html>

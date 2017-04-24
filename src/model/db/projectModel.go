@@ -1,0 +1,96 @@
+package db
+
+import (
+	"fmt"
+
+	"isszp/src/model"
+
+	"github.com/jinzhu/gorm"
+)
+
+func init() {
+	model.NewProject = NewProject
+	model.QueryProjects = QueryProjects
+}
+
+type Project struct {
+	ID string `gorm:"primary_key"`
+
+	Name        string
+	Code        string
+	Description string
+	StartDate   string
+	PlanEndDate *string
+	EndDate     *string
+
+	MaintainerID string
+	Maintainer   User
+
+	FirmID string
+	Firm   Firm
+
+	DeletedAt *string
+}
+
+func NewProject() model.Project {
+	p := new(Project)
+
+	return p
+}
+
+func (p *Project) FillByID(id string) error {
+	return db.First(p, "id = ?", id).Error
+}
+
+func (p *Project) Save() error {
+	return db.Save(p).Error
+}
+
+func (p *Project) Delete() error {
+	return db.Delete(p).Error
+}
+
+func (p Project) GetID() string          { return p.ID }
+func (p Project) GetName() string        { return p.Name }
+func (p Project) GetCode() string        { return p.Code }
+func (p Project) GetDescription() string { return p.Description }
+
+func (p *Project) SetName(val string)        { p.Name = val }
+func (p *Project) SetCode(val string)        { p.Code = val }
+func (p *Project) SetDescription(val string) { p.Description = val }
+func (p *Project) SetStartDate(val string)   { p.StartDate = val }
+
+func (p *Project) GetMaintainer() model.User {
+	db.Model(p).Related(&p.Maintainer)
+	return &p.Maintainer
+}
+
+func (p *Project) GetFirm() model.Firm {
+	db.Model(p).Related(&p.Firm)
+	return &p.Firm
+}
+
+func (p *Project) SetMaintainer(val model.User) { p.MaintainerID = val.GetID() }
+func (p *Project) SetFirm(val model.Firm)       { p.FirmID = val.GetID() }
+
+func (p Project) String() string {
+	return fmt.Sprint("Project: ", p.Name)
+}
+
+// BeforeCreate is a GORM hook
+func (*Project) BeforeCreate(scope *gorm.Scope) error {
+	return scope.SetColumn("id", NewUUID())
+}
+
+func QueryProjects(args ...interface{}) []model.Project {
+	projects := []*Project{}
+
+	db.Find(&projects)
+
+	ret := make([]model.Project, len(projects))
+	for k, v := range projects {
+		ret[k] = v
+	}
+
+	return ret
+}

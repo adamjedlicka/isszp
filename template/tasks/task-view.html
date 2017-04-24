@@ -1,0 +1,127 @@
+{{define "content"}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{.Task.Name}}</h3>
+	</div>
+	<div class="panel-body">
+		<form>
+			<div class="row">
+				<div class="form-group col-sm-4">
+					<label for="ID">ID</label>
+					<input type="text" class="form-control" name="ID" value="{{.Task.GetID}}" readonly required>
+				</div>
+
+				<div class="form-group col-sm-3 pull-right">
+					<label for="ProjectID">Project</label>
+					<select id="SelectProjectID" name="ProjectID" class="form-control disabled" {{.disabled}} required>
+						{{if .Task.GetProject}}
+						<option selected hidden value="{{.Task.GetProject.GetID}}">{{.Task.GetProject.GetName}}</option>
+						{{else}}
+						<option selected hidden value=""></option>
+						{{end}}
+						{{range $k, $v := .Projects}}
+						<option value="{{$v.GetID}}">{{$v.GetName}}</option>
+						{{end}}
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<label for="Name">Name</label>
+					<input type="text" class="form-control" name="Name" value="{{.Task.GetName}}" {{.readonly}} required autocomplete="off">
+				</div>
+
+				<div class="form-group col-sm-3 pull-right">
+					<label for="MaintainerID">Maintainer</label>
+					<select name="MaintainerID" class="form-control" {{.disabled}} required>
+						{{if .Task.GetMaintainer}}
+						<option selected hidden value="{{.Task.GetMaintainer.GetID}}">{{.Task.GetMaintainer.GetUserName}}</option>
+						{{else if .User}}
+						<option selected hidden value="{{.User.GetID}}">{{.User.GetUserName}}</option>
+						{{else}}
+						<option selected hidden value=""></option>
+						{{end}}
+						{{range $k, $v := .Users}}
+						<option value="{{$v.GetID}}">{{$v.GetUserName}}</option>
+						{{end}}
+					</select>
+				</div>
+
+				<div class="form-group col-sm-3 pull-right">
+					<label for="WorkerID">Worker</label>
+					<select name="WorkerID" class="form-control" {{.disabled}}>
+						{{if .Task.GetWorker}}
+						<option selected hidden value="{{.Task.GetWorker.GetID}}">{{.Task.GetWorker.GetUserName}}</option>
+						{{end}}
+						<option value=""></option>
+						{{range $k, $v := .Users}}
+						<option value="{{$v.GetID}}">{{$v.GetUserName}}</option>
+						{{end}}
+					</select>
+				</div>
+			</div>
+
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label for="Description">Description</label>
+						<textarea class="form-control" name="Description" rows="5" style="resize: none;" {{.readonly}}>{{.Task.GetDescription}}</textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm-4">
+					<label for="StartDate">Start date</label>
+					<input type="date" class="form-control date-now" name="StartDate" value="{{.Task.GetStartDate}}" {{.readonly}} required>
+				</div>
+
+				<div class="form-group col-sm-4">
+					<label for="PlanEndDate">Planned end date</label>
+					<input type="date" class="form-control" name="PlanEndDate" value="{{.Task.GetPlanEndDate}}" {{.readonly}}>
+				</div>
+
+				<div class="form-group col-sm-4">
+					<label for="EndDate">End date</label>
+					<input type="date" class="form-control" name="EndDate" value="{{.Task.GetEndDate}}" {{.readonly}}>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm-2 pull-right">
+					{{if eq .Action "view"}}
+					<a class="btn btn-default btn-primary pull-right" href="/task/edit/{{.Task.GetID}}" role="button">Edit</a>¨
+					{{else if eq .Action "edit"}}
+					<div class="btn-group pull-right" role="group">
+						<a href="/task/view/{{.Task.GetID}}" class="btn btn-default">Cancel</a>
+						<button type="submit" class="btn btn-default btn-success" formaction="/task/save" formmethod="POST">Save</button>
+					</div>
+					{{else if eq .Action "new"}}
+					<div class="btn-group pull-right" role="group">
+						<a href="/tasks" class="btn btn-default">Cancel</a>
+						<button type="submit" class="btn btn-default btn-success" formaction="/task/save" formmethod="POST">Create</button>
+					</div>
+					{{end}}
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+{{if eq .Action "view"}}
+<div class="well">
+	{{range $c := .Comments}}
+		{{block "Comment" $c}}{{end}}
+	{{end}}
+
+
+	<form>
+		<div class="form-group">
+			<textarea class="form-control" name="Text" rows="3" style="resize: none;" placeholder="Post new comment"></textarea>
+		</div>
+		<button type="submit" class="btn btn-default btn-success pull-right" formaction="/comment/save?task_id={{.Task.GetID}}" formmethod="POST">Submit</button>
+	</form>
+</div>
+{{end}}
+{{end}}

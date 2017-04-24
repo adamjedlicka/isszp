@@ -1,0 +1,9 @@
+{{define "Pagination"}}
+<div class="text-center">
+	<ul class="pagination">
+		{{range $k, $v := .Pages}}
+			<li><a href="?p={{$k}}">{{$v}}</a></li>
+		{{end}}
+	</ul>
+</div>
+{{end}}
