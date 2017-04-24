@@ -1,5 +1,10 @@
 package common
 
+import (
+	"bytes"
+	"unicode"
+)
+
 // DateFormat is a format string used tim time.Time.Format()
 const (
 	DateFormat     = "2006-01-02"
@@ -18,4 +23,24 @@ func Max(x, y int) int {
 		return x
 	}
 	return y
+}
+
+func CamelToSnake(s string) string {
+	buf := bytes.Buffer{}
+
+	isPrevUpper := false
+	for k, v := range s {
+		if unicode.IsUpper(v) {
+			if !isPrevUpper && k != 0 {
+				buf.WriteRune('_')
+			}
+			isPrevUpper = true
+		} else {
+			isPrevUpper = false
+		}
+
+		buf.WriteRune(unicode.ToLower(v))
+	}
+
+	return buf.String()
 }

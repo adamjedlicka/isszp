@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"isszp/src/common"
 	"isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -74,6 +75,11 @@ func (*Comment) BeforeCreate(scope *gorm.Scope) error {
 
 func QueryComments(args ...interface{}) []model.Comment {
 	comments := []*Comment{}
+
+	str, ok := args[0].(string)
+	if ok {
+		args[0] = common.CamelToSnake(str)
+	}
 
 	db.Find(&comments, args...)
 

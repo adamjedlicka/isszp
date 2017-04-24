@@ -43,7 +43,7 @@ func TaskViewGET(w http.ResponseWriter, r *http.Request) {
 	view.Vars["Task"] = task
 	view.Vars["Projects"] = model.QueryProjects()
 	view.Vars["Users"] = model.QueryUsers()
-	view.Vars["Comments"] = model.QueryComments("task_id = ?", task.GetID())
+	view.Vars["Comments"] = model.QueryComments("TaskID = ?", task.GetID())
 
 	view.Vars["readonly"] = "readonly"
 	view.Vars["disabled"] = "disabled"
