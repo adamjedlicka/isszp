@@ -3,7 +3,7 @@ package server
 import (
 	"net/http"
 
-	"isszp/src/server/session"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
 func MustLogin(next http.Handler) http.Handler {

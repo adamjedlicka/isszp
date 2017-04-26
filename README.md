@@ -2,14 +2,13 @@
 
 Instalace:
 ````
-cd ~/go/src
-git clone git@gitlab.fit.cvut.cz:isszp/isszp.git
-cd isszp
+go get gitlab.fit.cvut.cz/isszp/isszp
+cd ~/go/src/gitlab.fit.cvut.cz/isszp/isszp
 go run main.go install
 ````
 
 Spuštění:
 ````
-cd ~/go/src/isszp
+cd ~/go/src/gitlab.fit.cvut.cz/isszp/isszp
 go run main.go
 ````

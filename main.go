@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 
-	"isszp/cmd/install"
-	"isszp/src/model/db"
-	"isszp/src/server"
+	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
 )
 
 func main() {

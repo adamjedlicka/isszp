@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 
-	"isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 )
 
 func CreateUser(userName, firstName, lastName string) error {

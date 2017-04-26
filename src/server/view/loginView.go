@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"isszp/src/model"
-	"isszp/src/server/session"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
 func LoginGET(w http.ResponseWriter, r *http.Request) {

@@ -3,7 +3,7 @@ package view
 import (
 	"net/http"
 
-	"isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/gorilla/mux"
 )

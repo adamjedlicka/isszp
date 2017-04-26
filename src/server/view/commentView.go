@@ -3,8 +3,8 @@ package view
 import (
 	"net/http"
 
-	"isszp/src/controller"
-	"isszp/src/server/session"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
 func CommentSavePOST(w http.ResponseWriter, r *http.Request) {

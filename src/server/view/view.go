@@ -6,9 +6,9 @@ import (
 
 	"strconv"
 
-	"isszp/src/common"
-	"isszp/src/model"
-	"isszp/src/server/session"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
 var (

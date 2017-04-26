@@ -3,8 +3,8 @@ package db
 import (
 	"fmt"
 
-	"isszp/src/common"
-	"isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
 )
