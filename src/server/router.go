@@ -11,30 +11,43 @@ import (
 func NewRouter() http.Handler {
 	r := mux.NewRouter()
 
-	r.Handle("/", http.HandlerFunc(view.HomeGET)).Methods("GET")
+	r.Handle("/", use(view.HomeGET, RedirectToLogin)).Methods("GET")
 
-	r.Handle("/firms", MustLogin(http.HandlerFunc(view.FirmsGET))).Methods("GET")
-	r.Handle("/firm/new", MustLogin(http.HandlerFunc(view.FirmNewGET))).Methods("GET")
-	r.Handle("/firm/view/{ID}", MustLogin(http.HandlerFunc(view.FirmViewGET))).Methods("GET")
-	r.Handle("/firm/edit/{ID}", MustLogin(http.HandlerFunc(view.FirmEditGET))).Methods("GET")
-	r.Handle("/firm/delete/{ID}", MustLogin(http.HandlerFunc(view.FirmDelGET))).Methods("GET")
-	r.Handle("/firm/save", MustLogin(http.HandlerFunc(view.FirmSavePOST))).Methods("POST")
+	r.Handle("/firms", use(view.FirmsGET, MustLogin)).Methods("GET")
+	r.Handle("/firm/new", use(view.FirmNewGET, MustLogin)).Methods("GET")
+	r.Handle("/firm/view/{ID}", use(view.FirmViewGET, MustLogin)).Methods("GET")
+	r.Handle("/firm/edit/{ID}", use(view.FirmEditGET, MustLogin)).Methods("GET")
+	r.Handle("/firm/delete/{ID}", use(view.FirmDelGET, MustLogin)).Methods("GET")
+	r.Handle("/firm/save", use(view.FirmSavePOST, MustLogin)).Methods("POST")
 
-	r.Handle("/tasks", MustLogin(http.HandlerFunc(view.TasksGET))).Methods("GET")
-	r.Handle("/task/new", MustLogin(http.HandlerFunc(view.TaskNewGET))).Methods("GET")
-	r.Handle("/task/view/{ID}", MustLogin(http.HandlerFunc(view.TaskViewGET))).Methods("GET")
-	r.Handle("/task/edit/{ID}", MustLogin(http.HandlerFunc(view.TaskEditGET))).Methods("GET")
-	r.Handle("/task/delete/{ID}", MustLogin(http.HandlerFunc(view.TaskDeleteGET))).Methods("GET")
-	r.Handle("/task/save", MustLogin(http.HandlerFunc(view.TaskSavePOST))).Methods("POST")
+	r.Handle("/tasks", use(view.TasksGET, MustLogin)).Methods("GET")
+	r.Handle("/task/new", use(view.TaskNewGET, MustLogin)).Methods("GET")
+	r.Handle("/task/view/{ID}", use(view.TaskViewGET, MustLogin)).Methods("GET")
+	r.Handle("/task/edit/{ID}", use(view.TaskEditGET, MustLogin)).Methods("GET")
+	r.Handle("/task/delete/{ID}", use(view.TaskDeleteGET, MustLogin)).Methods("GET")
+	r.Handle("/task/save", use(view.TaskSavePOST, MustLogin)).Methods("POST")
 
-	r.Handle("/comment/save", MustLogin(http.HandlerFunc(view.CommentSavePOST))).Methods("POST")
+	r.Handle("/comment/save", use(view.CommentSavePOST, MustLogin)).Methods("POST")
 
-	r.Handle("/login", http.HandlerFunc(view.LoginGET)).Methods("GET")
-	r.Handle("/login", http.HandlerFunc(view.LoginPOST)).Methods("POST")
-	r.Handle("/logout", http.HandlerFunc(view.LogoutGET)).Methods("GET")
+	r.Handle("/login", use(view.LoginGET)).Methods("GET")
+	r.Handle("/login", use(view.LoginPOST)).Methods("POST")
+	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")
 
 	// serve files from ./static/ directory without any special routing
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
 	return r
+}
+
+// use is function that helps with chaining middleware
+// first argument is final handler function and the you can append various number of middleware functions
+func use(handler func(http.ResponseWriter, *http.Request), middleware ...func(http.Handler) http.Handler) http.Handler {
+	var h http.Handler
+	h = http.HandlerFunc(handler)
+
+	for _, fn := range middleware {
+		h = fn(h)
+	}
+
+	return h
 }

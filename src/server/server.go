@@ -15,5 +15,5 @@ func Run() {
 
 	log.Println("Starting server at: ", address+":"+port)
 
-	http.ListenAndServe(address+":"+port, RedirectNotLoggedInt(r))
+	http.ListenAndServe(address+":"+port, r)
 }
