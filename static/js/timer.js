@@ -1,43 +1,53 @@
-var stopCounter = false;
-var hours;
-var minutes;
-var seconds;
+var time = {hours: 0, minutes: 0, seconds: 0};
 
 $(document).ready(function() {
+
   $('#startTimer').on('click', function() {
 
     var startDate = new Date().getTime();
 
-    // TODO vlozit startDate do databaze prislusnemu uzivateli.
+    // TODO vlozit startDate do databaze prislusnemu uzivateli. (Kdy zapocal
+    // praci)
 
+    $('#counter').val('00:00:00');
     startCounter(startDate);
 
   });
 
   $('#stopTimer').on('click', function() {
 
-    stopCounter = true;
-
-    alert(hours + ' hodin ' + minutes + ' minut ' + seconds + ' sekund');
-
-    // TODO vlozit do databaze hours minutes seconds
+    $('#stopTimer').prop('disabled', true);
+    $('#startTimer').prop('disabled', false);
+    $('#resetTimer').prop('disabled', false);
 
   });
 
   $('#resetTimer').on('click', function() {
-    $('#counter').text('00:00:00');
+
+    var task = $('#selectTasks').find(':selected').text();
+
+    alert(
+        time.hours + ' hodin ' + time.minutes + ' minut ' + time.seconds +
+        ' sekund ' +
+        'k ukolu: ' + task);
+
+    // TODO vlozit do databaze hours minutes seconds task (Time recond, jak
+    // dlouho a na cem se pracovalo)
+
+    $('#counter').val('00:00:00');
   });
 });
 
 // TODO vyndat startDate z databaze. var startDate = SELECT startDate FROM users
 // WHERE ID =?, UUID
 
-// Ukazka
+// -------------------------Ukazka
 var startDate =
     new Date('Apr 27, 2017 14:50:00').getTime();  // Pokud bude startDate
                                                   // nastaven - v databazi bude
                                                   // ulozen cas
 var startDate = 0;                                // Pokud nebude nastaveny cas
+// -------------------------Ukazka
 
 startCounter(startDate);
 
@@ -51,40 +61,35 @@ function startCounter(startDate) {
 
     timer = setInterval(function() {
 
-      if (stopCounter) {
+      if (document.getElementById('stopTimer').hasAttribute('disabled')) {
         clearInterval(timer);
         startDate = 0;
 
-        document.getElementById('stopTimer').disabled = true;
-        document.getElementById('startTimer').disabled = false;
-        document.getElementById('resetTimer').disabled = false;
-
-        stopCounter = false;
         return;
         }
 
       var now = new Date().getTime();
       var diference = now - startDate;
 
-      hours =
+      time.hours =
           Math.floor((diference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      minutes = Math.floor((diference % (1000 * 60 * 60)) / (1000 * 60));
-      seconds = Math.floor((diference % (1000 * 60)) / 1000);
+      time.minutes = Math.floor((diference % (1000 * 60 * 60)) / (1000 * 60));
+      time.seconds = Math.floor((diference % (1000 * 60)) / 1000);
 
-      if (hours < 10) {
-        hours = ('0' + hours);
+      if (time.hours < 10) {
+        time.hours = ('0' + time.hours);
         }
 
-      if (minutes < 10) {
-        minutes = ('0' + minutes);
+      if (time.minutes < 10) {
+        time.minutes = ('0' + time.minutes);
         }
 
-      if (seconds < 10) {
-        seconds = ('0' + seconds);
+      if (time.seconds < 10) {
+        time.seconds = ('0' + time.seconds);
       }
 
-      document.getElementById('counter').innerHTML =
-          hours + ':' + minutes + ':' + seconds;
+      document.getElementById('counter').value =
+          time.hours + ':' + time.minutes + ':' + time.seconds;
 
     }, 1000);
   }

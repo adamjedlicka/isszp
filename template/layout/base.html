@@ -30,6 +30,7 @@
 					<li><a href="/firms">Firms</a></li>
 					<li role="separator" class="divider"></li>
 					{{if .IsLoggedIn}}
+					<li><a href="/profile">Profile</a></li>
 					<li><a href="/logout">Log out</a></li>
 					{{else}}
 					<li><a href="/login">Log in</a></li>
@@ -40,7 +41,7 @@
 			<div class="navbar-text pull-left">{{.Name}}</div>
 
 			{{if .IsLoggedIn}}
-			<div class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">{{.UserName}}</a></div>
+			<div class="navbar-text pull-right">Signed in as <a href="/profile" class="navbar-link">{{.UserName}}</a></div>
 			{{end}}
 
 		</div>

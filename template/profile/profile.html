@@ -1,16 +1,26 @@
 {{define "content"}}
 
-<div class="row">
-    <div class="col-sm-4">
-        <div class="form-group">
-            <p id="counter">00:00:00</p>
-        </div>
+<h1>Welcome USER</h1>
 
-        <div class="text-right">
-            <button class="btn btn-success" id="startTimer">START</button>
-            <button class="btn btn-danger" id="stopTimer">STOP</button>
-            <button class="btn btn-primary" id="resetTimer" disabled>RESET</button>
+<div class="row well">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="counter">Time tracking</label>
+            <input type="text" class="form-control text-center" id="counter" value="00:00:00" disabled>
         </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="selectTasks">Select task</label>
+            <select class="form-control" id="selectTasks">
+                    <option>Task1</option>
+                </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <button class="btn btn-success" id="startTimer"><span class="glyphicon glyphicon-play"></span> Start</button>
+        <button class="btn btn-danger" id="stopTimer"><span class="glyphicon glyphicon-stop"></span> STOP</button>
+        <button class="btn btn-primary" id="resetTimer" disabled><span class="glyphicon glyphicon-save"></span> Save record</button>
     </div>
 </div>
 
