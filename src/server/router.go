@@ -35,6 +35,8 @@ func NewRouter() http.Handler {
 	r.Handle("/login", use(view.LoginPOST)).Methods("POST")
 	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")
 
+	r.Handle("/profile", use(view.ProfileGET, MustLogin)).Methods("GET")
+
 	// serve files from ./static/ directory without any special routing
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 
