@@ -4,13 +4,19 @@ $(document).ready(function() {
 
   $('#startTimer').on('click', function() {
 
-    var startDate = new Date().getTime();
+    var startDate = new Date();
 
-    // TODO vlozit startDate do databaze prislusnemu uzivateli. (Kdy zapocal
-    // praci)
+    $.ajax({
+      url: '/api/startTimer',
+      type: 'POST',
+      data: {'startDate': startDate.toUTCString()},
 
-    $('#counter').val('00:00:00');
-    startCounter(startDate);
+      success: function() {
+        var tmpDate = startDate.getTime();
+        $('#counter').val('00:00:00');
+        startCounter(tmpDate);
+      }
+    });
 
   });
 
@@ -31,10 +37,16 @@ $(document).ready(function() {
         ' sekund ' +
         'k ukolu: ' + task);
 
-    // TODO vlozit do databaze hours minutes seconds task (Time recond, jak
-    // dlouho a na cem se pracovalo)
+    $.ajax({
+      url: '/api/stopTimer',
+      type: 'POST',
+      data: time,
 
-    $('#counter').val('00:00:00');
+      success: function() {
+        $('#counter').val('00:00:00');
+      }
+    });
+
   });
 });
 
