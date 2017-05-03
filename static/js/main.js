@@ -1,3 +1,15 @@
+
+$(document).ready(() => {
+	if (Notification.permission !== "granted") {
+		Notification.requestPermission();
+	}
+
+	// Date pickers with class .date-now will have current day as default value
+	if ($('.date-now').val() == '') {
+		$('.date-now').val(formatDate(new Date()));
+	}
+});
+
 function formatDate(date) {
 	let d = new Date(date);
 	let month = '' + (d.getMonth() + 1);
@@ -9,10 +21,3 @@ function formatDate(date) {
 
 	return [year, month, day].join('-');
 }
-
-$('body').ready(() => {
-	// Date pickers with class .date-now will have current day as default value
-	if ($('.date-now').val() == '') {
-		$('.date-now').val(formatDate(new Date()));
-	}
-});

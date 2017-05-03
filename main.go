@@ -1,22 +1,20 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
-
+	"io/ioutil"
 	"log"
 
-	"encoding/json"
-
-	"io/ioutil"
-
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
 )
 
 type Config struct {
 	Server   server.Config
-	Database db.Config
+	Database database.Config
 }
 
 func main() {
@@ -37,8 +35,10 @@ func main() {
 		return
 	}
 
-	db.Configure(cfg.Database)
-	db.Init()
+	database.Configure(cfg.Database)
+	gorm := database.Init()
+
+	db.Init(gorm)
 
 	server.Configure(cfg.Server)
 	server.Run()

@@ -1,9 +1,12 @@
 package view
 
 import (
+	"fmt"
 	"net/http"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 
 	"github.com/gorilla/mux"
 )
@@ -146,6 +149,12 @@ func TaskSavePOST(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
+	}
+
+	if t.GetWorker() != nil && t.GetWorker().GetUserName() != session.GetUserName(r) {
+		address := fmt.Sprintf("/task/view/%s", t.GetID())
+		msg := fmt.Sprintf("Úkol '%s' byl upraven!", t.GetName())
+		controller.SendNotification(t.GetWorker().GetID(), msg, controller.NotifyWithAddress(address))
 	}
 
 	http.Redirect(w, r, "/task/view/"+t.GetID(), http.StatusSeeOther)

@@ -8,10 +8,10 @@ import (
 	"os"
 	"strings"
 
-	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 )
 
-func InstallDatabase(cfg db.Config) {
+func InstallDatabase(cfg database.Config) {
 	log.Println("Installing database...")
 
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@/", cfg.User, cfg.Password))
