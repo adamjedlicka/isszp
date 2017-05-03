@@ -3,9 +3,10 @@ package server
 import (
 	"net/http"
 
-	"gitlab.fit.cvut.cz/isszp/isszp/src/server/view"
-
 	"github.com/gorilla/mux"
+
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/api"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/view"
 )
 
 func NewRouter() http.Handler {
@@ -36,6 +37,8 @@ func NewRouter() http.Handler {
 	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")
 
 	r.Handle("/profile", use(view.ProfileGET, MustLogin)).Methods("GET")
+
+	r.Handle("/api/notify", use(api.NotifyGET, MustLogin)).Methods("GET")
 
 	// serve files from ./static/ directory without any special routing
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))

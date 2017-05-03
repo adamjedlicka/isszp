@@ -156,72 +156,72 @@ CREATE TABLE `comments`
 
 ;
 
-ALTER TABLE `users` 
+ALTER TABLE `users`
  ADD CONSTRAINT `FK_Users_Permissions`
 	FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `time_records` 
+ALTER TABLE `time_records`
  ADD CONSTRAINT `FK_TimeRecords_Tasks`
 	FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `time_records` 
+ALTER TABLE `time_records`
  ADD CONSTRAINT `FK_TimeRecords_Users`
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `tasks` 
+ALTER TABLE `tasks`
  ADD CONSTRAINT `FK_Tasks_Projects`
 	FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `tasks` 
+ALTER TABLE `tasks`
  ADD CONSTRAINT `FK_Tasks_Users_Maintainer`
 	FOREIGN KEY (`maintainer_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `tasks` 
+ALTER TABLE `tasks`
  ADD CONSTRAINT `FK_Tasks_Users_Worker`
 	FOREIGN KEY (`worker_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `rel_files` 
+ALTER TABLE `rel_files`
  ADD CONSTRAINT `FK_Rel_Files_Files`
 	FOREIGN KEY (`file_id`) REFERENCES `files` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `rel_files` 
+ALTER TABLE `rel_files`
  ADD CONSTRAINT `FK_Rel_Files_Projects`
 	FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `rel_files` 
+ALTER TABLE `rel_files`
  ADD CONSTRAINT `FK_Rel_Files_Tasks`
 	FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `rel_files` 
+ALTER TABLE `rel_files`
  ADD CONSTRAINT `FK_Rel_Files_Users`
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `projects` 
+ALTER TABLE `projects`
  ADD CONSTRAINT `FK_Projects_Firms`
 	FOREIGN KEY (`firm_id`) REFERENCES `firms` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `projects` 
+ALTER TABLE `projects`
  ADD CONSTRAINT `FK_Projects_Users`
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `comments` 
+ALTER TABLE `comments`
  ADD CONSTRAINT `FK_Comments_Tasks`
 	FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
-ALTER TABLE `comments` 
+ALTER TABLE `comments`
  ADD CONSTRAINT `FK_Comments_Users`
 	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;

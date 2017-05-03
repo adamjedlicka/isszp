@@ -19,6 +19,7 @@ type Task struct {
 
 	Name        string
 	Description string
+	State       string
 	StartDate   string
 	PlanEndDate *string
 	EndDate     *string
@@ -48,18 +49,20 @@ func (t *Task) Delete() error {
 	return db.Delete(t).Error
 }
 
-func (t Task) GetID() string           { return t.ID }
-func (t Task) GetName() string         { return t.Name }
-func (t Task) GetDescription() string  { return t.Description }
-func (t Task) GetStartDate() string    { return t.StartDate }
-func (t Task) GetPlanEndDate() *string { return t.PlanEndDate }
-func (t Task) GetEndDate() *string     { return t.EndDate }
+func (t Task) GetID() string             { return t.ID }
+func (t Task) GetName() string           { return t.Name }
+func (t Task) GetDescription() string    { return t.Description }
+func (t Task) GetState() model.TaskState { return model.TaskState(t.State) }
+func (t Task) GetStartDate() string      { return t.StartDate }
+func (t Task) GetPlanEndDate() *string   { return t.PlanEndDate }
+func (t Task) GetEndDate() *string       { return t.EndDate }
 
-func (t *Task) SetName(val string)         { t.Name = val }
-func (t *Task) SetDescription(val string)  { t.Description = val }
-func (t *Task) SetStartDate(val string)    { t.StartDate = val }
-func (t *Task) SetPlanEndDate(val *string) { t.PlanEndDate = val }
-func (t *Task) SetEndDate(val *string)     { t.EndDate = val }
+func (t *Task) SetName(val string)           { t.Name = val }
+func (t *Task) SetDescription(val string)    { t.Description = val }
+func (t *Task) SetState(val model.TaskState) { t.State = string(val) }
+func (t *Task) SetStartDate(val string)      { t.StartDate = val }
+func (t *Task) SetPlanEndDate(val *string)   { t.PlanEndDate = val }
+func (t *Task) SetEndDate(val *string)       { t.EndDate = val }
 
 func (t *Task) GetMaintainer() model.User {
 	u := model.NewUser()
