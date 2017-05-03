@@ -15,6 +15,8 @@ type Task interface {
 	SetName(string)
 	GetDescription() string
 	SetDescription(string)
+	GetState() TaskState
+	SetState(TaskState)
 	GetStartDate() string
 	SetStartDate(string)
 	GetPlanEndDate() *string
@@ -33,6 +35,16 @@ type Task interface {
 var (
 	NewTask    func() Task
 	QueryTasks func(...interface{}) []Task
+)
+
+type TaskState string
+
+const (
+	TaskStateFree      TaskState = "free"
+	TaskStateActive    TaskState = "active"
+	TaskStateRevission TaskState = "revision"
+	TaskStateSuccess   TaskState = "success"
+	TaskStateFail      TaskState = "fail"
 )
 
 type Project interface {
