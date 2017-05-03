@@ -13,8 +13,12 @@
         <div class="form-group">
             <label for="selectTasks">Select task</label>
             <select class="form-control" id="selectTasks">
-                    <option>Task1</option>
-                </select>
+                {{range $v := .Tasks}}
+                    <option>                            
+                        {{$v.GetName}}
+                    </option>				            
+                {{end}}
+            </select>
         </div>
     </div>
     <div class="col-sm-6">

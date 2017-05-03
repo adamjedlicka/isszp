@@ -45,3 +45,19 @@ func GetUserName(r *http.Request) string {
 
 	return userName
 }
+
+// GetUserUUID returns user UUID of currently logged user.
+// If no user is logged in GetUserUUID returns empty string ""
+func GetUserUUID(r *http.Request) string {
+	s, err := Store.Get(r, Login)
+	if err != nil {
+		return ""
+	}
+
+	UUID, ok := s.Values["UUID"].(string)
+	if !ok {
+		return ""
+	}
+
+	return UUID
+}

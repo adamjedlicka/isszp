@@ -50,6 +50,7 @@ func LoginPOST(w http.ResponseWriter, r *http.Request) {
 
 	s.Values["LoginTime"] = time.Now().String()
 	s.Values["UserName"] = user.GetUserName()
+	s.Values["UUID"] = user.GetID()
 	s.Values["IsLoggedIn"] = true
 
 	err = s.Save(r, w)
