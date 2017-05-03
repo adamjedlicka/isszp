@@ -126,7 +126,8 @@ type TimeRecord interface {
 }
 
 var (
-	NewTimeRecord func() TimeRecord
+	NewTimeRecord    func() TimeRecord
+	QueryTimeRecords func(...interface{}) []TimeRecord
 )
 
 type File interface {
@@ -141,7 +142,8 @@ type File interface {
 }
 
 var (
-	NewFile func() File
+	NewFile    func() File
+	QueryFiles func(...interface{}) []File
 )
 
 type Comment interface {

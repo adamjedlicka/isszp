@@ -12,6 +12,7 @@ func TestCamelToSnake(t *testing.T) {
 		{"HelloWorld", "hello_world"},
 		{"TestID", "test_id"},
 		{"ID", "id"},
+		{"TestID AND ProjectID", "test_id and project_id"},
 	}
 
 	for _, v := range tests {

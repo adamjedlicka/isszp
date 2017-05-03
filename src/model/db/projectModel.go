@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -24,10 +25,7 @@ type Project struct {
 	EndDate     *string
 
 	MaintainerID string
-	Maintainer   User
-
-	FirmID string
-	Firm   Firm
+	FirmID       string
 
 	DeletedAt *string
 }
@@ -60,14 +58,16 @@ func (p *Project) SetCode(val string)        { p.Code = val }
 func (p *Project) SetDescription(val string) { p.Description = val }
 func (p *Project) SetStartDate(val string)   { p.StartDate = val }
 
-func (p *Project) GetMaintainer() model.User {
-	db.Model(p).Related(&p.Maintainer)
-	return &p.Maintainer
+func (p Project) GetMaintainer() model.User {
+	u := model.NewUser()
+	u.FillByID(p.MaintainerID)
+	return u
 }
 
-func (p *Project) GetFirm() model.Firm {
-	db.Model(p).Related(&p.Firm)
-	return &p.Firm
+func (p Project) GetFirm() model.Firm {
+	f := model.NewFirm()
+	f.FillByID(p.FirmID)
+	return f
 }
 
 func (p *Project) SetMaintainer(val model.User) { p.MaintainerID = val.GetID() }
@@ -85,7 +85,14 @@ func (*Project) BeforeCreate(scope *gorm.Scope) error {
 func QueryProjects(args ...interface{}) []model.Project {
 	projects := []*Project{}
 
-	db.Find(&projects)
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&projects, args...)
 
 	ret := make([]model.Project, len(projects))
 	for k, v := range projects {

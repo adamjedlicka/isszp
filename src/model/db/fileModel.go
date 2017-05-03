@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -10,6 +11,7 @@ import (
 
 func init() {
 	model.NewFile = NewFile
+	model.QueryFiles = QueryFiles
 }
 
 type File struct {
@@ -53,4 +55,24 @@ func (f File) String() string {
 // BeforeCreate is a GORM hook
 func (*File) BeforeCreate(scope *gorm.Scope) error {
 	return scope.SetColumn("id", NewUUID())
+}
+
+func QueryFiles(args ...interface{}) []model.File {
+	files := []*File{}
+
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&files, args...)
+
+	ret := make([]model.File, len(files))
+	for k, v := range files {
+		ret[k] = v
+	}
+
+	return ret
 }

@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -65,7 +66,14 @@ func (*Firm) BeforeCreate(scope *gorm.Scope) error {
 func QueryFirms(args ...interface{}) []model.Firm {
 	firms := []*Firm{}
 
-	db.Find(&firms)
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&firms, args...)
 
 	ret := make([]model.Firm, len(firms))
 	for k, v := range firms {

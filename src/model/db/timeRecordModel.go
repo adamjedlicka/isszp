@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -10,6 +11,7 @@ import (
 
 func init() {
 	model.NewTimeRecord = NewTimeRecord
+	model.QueryTimeRecords = QueryTimeRecords
 }
 
 type TimeRecord struct {
@@ -21,9 +23,7 @@ type TimeRecord struct {
 	Stop        string
 
 	UserID string
-	User   User
 	TaskID string
-	Task   Task
 
 	DeletedAt string
 }
@@ -56,16 +56,18 @@ func (t *TimeRecord) SetDate(val string)        { t.Date = val }
 func (t *TimeRecord) SetStart(val string)       { t.Start = val }
 func (t *TimeRecord) SetStop(val string)        { t.Stop = val }
 
-func (t *TimeRecord) GetUser() model.User {
-	db.Model(t).Related(&t.User)
-	return &t.User
+func (t TimeRecord) GetUser() model.User {
+	u := model.NewUser()
+	u.FillByID(t.UserID)
+	return u
 }
 
 func (t *TimeRecord) SetUser(val model.User) { t.UserID = val.GetID() }
 
-func (t *TimeRecord) GetTask() model.Task {
-	db.Model(t).Related(&t.Task)
-	return &t.Task
+func (t TimeRecord) GetTask() model.Task {
+	ta := model.NewTask()
+	ta.FillByID(t.TaskID)
+	return ta
 }
 
 func (t *TimeRecord) SetTask(val model.Task) { t.TaskID = val.GetID() }
@@ -77,4 +79,24 @@ func (t TimeRecord) String() string {
 // BeforeCreate is a GORM hook
 func (*TimeRecord) BeforeCreate(scope *gorm.Scope) error {
 	return scope.SetColumn("id", NewUUID())
+}
+
+func QueryTimeRecords(args ...interface{}) []model.TimeRecord {
+	records := []*TimeRecord{}
+
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&records, args...)
+
+	ret := make([]model.TimeRecord, len(records))
+	for k, v := range records {
+		ret[k] = v
+	}
+
+	return ret
 }

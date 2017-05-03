@@ -29,9 +29,11 @@ func CamelToSnake(s string) string {
 	buf := bytes.Buffer{}
 
 	isPrevUpper := false
-	for k, v := range s {
+	lastRune := ' '
+
+	for _, v := range s {
 		if unicode.IsUpper(v) {
-			if !isPrevUpper && k != 0 {
+			if !isPrevUpper && lastRune != ' ' {
 				buf.WriteRune('_')
 			}
 			isPrevUpper = true
@@ -40,6 +42,7 @@ func CamelToSnake(s string) string {
 		}
 
 		buf.WriteRune(unicode.ToLower(v))
+		lastRune = v
 	}
 
 	return buf.String()
