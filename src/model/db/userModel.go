@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -22,7 +23,6 @@ type User struct {
 	LastName  string
 
 	PermissionID string
-	Permission   Permission
 
 	DeletedAt *string
 }
@@ -63,9 +63,10 @@ func (u *User) CheckPassword(p string) bool {
 	return p == u.Password
 }
 
-func (u *User) GetPermission() model.Permission {
-	db.Model(u).Related(&u.Permission)
-	return &u.Permission
+func (u User) GetPermission() model.Permission {
+	p := model.NewPermission()
+	p.FillByID(u.PermissionID)
+	return p
 }
 
 func (u *User) SetPermission(p model.Permission) { u.PermissionID = p.GetID() }
@@ -82,7 +83,14 @@ func (*User) BeforeCreate(scope *gorm.Scope) error {
 func QueryUsers(args ...interface{}) []model.User {
 	users := []*User{}
 
-	db.Find(&users)
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&users, args...)
 
 	ret := make([]model.User, len(users))
 	for k, v := range users {

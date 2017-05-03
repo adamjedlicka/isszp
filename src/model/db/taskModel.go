@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
 	"github.com/jinzhu/gorm"
@@ -23,11 +24,8 @@ type Task struct {
 	EndDate     *string
 
 	MaintainerID string
-	Maintainer   User
 	WorkerID     *string
-	Worker       User
 	ProjectID    string
-	Project      Project
 
 	DeletedAt *string
 }
@@ -64,15 +62,21 @@ func (t *Task) SetPlanEndDate(val *string) { t.PlanEndDate = val }
 func (t *Task) SetEndDate(val *string)     { t.EndDate = val }
 
 func (t *Task) GetMaintainer() model.User {
-	db.Model(t).Related(&t.Maintainer, "Maintainer")
-	return &t.Maintainer
+	u := model.NewUser()
+	u.FillByID(t.MaintainerID)
+	return u
 }
 
 func (t *Task) SetMaintainer(val model.User) { t.MaintainerID = val.GetID() }
 
-func (t *Task) GetWorker() model.User {
-	db.Model(t).Related(&t.Worker, "Worker")
-	return &t.Worker
+func (t Task) GetWorker() model.User {
+	if t.WorkerID == nil {
+		return nil
+	}
+
+	u := model.NewUser()
+	u.FillByID(*t.WorkerID)
+	return u
 }
 
 func (t *Task) SetWorker(val model.User) {
@@ -84,9 +88,10 @@ func (t *Task) SetWorker(val model.User) {
 	}
 }
 
-func (t *Task) GetProject() model.Project {
-	db.Model(t).Related(&t.Project)
-	return &t.Project
+func (t Task) GetProject() model.Project {
+	p := model.NewProject()
+	p.FillByID(t.ProjectID)
+	return p
 }
 
 func (t *Task) SetProject(val model.Project) { t.ProjectID = val.GetID() }
@@ -103,7 +108,14 @@ func (*Task) BeforeCreate(scope *gorm.Scope) error {
 func QueryTasks(args ...interface{}) []model.Task {
 	tasks := []*Task{}
 
-	db.Find(&tasks)
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
+	}
+
+	db.Find(&tasks, args...)
 
 	ret := make([]model.Task, len(tasks))
 	for k, v := range tasks {

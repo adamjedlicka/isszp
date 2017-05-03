@@ -20,9 +20,7 @@ type Comment struct {
 	PostDateTime string
 
 	UserID string
-	User   User
 	TaskID string
-	Task   Task
 }
 
 func NewComment() model.Comment {
@@ -51,15 +49,17 @@ func (c *Comment) SetText(val string)         { c.Text = val }
 func (c *Comment) SetPostDateTime(val string) { c.PostDateTime = val }
 
 func (c *Comment) GetUser() model.User {
-	db.Model(c).Related(&c.User)
-	return &c.User
+	u := model.NewUser()
+	u.FillByID(c.UserID)
+	return u
 }
 
 func (c *Comment) SetUser(val model.User) { c.UserID = val.GetID() }
 
 func (c *Comment) GetTask() model.Task {
-	db.Model(c).Related(&c.Task)
-	return &c.Task
+	t := model.NewTask()
+	t.FillByID(c.TaskID)
+	return t
 }
 
 func (c *Comment) SetTask(val model.Task) { c.TaskID = val.GetID() }
@@ -76,9 +76,11 @@ func (*Comment) BeforeCreate(scope *gorm.Scope) error {
 func QueryComments(args ...interface{}) []model.Comment {
 	comments := []*Comment{}
 
-	str, ok := args[0].(string)
-	if ok {
-		args[0] = common.CamelToSnake(str)
+	if len(args) > 0 {
+		str, ok := args[0].(string)
+		if ok {
+			args[0] = common.CamelToSnake(str)
+		}
 	}
 
 	db.Find(&comments, args...)
