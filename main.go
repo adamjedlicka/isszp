@@ -1,21 +1,45 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
+	"io/ioutil"
+	"log"
 
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
 )
 
+type Config struct {
+	Server   server.Config
+	Database database.Config
+}
+
 func main() {
 	flag.Parse()
 
+	bytes, err := ioutil.ReadFile("./config/config.json")
+	if err != nil {
+		log.Fatal("Missing config file in ./config/ directory!")
+	}
+
+	cfg := Config{}
+	if err := json.Unmarshal(bytes, &cfg); err != nil {
+		panic(err)
+	}
+
 	if flag.Arg(0) == "install" {
-		install.Init()
+		install.InstallDatabase(cfg.Database)
 		return
 	}
 
-	db.Init()
+	database.Configure(cfg.Database)
+	gorm := database.Init()
+
+	db.Init(gorm)
+
+	server.Configure(cfg.Server)
 	server.Run()
 }

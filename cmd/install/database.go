@@ -7,19 +7,14 @@ import (
 	"log"
 	"os"
 	"strings"
+
+	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 )
 
-var (
-	dbType     = "mysql"
-	dbUser     = "root"
-	dbPassword = ""
-	dbName     = "isszp"
-)
-
-func installDB() {
+func InstallDatabase(cfg database.Config) {
 	log.Println("Installing database...")
 
-	db, err := sql.Open(dbType, dbUser+":@/")
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@/", cfg.User, cfg.Password))
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
@@ -27,19 +22,19 @@ func installDB() {
 
 	tx, err := db.Begin()
 
-	_, err = tx.Exec("DROP DATABASE IF EXISTS `" + dbName + "`")
+	_, err = tx.Exec("DROP DATABASE IF EXISTS `" + cfg.Database + "`")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
 
-	_, err = tx.Exec("CREATE DATABASE `" + dbName + "`")
+	_, err = tx.Exec("CREATE DATABASE `" + cfg.Database + "`")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
 
-	_, err = tx.Exec("USE `" + dbName + "`")
+	_, err = tx.Exec("USE `" + cfg.Database + "`")
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)

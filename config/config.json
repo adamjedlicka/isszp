@@ -1,0 +1,11 @@
+{
+	"Server": {
+		"Address": "localhost",
+		"Port": "8080"
+	},
+	"Database": {
+		"User": "root",
+		"Password": "",
+		"Database": "isszp"
+	}
+}
