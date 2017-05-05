@@ -14,19 +14,11 @@
 				<div class="form-group col-sm-2">
 					<label for="State">State</label>
 					<select name="State" class="form-control" {{.disabled}}>
-					{{if .Task}}
-						<option {{if eq .Task.GetState "free"}}selected{{end}} value="free">Free</option>
-						<option {{if eq .Task.GetState "active"}}selected{{end}} value="active">In development</option>
-						<option {{if eq .Task.GetState "revision"}}selected{{end}} value="revision">In revision</option>
-						<option {{if eq .Task.GetState "success"}}selected{{end}} value="success">Success</option>
-						<option {{if eq .Task.GetState "fail"}}selected{{end}} value="fail">Failed</option>
-					{{else}}
-						<option selected value="free">Free</option>
-						<option value="active">In development</option>
-						<option value="revision">In revision</option>
-						<option value="success">Success</option>
-						<option value="fail">Failed</option>
-					{{end}}
+						<option {{if .Task}}{{if eq .Task.GetState "free"}}selected{{end}}{{else}}selected{{end}} value="free">free</option>
+						<option {{if .Task}}{{if eq .Task.GetState "active"}}selected{{end}}{{end}} value="active">active</option>
+						<option {{if .Task}}{{if eq .Task.GetState "revision"}}selected{{end}}{{end}} value="revision">In revision</option>
+						<option {{if .Task}}{{if eq .Task.GetState "success"}}selected{{end}}{{end}} value="success">success</option>
+						<option {{if .Task}}{{if eq .Task.GetState "fail"}}selected{{end}}{{end}} value="fail">fail</option>
 					</select>
 				</div>
 
@@ -143,4 +135,21 @@
 	</form>
 </div>
 {{end}}
+
+<script>
+	$("select[name=State]").change((e) => {
+		if($(e.target).val() == "free") {
+			$("select[name=WorkerID]").val("");
+		}
+	});
+
+	$("select[name=WorkerID]").change((e) => {
+		if($(e.target).val() == "") {
+			$("select[name=State]").val("free");
+		} else {
+			$("select[name=State]").val("active");
+		}
+	});
+</script>
+
 {{end}}

@@ -104,7 +104,7 @@ func TaskSavePOST(w http.ResponseWriter, r *http.Request) {
 
 	t.SetName(r.FormValue("Name"))
 	t.SetDescription(r.FormValue("Description"))
-	t.SetState(model.TaskState(r.FormValue("State")))
+	t.SetState(r.FormValue("State"))
 	t.SetStartDate(r.FormValue("StartDate"))
 
 	planEndDate := r.FormValue("PlanEndDate")
