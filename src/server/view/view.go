@@ -62,7 +62,11 @@ func (v *View) Render(w http.ResponseWriter) {
 	}
 
 	v.Vars["L"] = v.L
-	template.Execute(w, v.Vars)
+	err = template.Execute(w, v.Vars)
+	if err != nil {
+		http.Error(w, "Template Execute Error: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func (v *View) SetPagination(r *http.Request, len, itemsPerPage int) (int, int) {
