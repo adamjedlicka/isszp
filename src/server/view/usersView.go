@@ -8,7 +8,7 @@ import (
 
 func UsersGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "Users")
-	view.AppendTemplates("users/users")
+	view.AppendTemplates("users/users", "component/user-list")
 
 	view.Vars["Users"] = model.QueryUsers()
 
