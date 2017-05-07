@@ -35,7 +35,7 @@ func NewView(r *http.Request, name string) *View {
 	if session.IsLoggedIn(r) {
 		user := model.NewUser()
 		user.FillByUserName(session.GetUserName(r))
-		v.Vars["User"] = user
+		v.Vars["LoggedUser"] = user
 		v.Vars["UserName"] = user.GetUserName()
 	}
 
