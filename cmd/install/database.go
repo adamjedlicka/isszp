@@ -16,11 +16,13 @@ func InstallDatabase(cfg database.Config) {
 
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@/", cfg.User, cfg.Password))
 	if err != nil {
-		log.Println(err)
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	tx, err := db.Begin()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	_, err = tx.Exec("DROP DATABASE IF EXISTS `" + cfg.Database + "`")
 	if err != nil {
