@@ -12,9 +12,15 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
 )
 
+var dbUser string
+
 type Config struct {
 	Server   server.Config
 	Database database.Config
+}
+
+func init() {
+	flag.StringVar(&dbUser, "dbUser", "", "Prihlasovaci jmeno do databaze")
 }
 
 func main() {
@@ -28,6 +34,10 @@ func main() {
 	cfg := Config{}
 	if err := json.Unmarshal(bytes, &cfg); err != nil {
 		panic(err)
+	}
+
+	if dbUser != "" {
+		cfg.Database.User = dbUser
 	}
 
 	if flag.Arg(0) == "install" {

@@ -1,0 +1,34 @@
+{{define "UserList"}}
+<table class="table table-striped table-hover" style="margin: 0;">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Action</th>			
+		</tr>
+	</thead>
+	<tbody>
+		{{range $k, $v := .Users}}
+		<tr>
+			<td>{{$v.UserName}}</td>
+			<td>{{$v.FirstName}}</td>
+			<td>{{$v.LastName}}</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+						Action <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="/user/view/{{$v.GetID}}">View</a></li>
+						<li><a href="/user/edit/{{$v.GetID}}">Edit</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/user/delete/{{$v.GetID}}">Delete</a></li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		{{end}}
+	</tbody>
+</table>
+{{end}}

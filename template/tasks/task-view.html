@@ -48,8 +48,8 @@
 					<select name="MaintainerID" class="form-control" {{.disabled}} required>
 						{{if .Task.GetMaintainer}}
 						<option selected hidden value="{{.Task.GetMaintainer.GetID}}">{{.Task.GetMaintainer.GetUserName}}</option>
-						{{else if .User}}
-						<option selected hidden value="{{.User.GetID}}">{{.User.GetUserName}}</option>
+						{{else if .LoggedUser}}
+						<option selected hidden value="{{.LoggedUser.GetID}}">{{.LoggedUser.GetUserName}}</option>
 						{{else}}
 						<option selected hidden value=""></option>
 						{{end}}
@@ -100,6 +100,9 @@
 			</div>
 
 			<div class="row">
+				<div class="form-group col-sm-2 pull-left">
+						<a class="btn btn-default btn-primary pull-left" href="/tasks" role="button">Back</a>
+					</div>
 				<div class="form-group col-sm-2 pull-right">
 					{{if eq .Action "view"}}
 					<a class="btn btn-default btn-primary pull-right" href="/task/edit/{{.Task.GetID}}" role="button">Edit</a>¨

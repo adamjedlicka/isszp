@@ -1,10 +1,14 @@
 {{define "content"}}
-	{{range $k, $v := .Users}}
-		<p>
-			{{$k}} - {{$v.GetUserName}}
-			{{if $v.GetFirstName}}
-				({{$v.GetFirstName}} {{$v.GetLastName}})
-			{{end}}
-		</p>
-	{{end}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">User</h3>
+	</div>
+	<div class="panel-body" style="padding: 0;">
+		{{template "UserList" .}}
+	</div>
+</div>
+
+<div class="panel">
+	<a class="btn btn-default btn-primary pull-right" href="user/new" role="button">New user</a>
+</div>
 {{end}}

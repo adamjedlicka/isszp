@@ -31,6 +31,11 @@ func NewRouter() http.Handler {
 	r.Handle("/comment/save", use(view.CommentSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/users", use(view.UsersGET, MustLogin)).Methods("GET")
+	r.Handle("/user/new", use(view.UserNewGET, MustLogin)).Methods("GET")
+	r.Handle("/user/view/{ID}", use(view.UserViewGET, MustLogin)).Methods("GET")
+	r.Handle("/user/edit/{ID}", use(view.UserEditGET, MustLogin)).Methods("GET")
+	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, MustLogin)).Methods("GET")
+	r.Handle("/user/save", use(view.UserSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/login", use(view.LoginGET)).Methods("GET")
 	r.Handle("/login", use(view.LoginPOST)).Methods("POST")
