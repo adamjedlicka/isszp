@@ -64,7 +64,7 @@ func (v *View) Render(w http.ResponseWriter) {
 	v.Vars["L"] = v.L
 	err = template.Execute(w, v.Vars)
 	if err != nil {
-		http.Error(w, "Template execute error: "+err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Template Execute Error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
