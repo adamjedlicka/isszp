@@ -135,6 +135,9 @@ type TimeRecord interface {
 	SetDate(string)
 	GetStart() string
 	SetStart(string)
+
+	SetTaskByID(string)
+	SetUserByID(string)
 }
 
 var (

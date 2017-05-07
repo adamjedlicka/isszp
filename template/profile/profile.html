@@ -14,7 +14,7 @@
             <label for="selectTasks">Select task</label>
             <select class="form-control" id="selectTasks">
                 {{range $v := .Tasks}}
-                    <option>                            
+                    <option id="{{$v.GetID}}">                            
                         {{$v.GetName}}
                     </option>				            
                 {{end}}

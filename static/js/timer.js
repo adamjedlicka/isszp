@@ -5,11 +5,12 @@ $(document).ready(function() {
   $('#startTimer').on('click', function() {
 
     var startDate = new Date();
+    var taskID = $('#selectTasks').find(':selected').attr('id');
 
     $.ajax({
       url: '/api/startTimer',
       type: 'POST',
-      data: {'startDate': startDate.toUTCString()},
+      data: {'taskID': taskID},
 
       success: function() {
         var tmpDate = startDate.getTime();

@@ -20,7 +20,7 @@ type TimeRecord struct {
 	Description string
 	Date        string
 	Start       string
-	Stop        string
+	End         string
 
 	UserID string
 	TaskID string
@@ -49,12 +49,15 @@ func (t TimeRecord) GetID() string          { return t.ID }
 func (t TimeRecord) GetDescription() string { return t.Description }
 func (t TimeRecord) GetDate() string        { return t.Date }
 func (t TimeRecord) GetStart() string       { return t.Start }
-func (t TimeRecord) GetStop() string        { return t.Stop }
+func (t TimeRecord) GetStop() string        { return t.End }
 
 func (t *TimeRecord) SetDescription(val string) { t.Description = val }
 func (t *TimeRecord) SetDate(val string)        { t.Date = val }
 func (t *TimeRecord) SetStart(val string)       { t.Start = val }
-func (t *TimeRecord) SetStop(val string)        { t.Stop = val }
+func (t *TimeRecord) SetStop(val string)        { t.End = val }
+
+func (t *TimeRecord) SetTaskByID(val string) { t.TaskID = val }
+func (t *TimeRecord) SetUserByID(val string) { t.UserID = val }
 
 func (t TimeRecord) GetUser() model.User {
 	u := model.NewUser()
