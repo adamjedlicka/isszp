@@ -24,11 +24,7 @@ $(document).ready(function() {
 
     $('#stopTimer').prop('disabled', true);
     $('#startTimer').prop('disabled', false);
-    $('#resetTimer').prop('disabled', false);
-
-  });
-
-  $('#resetTimer').on('click', function() {
+    $('#selectTasks').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
 
@@ -59,7 +55,7 @@ function startCounter(startDate) {
   if (startDate > 0) {
     document.getElementById('stopTimer').disabled = false;
     document.getElementById('startTimer').disabled = true;
-    document.getElementById('resetTimer').disabled = true;
+    document.getElementById('selectTasks').disabled = true;
 
     timer = setInterval(function() {
 

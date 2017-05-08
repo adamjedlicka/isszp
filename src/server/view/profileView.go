@@ -49,19 +49,18 @@ func StartHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func StopHandler(w http.ResponseWriter, r *http.Request) {
-	/*timer := model.NewTimeRecord()
+	timer := model.NewTimeRecord()
 
 	r.ParseForm()
 
-	timeRecord := model.QueryTimeRecords("UserID = ?", session.GetUserUUID(r))
+	taskRecord := model.QueryTimeRecords("UserID = ? AND End = '00:00:00'", session.GetUserUUID(r))
 
-	err := timer.FillByID()
+	err := timer.FillByID(taskRecord[0].GetID())
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	userID := session.GetUserUUID(r)
 	time := time.Now().Local()
 
 	timer.SetStop(time.Format("15:04:05"))
@@ -70,5 +69,5 @@ func StopHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
-	}*/
+	}
 }
