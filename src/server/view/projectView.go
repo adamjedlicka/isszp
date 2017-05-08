@@ -28,6 +28,42 @@ func ProjectNewGET(w http.ResponseWriter, r *http.Request) {
 	view.Render(w)
 }
 
+func ProjectEditGET(w http.ResponseWriter, r *http.Request) {
+	view := NewView(r, "New task")
+	view.AppendTemplates("projects/project-view")
+
+	project := model.NewProject()
+	err := project.FillByID(mux.Vars(r)["ID"])
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	view.Vars["Action"] = "edit"
+	view.Vars["Project"] = project
+	view.Vars["Users"] = model.QueryUsers()
+	view.Vars["Firms"] = model.QueryFirms()
+
+	view.Render(w)
+}
+
+func ProjectDeleteGET(w http.ResponseWriter, r *http.Request) {
+	project := model.NewTask()
+	err := project.FillByID(mux.Vars(r)["ID"])
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	err = project.Delete()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/projects", http.StatusSeeOther)
+}
+
 func ProjectViewGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "New project")
 	view.AppendTemplates("projects/project-view")

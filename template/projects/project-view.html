@@ -89,13 +89,10 @@
                     {{if eq .Action "view"}}
                     <a class="btn btn-default btn-primary pull-right" href="/project/edit/{{.Project.GetID}}" role="button">Edit</a>
                     {{else if eq .Action "edit"}}
-                    <!--
                     <div class="btn-group pull-right" role="group">
                         <a href="/project/view/{{.Project.GetID}}" class="btn btn-default">Cancel</a>
                         <button type="submit" class="btn btn-default btn-success" formaction="/project/save" formmethod="POST">Save</button>
                     </div>
-                    -->
-                    NYI
                     {{else if eq .Action "new"}}
                     <div class="btn-group pull-right" role="group">
                         <button type="submit" class="btn btn-default btn-success" formaction="/project/save" formmethod="POST">Create</button>
