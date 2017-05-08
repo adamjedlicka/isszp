@@ -46,6 +46,12 @@ type Project interface {
 	SetCode(string)
 	GetDescription() string
 	SetDescription(string)
+	GetStartDate() string
+	SetStartDate(string)
+	GetPlanEndDate() *string
+	SetPlanEndDate(*string)
+	GetEndDate() *string
+	SetEndDate(*string)
 
 	GetMaintainer() User
 	SetMaintainer(User)

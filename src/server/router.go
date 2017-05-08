@@ -22,6 +22,8 @@ func NewRouter() http.Handler {
 	r.Handle("/firm/save", use(view.FirmSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/projects", use(view.ProjectsGET, MustLogin)).Methods("GET")
+	r.Handle("/project/new", use(view.ProjectNewGET, MustLogin)).Methods("GET")
+	r.Handle("/project/save", use(view.ProjectSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/tasks", use(view.TasksGET, MustLogin)).Methods("GET")
 	r.Handle("/task/new", use(view.TaskNewGET, MustLogin)).Methods("GET")

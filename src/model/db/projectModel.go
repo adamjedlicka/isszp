@@ -56,10 +56,12 @@ func (p Project) GetStartDate() string    { return p.StartDate }
 func (p Project) GetPlanEndDate() *string { return p.PlanEndDate }
 func (p Project) GetEndDate() *string     { return p.EndDate }
 
-func (p *Project) SetName(val string)        { p.Name = val }
-func (p *Project) SetCode(val string)        { p.Code = val }
-func (p *Project) SetDescription(val string) { p.Description = val }
-func (p *Project) SetStartDate(val string)   { p.StartDate = val }
+func (p *Project) SetName(val string)         { p.Name = val }
+func (p *Project) SetCode(val string)         { p.Code = val }
+func (p *Project) SetDescription(val string)  { p.Description = val }
+func (p *Project) SetStartDate(val string)    { p.StartDate = val }
+func (p *Project) SetPlanEndDate(val *string) { p.PlanEndDate = val }
+func (p *Project) SetEndDate(val *string)     { p.EndDate = val }
 
 func (p Project) GetMaintainer() model.User {
 	u := model.NewUser()
