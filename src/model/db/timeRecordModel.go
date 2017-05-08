@@ -6,6 +6,8 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
+	"log"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -95,6 +97,9 @@ func QueryTimeRecords(args ...interface{}) []model.TimeRecord {
 	}
 
 	db.Find(&records, args...)
+
+	log.Println(records) // TODO nothing in records
+	log.Println(args)
 
 	ret := make([]model.TimeRecord, len(records))
 	for k, v := range records {

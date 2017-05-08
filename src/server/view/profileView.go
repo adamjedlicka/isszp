@@ -12,7 +12,8 @@ func ProfileGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "Profile")
 	view.AppendTemplates("profile/profile")
 
-	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", session.GetUserUUID(r)) // Nefunguje
+	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", session.GetUserUUID(r))
+	view.Vars["StartTime"] = model.QueryTimeRecords("UserID = ?", session.GetUserUUID(r))
 
 	view.Render(w)
 }
@@ -40,10 +41,26 @@ func StartHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func StopHandler(w http.ResponseWriter, r *http.Request) {
+	/*timer := model.NewTimeRecord()
+
 	r.ParseForm()
 
-	//log.Println(r)
+	timeRecord := model.QueryTimeRecords("UserID = ?", session.GetUserUUID(r))
 
-	//log.Printf("%#v\n", r.FormValue("time"))
+	err := timer.FillByID()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
+	userID := session.GetUserUUID(r)
+	time := time.Now().Local()
+
+	timer.SetStop(time.Format("15:04:05"))
+
+	err = timer.Save()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}*/
 }
