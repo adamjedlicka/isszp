@@ -21,6 +21,8 @@ func NewRouter() http.Handler {
 	r.Handle("/firm/delete/{ID}", use(view.FirmDelGET, MustLogin)).Methods("GET")
 	r.Handle("/firm/save", use(view.FirmSavePOST, MustLogin)).Methods("POST")
 
+	r.Handle("/projects", use(view.ProjectsGET, MustLogin)).Methods("GET")
+
 	r.Handle("/tasks", use(view.TasksGET, MustLogin)).Methods("GET")
 	r.Handle("/task/new", use(view.TaskNewGET, MustLogin)).Methods("GET")
 	r.Handle("/task/view/{ID}", use(view.TaskViewGET, MustLogin)).Methods("GET")

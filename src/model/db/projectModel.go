@@ -48,10 +48,13 @@ func (p *Project) Delete() error {
 	return db.Delete(p).Error
 }
 
-func (p Project) GetID() string          { return p.ID }
-func (p Project) GetName() string        { return p.Name }
-func (p Project) GetCode() string        { return p.Code }
-func (p Project) GetDescription() string { return p.Description }
+func (p Project) GetID() string           { return p.ID }
+func (p Project) GetName() string         { return p.Name }
+func (p Project) GetCode() string         { return p.Code }
+func (p Project) GetDescription() string  { return p.Description }
+func (p Project) GetStartDate() string    { return p.StartDate }
+func (p Project) GetPlanEndDate() *string { return p.PlanEndDate }
+func (p Project) GetEndDate() *string     { return p.EndDate }
 
 func (p *Project) SetName(val string)        { p.Name = val }
 func (p *Project) SetCode(val string)        { p.Code = val }
