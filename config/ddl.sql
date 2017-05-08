@@ -95,7 +95,7 @@ CREATE TABLE `projects`
 	`start_date` DATE NOT NULL,
 	`plan_end_date` DATE 	 NULL,
 	`end_date` DATE 	 NULL,
-	`user_id` CHAR(36) NOT NULL,
+	`maintainer_id` CHAR(36) NOT NULL,
 	`firm_id` CHAR(36) NOT NULL,
 	`deleted_at` DATETIME(0) 	 NULL,
 	CONSTRAINT `PK_Projects` PRIMARY KEY (`id`)
@@ -213,7 +213,7 @@ ALTER TABLE `projects`
 
 ALTER TABLE `projects`
  ADD CONSTRAINT `FK_Projects_Users`
-	FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
+	FOREIGN KEY (`maintainer_id`) REFERENCES `users` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
 ALTER TABLE `comments`

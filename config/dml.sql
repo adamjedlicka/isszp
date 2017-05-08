@@ -24,7 +24,7 @@ INSERT INTO firms (id, name, email, tel_number, description) VALUES
 	(UUID(), "And another one", "ten@email.com", NULL, NULL),
 	(UUID(), "Tata a syn", "lol@wut.kappa", NULL, NULL);
 
-INSERT INTO projects (id, name, code, description, start_date, user_id, firm_id) VALUES
+INSERT INTO projects (id, name, code, description, start_date, maintainer_id, firm_id) VALUES
 	(UUID(), "Naplnit ISSZP pocatecnimy daty", "ISSZP-Init", "ISSZP musi byt naplneno daty pred prvotnim uvedenim do provozu", NOW(),
 		(SELECT id FROM users WHERE user_name = "sadlof"),
 		(SELECT id FROM firms WHERE name = "SoftCorp s.r.o.")),
