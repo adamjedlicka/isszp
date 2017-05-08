@@ -6,6 +6,7 @@
 			<th>Name</th>
             <th>Start date</th>
             <th>End date</th>
+            <th>Action</th>
 		</tr>
 	</thead>
     <tbody>
@@ -20,6 +21,16 @@
                     {{else if $v.GetPlanEndDate}}Planned at:{{$v.GetPlanEndDate}}
                     {{else}}Undefined
                     {{end}}
+                </td>
+                <td>
+                    <div class="btn-group">
+						<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="/project/view/{{$v.GetID}}">View</a></li>
+						</ul>
+					</div>
                 </td>
             </tr>
             {{end}}
