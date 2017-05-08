@@ -12,8 +12,15 @@ func ProfileGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "Profile")
 	view.AppendTemplates("profile/profile")
 
-	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", session.GetUserUUID(r))
-	view.Vars["StartTime"] = model.QueryTimeRecords("UserID = ?", session.GetUserUUID(r))
+	currentUserID := session.GetUserUUID(r)
+
+	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", currentUserID)
+
+	taskRecord := model.QueryTimeRecords("UserID = ? AND End = '00:00:00'", currentUserID)
+
+	if len(taskRecord) > 0 {
+		view.Vars["StartTime"] = taskRecord[0]
+	}
 
 	view.Render(w)
 }
@@ -32,6 +39,7 @@ func StartHandler(w http.ResponseWriter, r *http.Request) {
 	timer.SetUserByID(userID)
 	timer.SetDate(date)
 	timer.SetStart(time.Format("15:04:05"))
+	timer.SetDescription(r.FormValue("startDate")) // Start time in miliseconds
 
 	err := timer.Save()
 	if err != nil {

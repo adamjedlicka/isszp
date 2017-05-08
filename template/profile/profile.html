@@ -1,12 +1,13 @@
 {{define "content"}}
 
-<h1>Welcome USER</h1>
+<h1>Welcome {{.User.GetUserName}}</h1>
 
 <div class="row well">
     <div class="col-sm-6">
         <div class="form-group">
             <label for="counter">Time tracking</label>
-            <input type="text" class="form-control text-center" id="counter" value="00:00:00" disabled>
+            <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetDescription}} {{else}} 00:00:00 {{end}}"
+                startTime="{{.StartTime.GetDescription}}" disabled>
         </div>
     </div>
     <div class="col-sm-6">

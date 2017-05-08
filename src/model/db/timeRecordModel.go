@@ -6,8 +6,6 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
-	"log"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -27,7 +25,7 @@ type TimeRecord struct {
 	UserID string
 	TaskID string
 
-	DeletedAt string
+	DeletedAt *string
 }
 
 func NewTimeRecord() model.TimeRecord {
@@ -97,9 +95,6 @@ func QueryTimeRecords(args ...interface{}) []model.TimeRecord {
 	}
 
 	db.Find(&records, args...)
-
-	log.Println(records) // TODO nothing in records
-	log.Println(args)
 
 	ret := make([]model.TimeRecord, len(records))
 	for k, v := range records {

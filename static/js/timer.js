@@ -4,18 +4,17 @@ $(document).ready(function() {
 
   $('#startTimer').on('click', function() {
 
-    var startDate = new Date();
+    var startDate = new Date().getTime();
     var taskID = $('#selectTasks').find(':selected').attr('id');
 
     $.ajax({
       url: '/api/startTimer',
       type: 'POST',
-      data: {'taskID': taskID},
+      data: {'taskID': taskID, 'startDate': startDate},
 
       success: function() {
-        var tmpDate = startDate.getTime();
         $('#counter').val('00:00:00');
-        startCounter(tmpDate);
+        startCounter(startDate);
       }
     });
 
@@ -41,7 +40,6 @@ $(document).ready(function() {
     $.ajax({
       url: '/api/stopTimer',
       type: 'POST',
-      data: time,
 
       success: function() {
         $('#counter').val('00:00:00');
@@ -51,16 +49,7 @@ $(document).ready(function() {
   });
 });
 
-// TODO vyndat startDate z databaze. var startDate = SELECT startDate FROM users
-// WHERE ID =?, UUID
-
-// -------------------------Ukazka
-var startDate =
-    new Date('Apr 27, 2017 14:50:00').getTime();  // Pokud bude startDate
-                                                  // nastaven - v databazi bude
-                                                  // ulozen cas
-var startDate = 0;                                // Pokud nebude nastaveny cas
-// -------------------------Ukazka
+startDate = document.getElementById('counter').getAttribute('startTime');
 
 startCounter(startDate);
 
