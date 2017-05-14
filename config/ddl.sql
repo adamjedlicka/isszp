@@ -45,6 +45,7 @@ CREATE TABLE `time_records`
 (
 	`id` CHAR(36) NOT NULL,
 	`description` TEXT 	 NULL,
+	`time_in_ms` VARCHAR(50) NULL,
 	`date` DATE NOT NULL,
 	`start` TIME(0) NOT NULL,
 	`end` TIME(0) 	 NULL,
