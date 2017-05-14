@@ -1,0 +1,84 @@
+{{define "content"}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Timerecord {{.Timerecord.GetStart}} - {{if .Timerecord.InProgress}} In Progress {{else}} {{.Timerecord.GetStop}} {{end}}</h3>
+	</div>
+	<div class="panel-body">
+		<form>
+			<div class="row">
+				<div class="form-group col-sm-4">
+					<label for="ID">ID</label>
+					<input type="text" class="form-control" name="ID" value="{{.Timerecord.GetID}}" readonly required>
+				</div>
+			</div>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="Task">Task</label>
+                    <select name="TaskID" class="form-control" {{.disabled}} required>
+						{{if .Timerecord.GetTask}}
+						<option selected hidden value="{{.Timerecord.GetTask.GetID}}">{{.Timerecord.GetTask.GetName}}</option>
+						{{else}}
+						<option selected hidden value=""></option>
+						{{end}}
+						{{range $k, $v := .Tasks}}
+						<option value="{{$v.GetID}}">{{$v.GetName}}</option>
+						{{end}}
+					</select>
+                </div>
+
+                <div class="form-group col-sm-6 pull-right">
+                    <label for="User">User</label>
+                    <select name="UserID" class="form-control" {{.disabled}} required>
+						{{if .Timerecord.GetUser}}
+						<option selected hidden value="{{.Timerecord.GetUser.GetID}}">{{.Timerecord.GetUser.GetUserName}}</option>
+						{{else}}
+						<option selected hidden value=""></option>
+						{{end}}
+						{{range $k, $v := .Users}}
+						<option value="{{$v.GetID}}">{{$v.GetUserName}}</option>
+						{{end}}
+					</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-4">
+					<label for="Date">Date</label>
+					<input type="date" class="form-control" name="Date" value="{{.Timerecord.GetDate}}" {{.readonly}}>
+				</div>
+
+				<div class="form-group col-sm-4">
+					<label for="StartTime">Start time</label>
+					<input type="time" class="form-control" name="StartTime" value="{{.Timerecord.GetStart}}" {{.readonly}}>
+				</div>
+
+                <div class="form-group col-sm-4">
+					<label for="StopTime">Stop time</label>
+                    {{if and (.Timerecord.InProgress) (eq .Action "edit")}}
+                    <input type="text" class="form-control" name="StopTime" value="In Progress" readonly>
+                    {{else}}
+                    <input type="time" class="form-control" name="StopTime" value="{{.Timerecord.GetStop}}" {{.readonly}}>
+                    {{end}}
+				</div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-2 pull-left">
+                    <a class="btn btn-default btn-primary pull-left" href="/timerecords" role="button">Back to timerecords</a>
+                </div>
+
+                {{if not .Timerecord.InProgress}}
+                <div class="form-group col-sm-2 pull-right">
+                    {{if eq .Action "view"}}
+                    <a class="btn btn-default btn-primary pull-right" href="/timerecord/edit/{{.Timerecord.GetID}}" role="button">Edit</a>
+                    {{else if eq .Action "edit"}}
+                    <div class="btn-group pull-right" role="group">
+                        <a href="/timerecord/view/{{.Timerecord.GetID}}" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-default btn-success" formaction="/timerecord/save" formmethod="POST">Save</button>
+                    </div>
+                    {{end}}
+                </div>
+                {{end}}
+            </div>
+		</form>
+	</div>
+</div>
+{{end}}

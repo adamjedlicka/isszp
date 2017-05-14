@@ -81,7 +81,7 @@ func (t TimeRecord) String() string {
 	return fmt.Sprint("TimeRecord: ", t.Description)
 }
 
-func (t TimeRecord) Valid() bool {
+func (t TimeRecord) InProgress() bool {
 	return strings.Compare(t.End, "00:00:00") == 0
 }
 

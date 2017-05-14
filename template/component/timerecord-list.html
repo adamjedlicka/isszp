@@ -6,6 +6,7 @@
             <th>User</th>
             <th>Day</th>
             <th>Time</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +23,18 @@
                     {{$v.GetDate}}
                 </td>
                 <td>
-                    {{$v.GetStart}} - {{if not $v.Valid}} {{$v.GetStop}} {{else}} In Progress {{end}}
+                    {{$v.GetStart}} - {{if $v.InProgress}} In Progress {{else}} {{$v.GetStop}} {{end}}
+                </td>
+                <td>
+                    <div class="btn-group">
+						<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+							Action <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="/timerecord/view/{{$v.GetID}}">View</a></li>
+                            <li><a href="/timerecord/edit/{{$v.GetID}}">Edit</a></li>
+						</ul>
+					</div>
                 </td>
             </tr>
             {{end}}
