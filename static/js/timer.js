@@ -5,12 +5,18 @@ $(document).ready(function() {
   $('#startTimer').on('click', function() {
 
     var startDate = new Date().getTime();
+    var taskID = $('#selectTasks').find(':selected').attr('id');
 
-    // TODO vlozit startDate do databaze prislusnemu uzivateli. (Kdy zapocal
-    // praci)
+    $.ajax({
+      url: '/api/startTimer',
+      type: 'POST',
+      data: {'taskID': taskID, 'startDate': startDate},
 
-    $('#counter').val('00:00:00');
-    startCounter(startDate);
+      success: function() {
+        $('#counter').val('00:00:00');
+        startCounter(startDate);
+      }
+    });
 
   });
 
@@ -18,11 +24,7 @@ $(document).ready(function() {
 
     $('#stopTimer').prop('disabled', true);
     $('#startTimer').prop('disabled', false);
-    $('#resetTimer').prop('disabled', false);
-
-  });
-
-  $('#resetTimer').on('click', function() {
+    $('#selectTasks').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
 
@@ -31,23 +33,19 @@ $(document).ready(function() {
         ' sekund ' +
         'k ukolu: ' + task);
 
-    // TODO vlozit do databaze hours minutes seconds task (Time recond, jak
-    // dlouho a na cem se pracovalo)
+    $.ajax({
+      url: '/api/stopTimer',
+      type: 'POST',
 
-    $('#counter').val('00:00:00');
+      success: function() {
+        $('#counter').val('00:00:00');
+      }
+    });
+
   });
 });
 
-// TODO vyndat startDate z databaze. var startDate = SELECT startDate FROM users
-// WHERE ID =?, UUID
-
-// -------------------------Ukazka
-var startDate =
-    new Date('Apr 27, 2017 14:50:00').getTime();  // Pokud bude startDate
-                                                  // nastaven - v databazi bude
-                                                  // ulozen cas
-var startDate = 0;                                // Pokud nebude nastaveny cas
-// -------------------------Ukazka
+startDate = document.getElementById('counter').getAttribute('startTime');
 
 startCounter(startDate);
 
@@ -57,7 +55,7 @@ function startCounter(startDate) {
   if (startDate > 0) {
     document.getElementById('stopTimer').disabled = false;
     document.getElementById('startTimer').disabled = true;
-    document.getElementById('resetTimer').disabled = true;
+    document.getElementById('selectTasks').disabled = true;
 
     timer = setInterval(function() {
 

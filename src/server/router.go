@@ -49,6 +49,8 @@ func NewRouter() http.Handler {
 	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")
 
 	r.Handle("/profile", use(view.ProfileGET, MustLogin)).Methods("GET")
+	r.Handle("/api/startTimer", use(view.StartHandler, MustLogin)).Methods("POST")
+	r.Handle("/api/stopTimer", use(view.StopHandler, MustLogin)).Methods("POST")
 
 	r.Handle("/api/notify", use(api.NotifyGET, MustLogin)).Methods("GET")
 
