@@ -7,6 +7,7 @@ $(document).ready(function() {
     var startDate = new Date().getTime();
     var taskID = $('#selectTasks').find(':selected').attr('id');
 
+    // Send data to backend - manipulation with database
     $.ajax({
       url: '/api/startTimer',
       type: 'POST',
@@ -29,6 +30,7 @@ $(document).ready(function() {
 
     var task = $('#selectTasks').find(':selected').text();
 
+    // Give a signal to backend, so timer was stopped
     $.ajax({
       url: '/api/stopTimer',
       type: 'POST',
@@ -42,7 +44,9 @@ $(document).ready(function() {
 
 });
 
-startDate = document.getElementById('counter').getAttribute('startTime');
+startDate = document.getElementById('counter').getAttribute(
+    'startTime');  // If there is an open record in a database, startTime will
+                   // be set
 
 startCounter(startDate);
 
@@ -57,7 +61,10 @@ function startCounter(startDate) {
 
     timer = setInterval(function() {
 
-      if (document.getElementById('stopTimer').hasAttribute('disabled')) {
+      if (document.getElementById('stopTimer')
+              .hasAttribute('disabled')) {  // If button stop is disabled -
+                                            // timer is not running, overpass
+                                            // calculations
         clearInterval(timer);
         startDate = 0;
 
