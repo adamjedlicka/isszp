@@ -1,0 +1,32 @@
+{{define "TimerecordList"}}
+<table class="table table-striped table-hover" style="margin: 0;">
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>User</th>
+            <th>Day</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{with $data := .}}
+            {{range $k, $v := .Timerecords}}
+            <tr>
+                <td>
+                    {{$v.GetTask.GetName}}
+                </td>
+                <td>
+                    {{$v.GetUser.GetUserName}}
+                </td>
+                <td>
+                    {{$v.GetDate}}
+                </td>
+                <td>
+                    {{$v.GetStart}} - {{if not $v.Valid}} {{$v.GetStop}} {{else}} In Progress {{end}}
+                </td>
+            </tr>
+            {{end}}
+        {{end}}
+    </tbody>
+</table>
+{{end}}

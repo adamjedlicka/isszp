@@ -44,6 +44,8 @@ func NewRouter() http.Handler {
 	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, MustLogin)).Methods("GET")
 	r.Handle("/user/save", use(view.UserSavePOST, MustLogin)).Methods("POST")
 
+	r.Handle("/timerecords", use(view.TimerecordsGET, MustLogin)).Methods("GET")
+
 	r.Handle("/login", use(view.LoginGET)).Methods("GET")
 	r.Handle("/login", use(view.LoginPOST)).Methods("POST")
 	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")

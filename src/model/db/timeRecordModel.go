@@ -6,6 +6,8 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
+	"strings"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -77,6 +79,10 @@ func (t *TimeRecord) SetTask(val model.Task) { t.TaskID = val.GetID() }
 
 func (t TimeRecord) String() string {
 	return fmt.Sprint("TimeRecord: ", t.Description)
+}
+
+func (t TimeRecord) Valid() bool {
+	return strings.Compare(t.End, "00:00:00") == 0
 }
 
 // BeforeCreate is a GORM hook
