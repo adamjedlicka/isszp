@@ -8,6 +8,10 @@ import (
 
 	"strings"
 
+	"time"
+
+	"errors"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -42,6 +46,13 @@ func (t *TimeRecord) FillByID(id string) error {
 }
 
 func (t *TimeRecord) Save() error {
+	start, _ := time.Parse("15:04:05", t.Start)
+	end, _ := time.Parse("15:04:05", t.End)
+
+	if end.Before(start) {
+		return errors.New("Cannot set 'Stop time' before 'Start time")
+	}
+
 	return db.Save(t).Error
 }
 
