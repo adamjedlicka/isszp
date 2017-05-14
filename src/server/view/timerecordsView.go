@@ -62,6 +62,28 @@ func TimerecordEditGET(w http.ResponseWriter, r *http.Request) {
 	view.Render(w)
 }
 
+func TimerecordDeleteGET(w http.ResponseWriter, r *http.Request) {
+	tr := model.NewTimeRecord()
+	err := tr.FillByID(mux.Vars(r)["ID"])
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if tr.InProgress() {
+		http.Redirect(w, r, "/timerecords", http.StatusSeeOther)
+		return
+	}
+
+	err = tr.Delete()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/timerecords", http.StatusSeeOther)
+}
+
 func TimerecordSavePOST(w http.ResponseWriter, r *http.Request) {
 	tr := model.NewTimeRecord()
 

@@ -32,7 +32,11 @@
 						</button>
 						<ul class="dropdown-menu">
 							<li><a href="/timerecord/view/{{$v.GetID}}">View</a></li>
+                            {{if not $v.InProgress}}
                             <li><a href="/timerecord/edit/{{$v.GetID}}">Edit</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/timerecord/delete/{{$v.GetID}}">Delete</a></li>
+                            {{end}}
 						</ul>
 					</div>
                 </td>
