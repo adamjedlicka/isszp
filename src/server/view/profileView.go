@@ -15,11 +15,16 @@ func ProfileGET(w http.ResponseWriter, r *http.Request) {
 	currentUserID := session.GetUserUUID(r)
 
 	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", currentUserID)
+	currentUserName := model.QueryUsers("id = ?", currentUserID)
 
 	taskRecord := model.QueryTimeRecords("UserID = ? AND End = '00:00:00'", currentUserID)
 
-	if len(taskRecord) > 0 {
+	if len(taskRecord) > 0 { // Max one timeRecord with userID = x and End = 00:00:00, but there can be non
 		view.Vars["StartTime"] = taskRecord[0]
+	}
+
+	if len(currentUserName) > 0 { // Max one user with this UUID, but there can be non
+		view.Vars["CUser"] = currentUserName[0]
 	}
 
 	view.Render(w)

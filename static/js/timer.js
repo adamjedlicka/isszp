@@ -23,15 +23,11 @@ $(document).ready(function() {
   $('#stopTimer').on('click', function() {
 
     $('#stopTimer').prop('disabled', true);
-    $('#startTimer').prop('disabled', false);
+    $('#stopTimer').hide();
+    $('#startTimer').show();
     $('#selectTasks').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
-
-    alert(
-        time.hours + ' hodin ' + time.minutes + ' minut ' + time.seconds +
-        ' sekund ' +
-        'k ukolu: ' + task);
 
     $.ajax({
       url: '/api/stopTimer',
@@ -43,6 +39,7 @@ $(document).ready(function() {
     });
 
   });
+
 });
 
 startDate = document.getElementById('counter').getAttribute('startTime');
@@ -54,7 +51,8 @@ function startCounter(startDate) {
 
   if (startDate > 0) {
     document.getElementById('stopTimer').disabled = false;
-    document.getElementById('startTimer').disabled = true;
+    document.getElementById('stopTimer').style.display = 'initial';
+    document.getElementById('startTimer').style.display = 'none';
     document.getElementById('selectTasks').disabled = true;
 
     timer = setInterval(function() {

@@ -1,11 +1,18 @@
 {{define "content"}}
 
-<h1>Welcome {{.User.GetUserName}}</h1>
+<div class="col-sm-offset-4">
+    <h2>Welcome {{.CUser.GetUserName}}</h2>
+</div>
+<div class="row well">
+    <h4>Profile settings</h4>
+    <a class="btn btn-default btn-primary" href="/user/edit/{{.LoggedUser.GetID}}" role="button">Change settings</a>
+</div>
 
 <div class="row well">
+    <h4>Time tracking</h4>
     <div class="col-sm-6">
         <div class="form-group">
-            <label for="counter">Time tracking</label>
+            <label for="counter">Timer</label>
             <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetDescription}} {{else}} 00:00:00 {{end}}"
                 startTime="{{.StartTime.GetDescription}}" disabled>
         </div>
@@ -24,7 +31,7 @@
     </div>
     <div class="col-sm-6">
         <button class="btn btn-success" id="startTimer"><span class="glyphicon glyphicon-play"></span> Start</button>
-        <button class="btn btn-danger" id="stopTimer" disabled><span class="glyphicon glyphicon-stop"></span> STOP</button>
+        <button class="btn btn-danger" id="stopTimer" style="display:none"><span class="glyphicon glyphicon-stop"></span> STOP</button>
     </div>
 </div>
 
