@@ -44,7 +44,7 @@ func StartHandler(w http.ResponseWriter, r *http.Request) {
 	timer.SetUserByID(userID)
 	timer.SetDate(date)
 	timer.SetStart(time.Format("15:04:05"))
-	timer.SetDescription(r.FormValue("startDate")) // Start time in miliseconds
+	timer.SetTimeInMs(r.FormValue("startDate")) // Start time in miliseconds
 
 	err := timer.Save()
 	if err != nil {

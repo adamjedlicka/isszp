@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="counter">Timer</label>
             <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetDescription}} {{else}} 00:00:00 {{end}}"
-                startTime="{{.StartTime.GetDescription}}" disabled>
+                startTime="{{.StartTime.GetTimeInMs}}" disabled>
         </div>
     </div>
     <div class="col-sm-6">
