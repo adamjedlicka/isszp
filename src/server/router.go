@@ -21,6 +21,13 @@ func NewRouter() http.Handler {
 	r.Handle("/firm/delete/{ID}", use(view.FirmDelGET, MustLogin)).Methods("GET")
 	r.Handle("/firm/save", use(view.FirmSavePOST, MustLogin)).Methods("POST")
 
+	r.Handle("/projects", use(view.ProjectsGET, MustLogin)).Methods("GET")
+	r.Handle("/project/new", use(view.ProjectNewGET, MustLogin)).Methods("GET")
+	r.Handle("/project/view/{ID}", use(view.ProjectViewGET, MustLogin)).Methods("GET")
+	r.Handle("/project/edit/{ID}", use(view.ProjectEditGET, MustLogin)).Methods("GET")
+	r.Handle("/project/delete/{ID}", use(view.ProjectDeleteGET, MustLogin)).Methods("GET")
+	r.Handle("/project/save", use(view.ProjectSavePOST, MustLogin)).Methods("POST")
+
 	r.Handle("/tasks", use(view.TasksGET, MustLogin)).Methods("GET")
 	r.Handle("/task/new", use(view.TaskNewGET, MustLogin)).Methods("GET")
 	r.Handle("/task/view/{ID}", use(view.TaskViewGET, MustLogin)).Methods("GET")
@@ -31,6 +38,11 @@ func NewRouter() http.Handler {
 	r.Handle("/comment/save", use(view.CommentSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/users", use(view.UsersGET, MustLogin)).Methods("GET")
+	r.Handle("/user/new", use(view.UserNewGET, MustLogin)).Methods("GET")
+	r.Handle("/user/view/{ID}", use(view.UserViewGET, MustLogin)).Methods("GET")
+	r.Handle("/user/edit/{ID}", use(view.UserEditGET, MustLogin)).Methods("GET")
+	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, MustLogin)).Methods("GET")
+	r.Handle("/user/save", use(view.UserSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/login", use(view.LoginGET)).Methods("GET")
 	r.Handle("/login", use(view.LoginPOST)).Methods("POST")

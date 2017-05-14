@@ -24,7 +24,7 @@ func CommentSavePOST(w http.ResponseWriter, r *http.Request) {
 	t.FillByID(taskID)
 
 	if t.GetMaintainer().GetUserName() != session.GetUserName(r) {
-		msg := fmt.Sprintf("Added new comment to task: '%s'", t.GetName())
+		msg := fmt.Sprintf("%s přidal nový komentář.\nÚkol: '%s'\nText: %s\n", userName, t.GetName(), text)
 		address := fmt.Sprintf("/task/view/%s", t.GetID())
 
 		controller.SendNotification(t.GetMaintainer().GetID(), msg,

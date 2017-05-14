@@ -8,7 +8,8 @@ INSERT INTO users (id, user_name, password, first_name, last_name, permission_id
 	(UUID(), "admin", "admin", NULL, NULL, (SELECT id From permissions WHERE name = "admin")),
 	(UUID(), "sadlof", "heslo", "Franta", "Sadlo", (SELECT id From permissions WHERE name = "vedouci")),
 	(UUID(), "maslol", "heslo", "Lojza", "Maslo", (SELECT id From permissions WHERE name = "zamestnanec")),
-	(UUID(), "pazitkap", "heslo", "Pepa", "Pazitka", (SELECT id From permissions WHERE name = "brigadnik"));
+	(UUID(), "pazitkap", "heslo", "Pepa", "Pazitka", (SELECT id From permissions WHERE name = "brigadnik")),
+	(UUID(), "tommy", "heslo", "Tommy", "Angelo", (SELECT id From permissions WHERE name = "vedouci"));
 
 INSERT INTO firms (id, name, email, tel_number, description) VALUES
 	(UUID(), "SoftCorp s.r.o.", "soft@corp.cz", "444555666", "Nase firma. Pro pridavani internich projektu."),
@@ -23,10 +24,24 @@ INSERT INTO firms (id, name, email, tel_number, description) VALUES
 	(UUID(), "And another one", "ten@email.com", NULL, NULL),
 	(UUID(), "Tata a syn", "lol@wut.kappa", NULL, NULL);
 
-INSERT INTO projects (id, name, code, description, start_date, user_id, firm_id) VALUES
+INSERT INTO projects (id, name, code, description, start_date, maintainer_id, firm_id) VALUES
 	(UUID(), "Naplnit ISSZP pocatecnimy daty", "ISSZP-Init", "ISSZP musi byt naplneno daty pred prvotnim uvedenim do provozu", NOW(),
 		(SELECT id FROM users WHERE user_name = "sadlof"),
 		(SELECT id FROM firms WHERE name = "SoftCorp s.r.o.")),
 	(UUID(), "Testovai ISSZP", "ISSZP-Test", "Je nutne aby Lojza Maslo s Pepou Pazitkou otestovali poradne ISSZP aplikaci", NOW(),
 		(SELECT id FROM users WHERE user_name = "maslol"),
 		(SELECT id FROM firms WHERE name = "SoftCorp s.r.o."));
+
+INSERT INTO tasks (id, name, start_date, plan_end_date, state, project_id, maintainer_id, worker_id) VALUES
+	(UUID(), "Naplnit ISSZP zakladnimy daty", "2017-04-20", "2017-06-30", "active",
+		(SELECT id FROM projects WHERE code = "ISSZP-Init"),
+		(SELECT id FROM users WHERE user_name = "admin"),
+		(SELECT id FROM users WHERE user_name = "admin")),
+	(UUID(), "Inicializovat databazi", "2017-04-20", "2017-05-09", "revision",
+		(SELECT id FROM projects WHERE code = "ISSZP-Init"),
+		(SELECT id FROM users WHERE user_name = "admin"),
+		(SELECT id FROM users WHERE user_name = "sadlof")),
+	(UUID(), "Otestovat pocatecni data", "2017-04-20", NULL, "free",
+		(SELECT id FROM projects WHERE code = "ISSZP-Test"),
+		(SELECT id FROM users WHERE user_name = "admin"),
+		NULL);

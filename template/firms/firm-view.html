@@ -38,6 +38,9 @@
 				</div>
 
 				<div class="row">
+					<div class="form-group col-sm-2 pull-left">
+						<a class="btn btn-default btn-primary pull-left" href="/firms" role="button">Back</a>
+					</div>
 					<div class="form-group col-sm-2 pull-right">
 						{{if eq .Action "view"}}
 						<a class="btn btn-default btn-primary pull-right" href="/firm/edit/{{.Firm.GetID}}" role="button">Edit</a>
