@@ -48,7 +48,7 @@
 
 				<div class="form-group col-sm-4">
 					<label for="StartTime">Start time</label>
-					<input type="time" class="form-control" name="StartTime" value="{{.Timerecord.GetStart}}" {{.readonly}}>
+					<input type="time" class="form-control" name="StartTime" value="{{.Timerecord.GetStart}}" step="1" {{.readonly}}>
 				</div>
 
                 <div class="form-group col-sm-4">
@@ -56,7 +56,7 @@
                     {{if and (.Timerecord.InProgress) (eq .Action "edit")}}
                     <input type="text" class="form-control" name="StopTime" value="In Progress" readonly>
                     {{else}}
-                    <input type="time" class="form-control" name="StopTime" value="{{.Timerecord.GetStop}}" {{.readonly}}>
+                    <input type="time" class="form-control" name="StopTime" value="{{.Timerecord.GetStop}}" step="1" {{.readonly}}>
                     {{end}}
 				</div>
             </div>
