@@ -5,6 +5,8 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"math/rand"
+	"time"
 
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
@@ -22,6 +24,8 @@ type Config struct {
 }
 
 func init() {
+	rand.Seed(time.Now().UnixNano())
+
 	flag.StringVar(&dbUser, "dbUser", "", "Prihlasovaci jmeno do databaze")
 }
 
@@ -55,6 +59,7 @@ func main() {
 	}
 
 	controller.Configure(cfg.Controller)
+	controller.Init()
 
 	database.Configure(cfg.Database)
 	gorm := database.Init()

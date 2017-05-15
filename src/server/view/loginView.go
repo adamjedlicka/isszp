@@ -42,11 +42,15 @@ func LoginPOST(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	s, err := session.Store.New(r, session.Login)
+	s, err := session.Store.Get(r, session.Login)
 	if err != nil {
-		log.Println(err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+		s.Options.MaxAge = -1
+		err = s.Save(r, w)
+		if err != nil {
+			log.Println(err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
 	s.Values["LoginTime"] = time.Now().String()

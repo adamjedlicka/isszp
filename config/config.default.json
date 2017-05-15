@@ -9,6 +9,6 @@
         "Port": "8080"
     },
     "Controller": {
-        "Secret": ""
+        "Secret": "something-very-secret"
     }
 }

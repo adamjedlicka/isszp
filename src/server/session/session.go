@@ -12,7 +12,11 @@ import (
 const Login = "LOGIN"
 
 // Store is a cookie store that is used to obtain user cookies based on its cookie name
-var Store = sessions.NewCookieStore([]byte("something-very-secret"))
+var Store *sessions.CookieStore
+
+func InitSessionStore(secret string) {
+	Store = sessions.NewCookieStore([]byte(secret))
+}
 
 // IsLoggedIn returns true if user that sent request r is lgged int.
 // If not or no session/cookie exists IsLoggedIn returns false

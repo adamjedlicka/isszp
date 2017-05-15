@@ -1,5 +1,7 @@
 package model
 
+import "math"
+
 type Model interface {
 	GetID() string
 	FillByID(string) error
@@ -89,20 +91,13 @@ var (
 	QueryUsers func(...interface{}) []User
 )
 
-type Permission interface {
-	Model
+type Permission uint64
 
-	FillByName(string) error
-
-	GetName() string
-	SetName(string)
-	GetIsAdmin() bool
-	SetIsAdmin(bool)
-}
-
-var (
-	NewPermission    func() Permission
-	QueryPermissions func(...interface{}) []Permission
+const (
+	IsAdmin           Permission = math.MaxUint64
+	CanManageProjects Permission = 1 << iota
+	CanManageTasks
+	CanManageUsers
 )
 
 type Firm interface {
