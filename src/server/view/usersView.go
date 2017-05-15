@@ -127,7 +127,6 @@ func UserSavePOST(w http.ResponseWriter, r *http.Request) {
 	user.SetUserName(r.FormValue("Username"))
 	user.SetFirstName(r.FormValue("FirstName"))
 	user.SetLastName(r.FormValue("LastName"))
-	controller.SetUserHashedPassword(user, r.FormValue("Password"))
 
 	viewer := model.NewUser()
 	viewer.FillByID(session.GetUserUUID(r))
