@@ -26,6 +26,13 @@ func init() {
 func main() {
 	flag.Parse()
 
+	if flag.Arg(0) == "install" {
+		err := install.InstallConfig()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	bytes, err := ioutil.ReadFile("./config/config.json")
 	if err != nil {
 		log.Fatal("Missing config file in ./config/ directory!")

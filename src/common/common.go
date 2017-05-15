@@ -2,6 +2,8 @@ package common
 
 import (
 	"bytes"
+	"io"
+	"os"
 	"unicode"
 )
 
@@ -46,4 +48,25 @@ func CamelToSnake(s string) string {
 	}
 
 	return buf.String()
+}
+
+func CopyFile(dst, src string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer in.Close()
+
+	out, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, in)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
