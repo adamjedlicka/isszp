@@ -1,7 +1,7 @@
-INSERT INTO users (id, user_name, first_name, last_name) VALUES
-	(UUID(), "admin", NULL, NULL),
-	(UUID(), "sadlof", "Franta", "Sadlo"),
-	(UUID(), "maslol", "Lojza", "Maslo");
+INSERT INTO users (id, user_name, first_name, last_name, permission) VALUES
+	(UUID(), "admin", NULL, NULL, 9223372036854775808),
+	(UUID(), "sadlof", "Franta", "Sadlo", 0),
+	(UUID(), "maslol", "Lojza", "Maslo", 0);
 
 INSERT INTO firms (id, name, email, tel_number, description) VALUES
 	(UUID(), "SoftCorp s.r.o.", "soft@corp.cz", "444555666", "Nase firma. Pro pridavani internich projektu."),
