@@ -70,6 +70,7 @@ func StopHandler(w http.ResponseWriter, r *http.Request) {
 	time := time.Now().Local()
 
 	timer.SetStop(time.Format("15:04:05"))
+	timer.SetDescription(r.FormValue("description"))
 
 	err = timer.Save()
 	if err != nil {

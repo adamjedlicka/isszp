@@ -17,7 +17,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="counter">Timer</label>
-                <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetDescription}} {{else}} 00:00:00 {{end}}"
+                <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetTimeInMs}} Loading.. {{else}} 00:00:00 {{end}}"
                     startTime="{{.StartTime.GetTimeInMs}}" disabled>
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="descriptionTR">Description for time record</label>
-                <textarea class="form-control" rows="4" id="descriptionTR" placeholder="I was working on.."></textarea>
+                <textarea class="form-control" rows="4" id="descriptionTR">{{.StartTime.GetDescription}}</textarea>
             </div>
         </div>
     </div>
