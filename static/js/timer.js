@@ -11,7 +11,11 @@ $(document).ready(function() {
     $.ajax({
       url: '/api/startTimer',
       type: 'POST',
-      data: {'taskID': taskID, 'startDate': startDate},
+      data: {
+        'taskID': taskID,
+        'startDate': startDate,
+        'description': $('#descriptionTR').val()
+      },
 
       success: function() {
         $('#counter').val('00:00:00');
@@ -27,6 +31,7 @@ $(document).ready(function() {
     $('#stopTimer').hide();
     $('#startTimer').show();
     $('#selectTasks').prop('disabled', false);
+    $('#descriptionTR').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
 
@@ -58,6 +63,7 @@ function startCounter(startDate) {
     document.getElementById('stopTimer').style.display = 'initial';
     document.getElementById('startTimer').style.display = 'none';
     document.getElementById('selectTasks').disabled = true;
+    document.getElementById('descriptionTR').disabled = true;
 
     timer = setInterval(function() {
 
