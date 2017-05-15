@@ -100,7 +100,13 @@ func TimerecordSavePOST(w http.ResponseWriter, r *http.Request) {
 	tr.SetUserByID(r.FormValue("UserID"))
 	tr.SetDate(r.FormValue("Date"))
 	tr.SetStart(r.FormValue("StartTime"))
-	tr.SetStop(r.FormValue("StopTime"))
+
+	stopTime := r.FormValue("StopTime")
+	if stopTime == "" {
+		tr.SetStop(nil)
+	} else {
+		tr.SetStop(&stopTime)
+	}
 
 	err := tr.Save()
 	if err != nil {
