@@ -61,6 +61,7 @@ func (u *User) SetPassword(val string)             { u.Password = val }
 func (u *User) SetFirstName(val string)            { u.FirstName = val }
 func (u *User) SetLastName(val string)             { u.LastName = val }
 func (u *User) SetPermission(val model.Permission) { u.Permission = val }
+func (u *User) AddPermission(val model.Permission) { u.Permission |= val }
 
 func (u *User) CheckPassword(p string) bool {
 	return p == u.Password

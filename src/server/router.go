@@ -29,20 +29,20 @@ func NewRouter() http.Handler {
 	r.Handle("/project/save", use(view.ProjectSavePOST, CanManageProjects, MustLogin)).Methods("POST")
 
 	r.Handle("/tasks", use(view.TasksGET, MustLogin)).Methods("GET")
-	r.Handle("/task/new", use(view.TaskNewGET, MustLogin)).Methods("GET")
+	r.Handle("/task/new", use(view.TaskNewGET, CanManageTasks, MustLogin)).Methods("GET")
 	r.Handle("/task/view/{ID}", use(view.TaskViewGET, MustLogin)).Methods("GET")
-	r.Handle("/task/edit/{ID}", use(view.TaskEditGET, MustLogin)).Methods("GET")
-	r.Handle("/task/delete/{ID}", use(view.TaskDeleteGET, MustLogin)).Methods("GET")
-	r.Handle("/task/save", use(view.TaskSavePOST, MustLogin)).Methods("POST")
+	r.Handle("/task/edit/{ID}", use(view.TaskEditGET, CanManageTasks, MustLogin)).Methods("GET")
+	r.Handle("/task/delete/{ID}", use(view.TaskDeleteGET, CanManageTasks, MustLogin)).Methods("GET")
+	r.Handle("/task/save", use(view.TaskSavePOST, CanManageTasks, MustLogin)).Methods("POST")
 
 	r.Handle("/comment/save", use(view.CommentSavePOST, MustLogin)).Methods("POST")
 
 	r.Handle("/users", use(view.UsersGET, MustLogin)).Methods("GET")
-	r.Handle("/user/new", use(view.UserNewGET, MustLogin)).Methods("GET")
+	r.Handle("/user/new", use(view.UserNewGET, CanManageUsers, MustLogin)).Methods("GET")
 	r.Handle("/user/view/{ID}", use(view.UserViewGET, MustLogin)).Methods("GET")
 	r.Handle("/user/edit/{ID}", use(view.UserEditGET, MustLogin)).Methods("GET")
-	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, MustLogin)).Methods("GET")
-	r.Handle("/user/save", use(view.UserSavePOST, MustLogin)).Methods("POST")
+	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, CanManageUsers, MustLogin)).Methods("GET")
+	r.Handle("/user/save", use(view.UserSavePOST, CanManageUsers, MustLogin)).Methods("POST")
 
 	r.Handle("/timerecords", use(view.TimerecordsGET, MustLogin)).Methods("GET")
 	r.Handle("/timerecord/view/{ID}", use(view.TimerecordViewGET, MustLogin)).Methods("GET")

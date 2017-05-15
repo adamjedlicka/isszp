@@ -7,6 +7,7 @@ import (
 
 	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
 func UsersGET(w http.ResponseWriter, r *http.Request) {
@@ -17,6 +18,7 @@ func UsersGET(w http.ResponseWriter, r *http.Request) {
 
 	view.Render(w)
 }
+
 func UserNewGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "User :: new")
 	view.AppendTemplates("users/user-view")
@@ -43,7 +45,13 @@ func UserViewGET(w http.ResponseWriter, r *http.Request) {
 	view.Vars["User"] = user
 	view.Vars["Action"] = "view"
 
+	view.Vars["IsAdmin"] = user.GetPermission()&model.IsAdmin == model.IsAdmin
+	view.Vars["CanManageProjects"] = user.GetPermission()&model.CanManageProjects == model.CanManageProjects
+	view.Vars["CanManageTasks"] = user.GetPermission()&model.CanManageTasks == model.CanManageTasks
+	view.Vars["CanManageUsers"] = user.GetPermission()&model.CanManageUsers == model.CanManageUsers
+
 	view.Vars["readonly"] = "readonly"
+	view.Vars["disabled"] = "disabled"
 
 	view.Render(w)
 }
@@ -62,6 +70,17 @@ func UserEditGET(w http.ResponseWriter, r *http.Request) {
 
 	view.Vars["User"] = user
 	view.Vars["Action"] = "edit"
+
+	view.Vars["IsAdmin"] = user.GetPermission()&model.IsAdmin == model.IsAdmin
+	view.Vars["CanManageProjects"] = user.GetPermission()&model.CanManageProjects == model.CanManageProjects
+	view.Vars["CanManageTasks"] = user.GetPermission()&model.CanManageTasks == model.CanManageTasks
+	view.Vars["CanManageUsers"] = user.GetPermission()&model.CanManageUsers == model.CanManageUsers
+
+	viewer := model.NewUser()
+	viewer.FillByID(session.GetUserUUID(r))
+	if viewer.GetPermission() != model.IsAdmin {
+		view.Vars["disabled"] = "disabled"
+	}
 
 	view.Render(w)
 }
@@ -105,6 +124,24 @@ func UserSavePOST(w http.ResponseWriter, r *http.Request) {
 	user.SetFirstName(r.FormValue("FirstName"))
 	user.SetLastName(r.FormValue("LastName"))
 	controller.SetUserHashedPassword(user, r.FormValue("Password"))
+
+	viewer := model.NewUser()
+	viewer.FillByID(session.GetUserUUID(r))
+	if viewer.GetPermission() == model.IsAdmin {
+		user.SetPermission(0)
+		if r.FormValue("IsAdmin") == "on" {
+			user.AddPermission(model.IsAdmin)
+		}
+		if r.FormValue("CanManageProjects") == "on" {
+			user.AddPermission(model.CanManageProjects)
+		}
+		if r.FormValue("CanManageTasks") == "on" {
+			user.AddPermission(model.CanManageTasks)
+		}
+		if r.FormValue("CanManageUsers") == "on" {
+			user.AddPermission(model.CanManageUsers)
+		}
+	}
 
 	err := user.Save()
 	if err != nil {

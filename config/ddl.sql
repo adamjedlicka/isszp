@@ -35,11 +35,6 @@ CREATE TABLE `users`
 	`first_name` VARCHAR(50) 	 NULL,
 	`last_name` VARCHAR(50) 	 NULL,
 	`permission` BIGINT NOT NULL,
-	`is_admin` BOOL NOT NULL DEFAULT false,
-	`manage_users` BOOL NOT NULL DEFAULT false,
-	`manage_projects` BOOL NOT NULL DEFAULT false,
-	`manage_tasks` BOOL NOT NULL DEFAULT false,
-	`manage_firms` BOOL NOT NULL DEFAULT false,
 	`deleted_at` DATETIME(0) 	 NULL,
 	CONSTRAINT `PK_Users` PRIMARY KEY (`id`)
 )

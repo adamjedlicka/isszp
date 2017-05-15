@@ -32,6 +32,28 @@ func RedirectToLogin(next http.Handler) http.Handler {
 	})
 }
 
+func IsAdmin(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		user := model.NewUser()
+		userID := session.GetUserUUID(r)
+
+		log.Println(userID)
+
+		err := user.FillByID(userID)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if user.GetPermission()&model.IsAdmin == 0 {
+			http.Error(w, "You are not admin!", http.StatusBadRequest)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
 func CanManageProjects(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := model.NewUser()
@@ -46,7 +68,51 @@ func CanManageProjects(next http.Handler) http.Handler {
 		}
 
 		if user.GetPermission()&model.CanManageProjects == 0 {
-			http.Error(w, "Yopu cannot manage projects!", http.StatusBadRequest)
+			http.Error(w, "You cannot manage projects!", http.StatusBadRequest)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
+func CanManageTasks(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		user := model.NewUser()
+		userID := session.GetUserUUID(r)
+
+		log.Println(userID)
+
+		err := user.FillByID(userID)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if user.GetPermission()&model.CanManageTasks == 0 {
+			http.Error(w, "You cannot manage tasks!", http.StatusBadRequest)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
+}
+
+func CanManageUsers(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		user := model.NewUser()
+		userID := session.GetUserUUID(r)
+
+		log.Println(userID)
+
+		err := user.FillByID(userID)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		if user.GetPermission()&model.CanManageUsers == 0 {
+			http.Error(w, "You cannot manage users!", http.StatusBadRequest)
 			return
 		}
 

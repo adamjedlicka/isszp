@@ -1,3 +1,7 @@
 .form-control[disabled], fieldset[disabled] .form-control {
 	cursor: default;
 }
+
+.checkbox > label {
+	margin-right: 2em;
+}

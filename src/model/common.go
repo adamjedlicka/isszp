@@ -84,6 +84,7 @@ type User interface {
 
 	GetPermission() Permission
 	SetPermission(Permission)
+	AddPermission(Permission)
 }
 
 var (
@@ -94,7 +95,7 @@ var (
 type Permission uint64
 
 const (
-	IsAdmin           Permission = math.MaxUint64
+	IsAdmin           Permission = math.MaxUint64 >> 1 // 2^63 - 9223372036854775808
 	CanManageProjects Permission = 1 << iota
 	CanManageTasks
 	CanManageUsers
