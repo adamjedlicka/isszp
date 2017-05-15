@@ -42,16 +42,8 @@ func LoginPOST(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	s, err := session.Store.Get(r, session.Login)
-	if err != nil {
-		s.Options.MaxAge = -1
-		err = s.Save(r, w)
-		if err != nil {
-			log.Println(err)
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-	}
+	// pokud chybu neignoruje tak první přihlášení po čisté instalaci selže
+	s, _ := session.Store.New(r, session.Login)
 
 	s.Values["LoginTime"] = time.Now().String()
 	s.Values["UserName"] = user.GetUserName()

@@ -43,6 +43,7 @@ func NewRouter() http.Handler {
 	r.Handle("/user/edit/{ID}", use(view.UserEditGET, MustLogin)).Methods("GET")
 	r.Handle("/user/delete/{ID}", use(view.UserDeleteGET, CanManageUsers, MustLogin)).Methods("GET")
 	r.Handle("/user/save", use(view.UserSavePOST, CanManageUsers, MustLogin)).Methods("POST")
+	r.Handle("/user/password", use(view.UserPasswordPOST, CanManageUsers, MustLogin)).Methods("POST")
 
 	r.Handle("/timerecords", use(view.TimerecordsGET, MustLogin)).Methods("GET")
 	r.Handle("/timerecord/view/{ID}", use(view.TimerecordViewGET, MustLogin)).Methods("GET")

@@ -50,6 +50,10 @@ func UserViewGET(w http.ResponseWriter, r *http.Request) {
 	view.Vars["CanManageTasks"] = user.GetPermission()&model.CanManageTasks == model.CanManageTasks
 	view.Vars["CanManageUsers"] = user.GetPermission()&model.CanManageUsers == model.CanManageUsers
 
+	viewer := model.NewUser()
+	viewer.FillByID(session.GetUserUUID(r))
+	view.Vars["IsProfile"] = viewer.GetUserName() == user.GetUserName()
+
 	view.Vars["readonly"] = "readonly"
 	view.Vars["disabled"] = "disabled"
 
@@ -144,6 +148,25 @@ func UserSavePOST(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err := user.Save()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/user/view/"+user.GetID(), http.StatusSeeOther)
+}
+
+func UserPasswordPOST(w http.ResponseWriter, r *http.Request) {
+	user := model.NewUser()
+	err := user.FillByID(session.GetUserUUID(r))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	controller.SetUserHashedPassword(user, r.FormValue("Password"))
+
+	err = user.Save()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

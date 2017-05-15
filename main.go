@@ -55,7 +55,6 @@ func main() {
 
 	if flag.Arg(0) == "install" {
 		install.InstallDatabase(cfg.Database)
-		return
 	}
 
 	controller.Configure(cfg.Controller)
@@ -65,6 +64,11 @@ func main() {
 	gorm := database.Init()
 
 	db.Init(gorm)
+
+	if flag.Arg(0) == "install" {
+		install.InstallUsers()
+		return
+	}
 
 	server.Configure(cfg.Server)
 	server.Run()
