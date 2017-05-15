@@ -51,6 +51,7 @@ func (u *User) Delete() error {
 
 func (u User) GetID() string        { return u.ID }
 func (u User) GetUserName() string  { return u.UserName }
+func (u User) GetPassword() string  { return u.Password }
 func (u User) GetFirstName() string { return u.FirstName }
 func (u User) GetLastName() string  { return u.LastName }
 

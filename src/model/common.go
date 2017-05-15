@@ -73,6 +73,7 @@ type User interface {
 	GetUserName() string
 	SetUserName(string)
 	SetPassword(string)
+	GetPassword() string
 	CheckPassword(string) bool
 	GetFirstName() string
 	SetFirstName(string)

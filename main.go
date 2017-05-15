@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
@@ -15,8 +16,9 @@ import (
 var dbUser string
 
 type Config struct {
-	Server   server.Config
-	Database database.Config
+	Server     server.Config
+	Database   database.Config
+	Controller controller.Config
 }
 
 func init() {
@@ -51,6 +53,8 @@ func main() {
 		install.InstallDatabase(cfg.Database)
 		return
 	}
+
+	controller.Configure(cfg.Controller)
 
 	database.Configure(cfg.Database)
 	gorm := database.Init()

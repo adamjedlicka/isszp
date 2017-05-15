@@ -1,4 +1,4 @@
-memo = "f2b39dfdd5f1d4c8a4f941b8d299114ab4ec4509816614e4abd9bcd2bec744c5"
+memo = "92213d6460e53ebdddefa34f3ccc93b1e2ccc161eda04601a75b9c7747c3734e"
 
 [[projects]]
   name = "github.com/go-sql-driver/mysql"
@@ -32,7 +32,7 @@ memo = "f2b39dfdd5f1d4c8a4f941b8d299114ab4ec4509816614e4abd9bcd2bec744c5"
 
 [[projects]]
   name = "github.com/jinzhu/gorm"
-  packages = ["."]
+  packages = [".","dialects/mysql"]
   revision = "5174cc5c242a728b435ea2be8a2f7f998e15429b"
   version = "v1.0"
 
@@ -41,3 +41,9 @@ memo = "f2b39dfdd5f1d4c8a4f941b8d299114ab4ec4509816614e4abd9bcd2bec744c5"
   name = "github.com/jinzhu/inflection"
   packages = ["."]
   revision = "1c35d901db3da928c72a72d8458480cc9ade058f"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/crypto"
+  packages = ["bcrypt","blowfish"]
+  revision = "ab89591268e0c8b748cbe4047b00197516011af5"

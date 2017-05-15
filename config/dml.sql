@@ -4,12 +4,12 @@ INSERT INTO permissions (id, name, is_admin) VALUES
 	(UUID(), "zamestnanec", false),
 	(UUID(), "brigadnik", false);
 
-INSERT INTO users (id, user_name, password, first_name, last_name, permission_id) VALUES
-	(UUID(), "admin", "admin", NULL, NULL, (SELECT id From permissions WHERE name = "admin")),
-	(UUID(), "sadlof", "heslo", "Franta", "Sadlo", (SELECT id From permissions WHERE name = "vedouci")),
-	(UUID(), "maslol", "heslo", "Lojza", "Maslo", (SELECT id From permissions WHERE name = "zamestnanec")),
-	(UUID(), "pazitkap", "heslo", "Pepa", "Pazitka", (SELECT id From permissions WHERE name = "brigadnik")),
-	(UUID(), "tommy", "heslo", "Tommy", "Angelo", (SELECT id From permissions WHERE name = "vedouci"));
+INSERT INTO users (id, user_name, first_name, last_name, permission_id) VALUES
+	(UUID(), "admin", NULL, NULL, (SELECT id From permissions WHERE name = "admin")),
+	(UUID(), "sadlof", "Franta", "Sadlo", (SELECT id From permissions WHERE name = "vedouci")),
+	(UUID(), "maslol", "Lojza", "Maslo", (SELECT id From permissions WHERE name = "zamestnanec")),
+	(UUID(), "pazitkap", "Pepa", "Pazitka", (SELECT id From permissions WHERE name = "brigadnik")),
+	(UUID(), "tommy", "Tommy", "Angelo", (SELECT id From permissions WHERE name = "vedouci"));
 
 INSERT INTO firms (id, name, email, tel_number, description) VALUES
 	(UUID(), "SoftCorp s.r.o.", "soft@corp.cz", "444555666", "Nase firma. Pro pridavani internich projektu."),

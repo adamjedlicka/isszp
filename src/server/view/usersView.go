@@ -5,6 +5,7 @@ import (
 
 	"github.com/gorilla/mux"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 )
 
@@ -103,7 +104,7 @@ func UserSavePOST(w http.ResponseWriter, r *http.Request) {
 	user.SetUserName(r.FormValue("Username"))
 	user.SetFirstName(r.FormValue("FirstName"))
 	user.SetLastName(r.FormValue("LastName"))
-	user.SetPassword(r.FormValue("Password"))
+	controller.SetUserHashedPassword(user, r.FormValue("Password"))
 
 	err := user.Save()
 	if err != nil {
