@@ -60,6 +60,14 @@
                     {{end}}
 				</div>
             </div>
+            <div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label for="Description">Description</label>
+						<textarea class="form-control" name="Description" rows="5" style="resize: none;" {{.readonly}}>{{.Timerecord.GetDescription}}</textarea>
+					</div>
+				</div>
+			</div>
             <div class="row">
                 <div class="form-group col-sm-2 pull-left">
                     <a class="btn btn-default btn-primary pull-left" href="/timerecords" role="button">Back to timerecords</a>
