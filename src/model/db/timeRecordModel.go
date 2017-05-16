@@ -80,9 +80,6 @@ func (t *TimeRecord) SetStart(val string)       { t.Start = val }
 func (t *TimeRecord) SetStop(val *string)       { t.End = val }
 func (t *TimeRecord) SetTimeInMs(val string)    { t.TimeInMs = val }
 
-func (t *TimeRecord) SetTaskByID(val string) { t.TaskID = val }
-func (t *TimeRecord) SetUserByID(val string) { t.UserID = val }
-
 func (t TimeRecord) GetUser() model.User {
 	u := model.NewUser()
 	u.FillByID(t.UserID)

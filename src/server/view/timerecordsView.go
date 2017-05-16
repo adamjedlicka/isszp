@@ -96,8 +96,14 @@ func TimerecordSavePOST(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	tr.SetTaskByID(r.FormValue("TaskID"))
-	tr.SetUserByID(r.FormValue("UserID"))
+	task := model.NewTask()
+	task.FillByID(r.FormValue("TaskID"))
+
+	user := model.NewUser()
+	user.FillByID(r.FormValue("UserID"))
+
+	tr.SetTask(task)
+	tr.SetUser(user)
 	tr.SetDate(r.FormValue("Date"))
 
 	startTime := r.FormValue("StartTime")

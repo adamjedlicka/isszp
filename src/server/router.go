@@ -55,10 +55,9 @@ func NewRouter() http.Handler {
 	r.Handle("/login", use(view.LoginPOST)).Methods("POST")
 	r.Handle("/logout", use(view.LogoutGET)).Methods("GET")
 
-	r.Handle("/profile", use(view.ProfileGET, MustLogin)).Methods("GET")
-	r.Handle("/api/startTimer", use(view.StartHandler, MustLogin)).Methods("POST")
-	r.Handle("/api/stopTimer", use(view.StopHandler, MustLogin)).Methods("POST")
-
+	r.Handle("/api/timer", use(api.TimerGET, MustLogin)).Methods("GET")
+	r.Handle("/api/timer/start", use(api.TimerStartPOST, MustLogin)).Methods("POST")
+	r.Handle("/api/timer/stop", use(api.TimerStopPOST, MustLogin)).Methods("POST")
 	r.Handle("/api/notify", use(api.NotifyGET, MustLogin)).Methods("GET")
 
 	// serve files from ./static/ directory without any special routing

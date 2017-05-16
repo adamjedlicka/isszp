@@ -1,109 +1,42 @@
-var time = {hours: 0, minutes: 0, seconds: 0};
+$.getJSON("/api/timer", (data) => {
+    if (data.length == 0) {
+        $("#TimerStart").show();
+    } else {
+        $("#TimerStop").show();
 
-$(document).ready(function() {
+        $("#TimerDescription").prop("disabled", true);
+        $("#TimerTask").prop("disabled", true);
 
-  $('#startTimer').on('click', function() {
+        $("#TimerDescription").val(data[0].Description);
+        $("#TimerTask").val(data[0].TaskID);
 
-    var startDate = new Date().getTime();
-    var taskID = $('#selectTasks').find(':selected').attr('id');
+        let start = new Date(data[0].Date + " " + data[0].Start);
 
-    // Send data to backend - manipulation with database
-    $.ajax({
-      url: '/api/startTimer',
-      type: 'POST',
-      data: {
-        'taskID': taskID,
-        'startDate': startDate,
-        'description': $('#descriptionTR').val()
-      },
-
-      success: function() {
-        window.location.reload();
-      }
-    });
-
-  });
-
-  $('#stopTimer').on('click', function() {
-
-    $('#stopTimer').prop('disabled', true);
-    $('#stopTimer').hide();
-    $('#startTimer').show();
-    $('#selectTasks').prop('disabled', false);
-	$('#descriptionTR').prop('disabled', false);
-
-    var task = $('#selectTasks').find(':selected').text();
-
-    // Give a signal to backend, so timer was stopped
-    $.ajax({
-      url: '/api/stopTimer',
-      type: 'POST',
-      data: {'description': $('#descriptionTR').val()},
-
-      success: function() {
-        window.location.reload();
-      }
-    });
-
-  });
-
+        SetCounter(start);
+        window.setInterval(() => {
+            SetCounter(start);
+        }, 1000);
+    }
 });
 
-if (document.getElementById('counter') != null) {
-  startDate = document.getElementById('counter').getAttribute(
-      'startTime');  // If there is an open record in a database, startTime will
-                     // be set
-} else {
-  startDate = '';
-}
+$("#TimerStart").click(() => {
+    $.post("/api/timer/start", {
+        TaskID: $("#TimerTask").val(),
+        Description: $("#TimerDescription").val(),
+    }).done(() => {
+        window.location.reload();
+    });
+});
 
-startCounter(startDate);
+$("#TimerStop").click(() => {
+    $.post("/api/timer/stop", () => {
+        window.location.reload();
+    })
+});
 
-function startCounter(startDate) {
-  var timer = null;
+function SetCounter(from) {
+    let now = new Date();
+    let diff = new Date(now - from);
 
-  if (startDate > 0) {
-    document.getElementById('stopTimer').disabled = false;
-    document.getElementById('stopTimer').style.display = 'initial';
-    document.getElementById('startTimer').style.display = 'none';
-    document.getElementById('selectTasks').disabled = true;
-	document.getElementById('descriptionTR').disabled = true;
-
-    timer = setInterval(function() {
-
-      if (document.getElementById('stopTimer')
-              .hasAttribute('disabled')) {  // If button stop is disabled -
-                                            // timer is not running, overpass
-                                            // calculations
-        clearInterval(timer);
-        startDate = 0;
-
-        return;
-        }
-
-      var now = new Date().getTime();
-      var diference = now - startDate;
-
-      time.hours =
-          Math.floor((diference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      time.minutes = Math.floor((diference % (1000 * 60 * 60)) / (1000 * 60));
-      time.seconds = Math.floor((diference % (1000 * 60)) / 1000);
-
-      if (time.hours < 10) {
-        time.hours = ('0' + time.hours);
-        }
-
-      if (time.minutes < 10) {
-        time.minutes = ('0' + time.minutes);
-        }
-
-      if (time.seconds < 10) {
-        time.seconds = ('0' + time.seconds);
-      }
-
-      document.getElementById('counter').value =
-          time.hours + ':' + time.minutes + ':' + time.seconds;
-
-    }, 1000);
-  }
+    $("#TimerCounter").val(diff.toISOString().substr(11, 8));
 }

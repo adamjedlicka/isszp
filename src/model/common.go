@@ -128,14 +128,16 @@ type TimeRecord interface {
 	SetDate(string)
 	GetStart() string
 	SetStart(string)
-	GetUser() User
 	InProgress() bool
 
-	SetTaskByID(string)
-	SetUserByID(string)
 	SetStop(*string)
 	SetTimeInMs(string)
 	GetTimeInMs() string
+
+	GetTask() Task
+	SetTask(Task)
+	GetUser() User
+	SetUser(User)
 }
 
 var (

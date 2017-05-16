@@ -16,6 +16,7 @@ import (
 // DateFormat is a format string used tim time.Time.Format()
 const (
 	DateFormat     = "2006-01-02"
+	TimeFormat     = "15:04:05"
 	DateTimeFormat = "2006-01-02 15:04:05"
 
 	RandomRunes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
