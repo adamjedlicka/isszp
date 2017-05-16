@@ -45,8 +45,16 @@ func (t *TimeRecord) FillByID(id string) error {
 
 func (t *TimeRecord) Save() error {
 	if t.End != nil {
-		start, _ := time.Parse("15:04:05", t.Start)
-		end, _ := time.Parse("15:04:05", *t.End)
+		start, err := time.Parse("15:04:05", t.Start)
+		if err != nil {
+			return err
+		}
+
+		end, err := time.Parse("15:04:05", *t.End)
+		if err != nil {
+			return err
+		}
+
 		if end.Before(start) {
 			return errors.New("Cannot set 'Stop time' before 'Start time")
 

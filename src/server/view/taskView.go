@@ -33,7 +33,7 @@ func TaskNewGET(w http.ResponseWriter, r *http.Request) {
 
 func TaskViewGET(w http.ResponseWriter, r *http.Request) {
 	view := NewView(r, "New task")
-	view.AppendTemplates("tasks/task-view", "component/comment")
+	view.AppendTemplates("tasks/task-view", "component/comment", "component/timerecord-list")
 
 	task := model.NewTask()
 	err := task.FillByID(mux.Vars(r)["ID"])
@@ -45,6 +45,8 @@ func TaskViewGET(w http.ResponseWriter, r *http.Request) {
 	view.Vars["Action"] = "view"
 	view.Vars["Task"] = task
 	view.Vars["Projects"] = model.QueryProjects()
+	view.Vars["Timerecords"] = model.QueryTimeRecords("TaskID = ?", task.GetID())
+	view.Vars["TimerecordsSlim"] = true
 	view.Vars["Users"] = model.QueryUsers()
 	view.Vars["Comments"] = model.QueryComments("TaskID = ?", task.GetID())
 

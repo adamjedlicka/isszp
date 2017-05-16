@@ -2,29 +2,37 @@
 <table class="table table-striped table-hover" style="margin: 0;">
     <thead>
         <tr>
-            <th>Task</th>
+            {{if not .TimerecordsSlim}}<th>Task</th>{{end}}
             <th>User</th>
             <th>Day</th>
             <th>Time</th>
-            <th>Action</th>
+            {{if not .TimerecordsSlim}}<th>Action</th>{{end}}
         </tr>
     </thead>
     <tbody>
         {{with $data := .}}
             {{range $k, $v := .Timerecords}}
             <tr>
-                <td>
+				{{if not $data.TimerecordsSlim}}
+				<td>
                     {{$v.GetTask.GetName}}
                 </td>
+				{{end}}
                 <td>
                     {{$v.GetUser.GetUserName}}
                 </td>
-                <td>
+                <td nowrap>
                     {{$v.GetDate}}
                 </td>
                 <td>
-                    {{$v.GetStart}} - {{if $v.InProgress}} In Progress {{else}} {{$v.GetStop}} {{end}}
+					{{if not $data.TimerecordsSlim}}
+                    	{{$v.GetStart}} - {{if $v.InProgress}} In Progress {{else}} {{$v.GetStop}} {{end}}
+					{{else}}
+						{{$v.GetStart}}<br>
+						{{if $v.InProgress}} In Progress {{else}} {{$v.GetStop}} {{end}}
+					{{end}}
                 </td>
+				{{if not $data.TimerecordsSlim}}
                 <td>
                     <div class="btn-group">
 						<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -40,6 +48,7 @@
 						</ul>
 					</div>
                 </td>
+				{{end}}
             </tr>
             {{end}}
         {{end}}

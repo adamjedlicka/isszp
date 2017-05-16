@@ -156,3 +156,17 @@
 </script>
 
 {{end}}
+
+
+{{define "contentright"}}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Timerecords</h3>
+		</div>
+			<div class="panel-body" style="padding: 0;">
+			{{if eq .Action "view"}}
+				{{block "TimerecordList" .}}{{end}}
+			{{end}}
+		</div>
+	</div>
+{{end}}
