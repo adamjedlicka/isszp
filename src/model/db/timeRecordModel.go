@@ -122,7 +122,7 @@ func QueryTimeRecords(args ...interface{}) []model.TimeRecord {
 		}
 	}
 
-	db.Find(&records, args...)
+	db.Order("Date DESC, Start DESC").Find(&records, args...)
 
 	ret := make([]model.TimeRecord, len(records))
 	for k, v := range records {
