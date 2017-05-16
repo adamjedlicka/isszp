@@ -31,7 +31,6 @@ $(document).ready(function() {
     $('#stopTimer').hide();
     $('#startTimer').show();
     $('#selectTasks').prop('disabled', false);
-    $('#descriptionTR').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
 
@@ -39,6 +38,7 @@ $(document).ready(function() {
     $.ajax({
       url: '/api/stopTimer',
       type: 'POST',
+      data: {'description': $('#descriptionTR').val()},
 
       success: function() {
         $('#counter').val('00:00:00');
@@ -49,9 +49,13 @@ $(document).ready(function() {
 
 });
 
-startDate = document.getElementById('counter').getAttribute(
-    'startTime');  // If there is an open record in a database, startTime will
-                   // be set
+if (document.getElementById('counter') != null) {
+  startDate = document.getElementById('counter').getAttribute(
+      'startTime');  // If there is an open record in a database, startTime will
+                     // be set
+} else {
+  startDate = '';
+}
 
 startCounter(startDate);
 
@@ -63,7 +67,6 @@ function startCounter(startDate) {
     document.getElementById('stopTimer').style.display = 'initial';
     document.getElementById('startTimer').style.display = 'none';
     document.getElementById('selectTasks').disabled = true;
-    document.getElementById('descriptionTR').disabled = true;
 
     timer = setInterval(function() {
 
