@@ -28,7 +28,7 @@ func HomeGET(w http.ResponseWriter, r *http.Request) {
 
 	currentUserID := session.GetUserUUID(r)
 
-	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", currentUserID)
+	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ? AND EndDate IS NULL", currentUserID)
 	currentUserName := model.QueryUsers("id = ?", currentUserID)
 
 	taskRecord := model.QueryTimeRecords("UserID = ? AND End IS NULL", currentUserID)
