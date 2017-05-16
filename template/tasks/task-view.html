@@ -143,6 +143,8 @@
 	$("select[name=State]").change((e) => {
 		if($(e.target).val() == "free") {
 			$("select[name=WorkerID]").val("");
+		} else if($(e.target).val() == "success" || $(e.target).val() == "fail") {
+			$("input[name=EndDate]").val(formatDate(new Date().toString()));
 		}
 	});
 
