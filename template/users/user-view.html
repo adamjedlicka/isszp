@@ -3,6 +3,9 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">{{.User.GetUserName}}</h3>
+			{{if .IsProfile}}
+			<a class="btn btn-default pull-right" data-toggle="modal" data-target="#PasswordModal">Change password</a>
+			{{end}}
 		</div>
 		<div class="panel-body">
 			<form>
@@ -12,13 +15,12 @@
 						<input type="text" class="form-control" name="ID" value="{{.User.GetID}}" readonly required>
 					</div>
 
+					<div class="col-sm-2"></div>
+
+
 					<div class="form-group col-sm-4">
 						<label for="Name">Username</label>
 						<input type="text" class="form-control" name="Username" value="{{.User.GetUserName}}" {{.readonly}} required autocomplete="off">
-					</div>
-					<div class="form-group col-sm-4">
-						<label for="Name">Password</label>
-						<input type="text" class="form-control" name="Password" value="**********" {{.readonly}}>
 					</div>
 				</div>
 
@@ -34,14 +36,25 @@
 					</div>
 
 				</div>
-<!--
-				<div class="row">
-					<div class="form-group col-sm-12">
-						<label for="Description">Description</label>
-						<textarea class="form-control" name="Description" rows="5" style="resize: none;" {{.readonly}}>{{.Firm.GetDescription}}</textarea>
-					</div>
+
+				<div class="checkbox {{.disabled}}">
+					<label>
+						<input type="checkbox" name="IsAdmin" {{if .IsAdmin }}checked{{end}} {{.disabled}}> Is admin
+					</label>
+
+					<label>
+						<input type="checkbox" name="CanManageProjects" {{if .CanManageProjects }}checked{{end}} {{.disabled}}> Can manage projects
+					</label>
+
+					<label>
+						<input type="checkbox" name="CanManageTasks" {{if .CanManageTasks }}checked{{end}} {{.disabled}}> Can manage tasks
+					</label>
+
+					<label>
+						<input type="checkbox" name="CanManageUsers" {{if .CanManageUsers }}checked{{end}} {{.disabled}}> Can manage users
+					</label>
 				</div>
--->
+
 				<div class="row">
 					<div class="form-group col-sm-2 pull-left">
 						<a class="btn btn-default btn-primary pull-left" href="/users" role="button">Back</a>
@@ -62,8 +75,38 @@
 						{{end}}
 					</div>
 				</div>
+
 			</form>
 		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="PasswordModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Change password</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group" style="display: none;">
+					<label>UserName</label>
+						<input type="text" class="form-control" name="UserName" value="{{.LoggedUser.GetUserName}}" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" name="Password" id="password">
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default btn-success" formaction="/user/password" formmethod="POST">OK</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
 	</div>
 </div>
 {{end}}

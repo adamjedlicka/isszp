@@ -5,8 +5,11 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"math/rand"
+	"time"
 
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model/db"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server"
@@ -15,16 +18,26 @@ import (
 var dbUser string
 
 type Config struct {
-	Server   server.Config
-	Database database.Config
+	Server     server.Config
+	Database   database.Config
+	Controller controller.Config
 }
 
 func init() {
+	rand.Seed(time.Now().UnixNano())
+
 	flag.StringVar(&dbUser, "dbUser", "", "Prihlasovaci jmeno do databaze")
 }
 
 func main() {
 	flag.Parse()
+
+	if flag.Arg(0) == "install" {
+		err := install.InstallConfig()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 
 	bytes, err := ioutil.ReadFile("./config/config.json")
 	if err != nil {
@@ -42,13 +55,20 @@ func main() {
 
 	if flag.Arg(0) == "install" {
 		install.InstallDatabase(cfg.Database)
-		return
 	}
+
+	controller.Configure(cfg.Controller)
+	controller.Init()
 
 	database.Configure(cfg.Database)
 	gorm := database.Init()
 
 	db.Init(gorm)
+
+	if flag.Arg(0) == "install" {
+		install.InstallUsers()
+		return
+	}
 
 	server.Configure(cfg.Server)
 	server.Run()

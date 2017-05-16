@@ -31,10 +31,10 @@ CREATE TABLE `users`
 (
 	`id` CHAR(36) NOT NULL,
 	`user_name` VARCHAR(50) NOT NULL,
-	`password` VARCHAR(50) NOT NULL,
+	`password` CHAR(60) NOT NULL,
 	`first_name` VARCHAR(50) 	 NULL,
 	`last_name` VARCHAR(50) 	 NULL,
-	`permission_id` CHAR(36) NOT NULL,
+	`permission` BIGINT NOT NULL,
 	`deleted_at` DATETIME(0) 	 NULL,
 	CONSTRAINT `PK_Users` PRIMARY KEY (`id`)
 )
@@ -104,21 +104,6 @@ CREATE TABLE `projects`
 
 ;
 
-CREATE TABLE `permissions`
-(
-	`id` CHAR(36) NOT NULL,
-	`name` VARCHAR(50) NOT NULL,
-	`is_admin` BOOL NOT NULL DEFAULT false,
-	`manage_users` BOOL NOT NULL DEFAULT false,
-	`manage_projects` BOOL NOT NULL DEFAULT false,
-	`manage_tasks` BOOL NOT NULL DEFAULT false,
-	`manage_firms` BOOL NOT NULL DEFAULT false,
-	`deleted_at` DATETIME(0) 	 NULL,
-	CONSTRAINT `PK_Permissions` PRIMARY KEY (`id`)
-)
-
-;
-
 CREATE TABLE `firms`
 (
 	`id` CHAR(36) NOT NULL,
@@ -155,11 +140,6 @@ CREATE TABLE `comments`
 	CONSTRAINT `PK_Comments` PRIMARY KEY (`id`)
 )
 
-;
-
-ALTER TABLE `users`
- ADD CONSTRAINT `FK_Users_Permissions`
-	FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE Restrict ON UPDATE Restrict
 ;
 
 ALTER TABLE `time_records`

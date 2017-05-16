@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
@@ -35,18 +36,14 @@ func LoginPOST(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ok := user.CheckPassword(password)
+	ok := controller.CheckUserHashedPassword(user, password)
 	if !ok {
 		http.Error(w, "Bad UserName or Password!", http.StatusForbidden)
 		return
 	}
 
-	s, err := session.Store.New(r, session.Login)
-	if err != nil {
-		log.Println(err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	// pokud chybu neignoruje tak první přihlášení po čisté instalaci selže
+	s, _ := session.Store.New(r, session.Login)
 
 	s.Values["LoginTime"] = time.Now().String()
 	s.Values["UserName"] = user.GetUserName()
