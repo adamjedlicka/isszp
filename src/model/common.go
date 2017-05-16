@@ -136,7 +136,7 @@ type TimeRecord interface {
 
 	SetTaskByID(string)
 	SetUserByID(string)
-	SetStop(string)
+	SetStop(*string)
 	SetTimeInMs(string)
 	GetTimeInMs() string
 }

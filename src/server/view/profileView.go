@@ -17,7 +17,7 @@ func ProfileGET(w http.ResponseWriter, r *http.Request) {
 	view.Vars["Tasks"] = model.QueryTasks("WorkerID = ?", currentUserID)
 	currentUserName := model.QueryUsers("id = ?", currentUserID)
 
-	taskRecord := model.QueryTimeRecords("UserID = ? AND End = '00:00:00'", currentUserID)
+	taskRecord := model.QueryTimeRecords("UserID = ? AND End IS NULL", currentUserID)
 
 	if len(taskRecord) > 0 { // Max one timeRecord with userID = x and End = 00:00:00, but there can be non
 		view.Vars["StartTime"] = taskRecord[0]
@@ -59,7 +59,7 @@ func StopHandler(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 
-	taskRecord := model.QueryTimeRecords("UserID = ? AND End = '00:00:00'", session.GetUserUUID(r))
+	taskRecord := model.QueryTimeRecords("UserID = ? AND End IS NULL", session.GetUserUUID(r))
 
 	err := timer.FillByID(taskRecord[0].GetID())
 	if err != nil {
@@ -68,9 +68,8 @@ func StopHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	time := time.Now().Local()
-
-	timer.SetStop(time.Format("15:04:05"))
-	timer.SetDescription(r.FormValue("description"))
+	stoptime := time.Format("15:04:05")
+	timer.SetStop(&stoptime)
 
 	err = timer.Save()
 	if err != nil {

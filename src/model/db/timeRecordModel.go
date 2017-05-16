@@ -6,8 +6,6 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/common"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 
-	"strings"
-
 	"time"
 
 	"errors"
@@ -26,7 +24,7 @@ type TimeRecord struct {
 	Description string
 	Date        string
 	Start       string
-	End         string
+	End         *string
 	TimeInMs    string
 
 	UserID string
@@ -46,11 +44,13 @@ func (t *TimeRecord) FillByID(id string) error {
 }
 
 func (t *TimeRecord) Save() error {
-	start, _ := time.Parse("15:04:05", t.Start)
-	end, _ := time.Parse("15:04:05", t.End)
+	if t.End != nil {
+		start, _ := time.Parse("15:04:05", t.Start)
+		end, _ := time.Parse("15:04:05", *t.End)
+		if end.Before(start) {
+			return errors.New("Cannot set 'Stop time' before 'Start time")
 
-	if end.Before(start) {
-		return errors.New("Cannot set 'Stop time' before 'Start time")
+		}
 	}
 
 	return db.Save(t).Error
@@ -63,13 +63,13 @@ func (t TimeRecord) GetID() string          { return t.ID }
 func (t TimeRecord) GetDescription() string { return t.Description }
 func (t TimeRecord) GetDate() string        { return t.Date }
 func (t TimeRecord) GetStart() string       { return t.Start }
-func (t TimeRecord) GetStop() string        { return t.End }
+func (t TimeRecord) GetStop() *string       { return t.End }
 func (t TimeRecord) GetTimeInMs() string    { return t.TimeInMs }
 
 func (t *TimeRecord) SetDescription(val string) { t.Description = val }
 func (t *TimeRecord) SetDate(val string)        { t.Date = val }
 func (t *TimeRecord) SetStart(val string)       { t.Start = val }
-func (t *TimeRecord) SetStop(val string)        { t.End = val }
+func (t *TimeRecord) SetStop(val *string)       { t.End = val }
 func (t *TimeRecord) SetTimeInMs(val string)    { t.TimeInMs = val }
 
 func (t *TimeRecord) SetTaskByID(val string) { t.TaskID = val }
@@ -96,7 +96,7 @@ func (t TimeRecord) String() string {
 }
 
 func (t TimeRecord) InProgress() bool {
-	return strings.Compare(t.End, "00:00:00") == 0
+	return t.End == nil
 }
 
 // BeforeCreate is a GORM hook
