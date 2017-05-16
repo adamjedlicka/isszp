@@ -18,8 +18,7 @@ $(document).ready(function() {
       },
 
       success: function() {
-        $('#counter').val('00:00:00');
-        startCounter(startDate);
+        window.location.reload();
       }
     });
 
@@ -31,6 +30,7 @@ $(document).ready(function() {
     $('#stopTimer').hide();
     $('#startTimer').show();
     $('#selectTasks').prop('disabled', false);
+	$('#descriptionTR').prop('disabled', false);
 
     var task = $('#selectTasks').find(':selected').text();
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
       data: {'description': $('#descriptionTR').val()},
 
       success: function() {
-        $('#counter').val('00:00:00');
+        window.location.reload();
       }
     });
 
@@ -67,6 +67,7 @@ function startCounter(startDate) {
     document.getElementById('stopTimer').style.display = 'initial';
     document.getElementById('startTimer').style.display = 'none';
     document.getElementById('selectTasks').disabled = true;
+	document.getElementById('descriptionTR').disabled = true;
 
     timer = setInterval(function() {
 

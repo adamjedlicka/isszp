@@ -45,7 +45,7 @@
 			<div class="navbar-text pull-left">{{.Name}}</div>
 
 			{{if .IsLoggedIn}}
-			<div class="navbar-text pull-right">Signed in as <a href="/profile" class="navbar-link">{{.UserName}}</a></div>
+			<div class="navbar-text pull-right">Signed in as <a href="/user/view/{{.LoggedUser.GetID}}" class="navbar-link">{{.UserName}}</a></div>
 			{{end}}
 
 		</div>

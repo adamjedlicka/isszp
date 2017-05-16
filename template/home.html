@@ -1,25 +1,29 @@
 {{define "content"}}
 <div class="row">
-    <div class="container col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">I'm working on</h3>
-            </div>
-            <div class="panel-body" style="padding: 0;">
-                {{template "TaskList" .Worker}}
-            </div>
-        </div>
-    </div>
+	<div class="container col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">I'm working on</h3>
+			</div>
+			<div class="panel-body" style="padding: 0;">
+				{{template "TaskList" .Worker}}
+			</div>
+		</div>
 
-    <div class="container col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">I'm maintainer of</h3>
-            </div>
-            <div class="panel-body" style="padding: 0;">
-                {{template "TaskList" .Maintainer}}
-            </div>
-        </div>
-    </div>
+		{{template "StopWatch" .}}
+	</div>
+
+	<div class="container col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">I'm maintainer of</h3>
+			</div>
+			<div class="panel-body" style="padding: 0;">
+				{{template "TaskList" .Maintainer}}
+			</div>
+		</div>
+	</div>
+</div>
+	
 </div>
 {{end}}

@@ -11,43 +11,5 @@
         </div>
     </div>
 </div>
-<div class="row well">
-    <div class="col-sm-12">
-        <h4>Time tracking</h4>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="counter">Timer</label>
-                <input type="text" class="form-control text-center" id="counter" value="{{if .StartTime.GetTimeInMs}} Loading.. {{else}} 00:00:00 {{end}}"
-                    startTime="{{.StartTime.GetTimeInMs}}" disabled>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="selectTasks">Select task</label>
-                <select class="form-control" id="selectTasks">
-                {{range $v := .Tasks}}
-                    <option id="{{$v.GetID}}">                            
-                        {{$v.GetName}}
-                    </option>				            
-                {{end}}
-            </select>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="descriptionTR">Description for time record</label>
-                <textarea class="form-control" rows="4" id="descriptionTR">{{.StartTime.GetDescription}}</textarea>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="col-sm-6">
-            <button class="btn btn-success" id="startTimer"><span class="glyphicon glyphicon-play"></span> Start</button>
-            <button class="btn btn-danger" id="stopTimer" style="display:none"><span class="glyphicon glyphicon-stop"></span> STOP</button>
-        </div>
-    </div>
-</div>
 
 {{end}}

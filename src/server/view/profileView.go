@@ -38,12 +38,12 @@ func StartHandler(w http.ResponseWriter, r *http.Request) {
 	taskID := r.FormValue("taskID")
 	userID := session.GetUserUUID(r)
 	date := time.Now().Local().Format("2006-01-02")
-	time := time.Now().Local()
+	t := time.Now().Local()
 
 	timer.SetTaskByID(taskID)
 	timer.SetUserByID(userID)
 	timer.SetDate(date)
-	timer.SetStart(time.Format("15:04:05"))
+	timer.SetStart(t.Format("15:04:05"))
 	timer.SetTimeInMs(r.FormValue("startDate")) // Start time in miliseconds
 	timer.SetDescription(r.FormValue("description"))
 
