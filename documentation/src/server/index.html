@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>server - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<a href="/blog/">Blog</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>Package server</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+
+
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "gitlab.fit.cvut.cz/isszp/isszp/src/server"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package server is a representation of HTTP server and view layer
+</p>
+
+			</div>
+		</div>
+
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+
+
+
+
+				<dd><a href="#CanManageProjects">func CanManageProjects(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#CanManageTasks">func CanManageTasks(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#CanManageUsers">func CanManageUsers(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#Configure">func Configure(config Config)</a></dd>
+
+
+				<dd><a href="#IsAdmin">func IsAdmin(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#MustLogin">func MustLogin(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#NewRouter">func NewRouter() http.Handler</a></dd>
+
+
+				<dd><a href="#RedirectToLogin">func RedirectToLogin(next http.Handler) http.Handler</a></dd>
+
+
+				<dd><a href="#Run">func Run()</a></dd>
+
+
+
+				<dd><a href="#Config">type Config</a></dd>
+
+
+
+
+			</dl>
+			</div><!-- #manual-nav -->
+
+
+
+
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go">middleware.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/router.go">router.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/server.go">server.go</a>
+
+			</span>
+			</p>
+
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+
+
+
+
+
+			<h2 id="CanManageProjects">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=1503:1557#L49">CanManageProjects</a>
+				<a class="permalink" href="#CanManageProjects">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#CanManageProjects">CanManageProjects</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+IsAdmin if currently logged in user can manage projects. If not returns an HTTP error
+</p>
+
+
+
+
+
+
+
+			<h2 id="CanManageTasks">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=2102:2153#L72">CanManageTasks</a>
+				<a class="permalink" href="#CanManageTasks">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#CanManageTasks">CanManageTasks</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+IsAdmin if currently logged in user can manage tasks. If not returns an HTTP error
+</p>
+
+
+
+
+
+
+
+			<h2 id="CanManageUsers">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=2692:2743#L95">CanManageUsers</a>
+				<a class="permalink" href="#CanManageUsers">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#CanManageUsers">CanManageUsers</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+IsAdmin if currently logged in user can manage users. If not returns an HTTP error
+</p>
+
+
+
+
+
+
+
+			<h2 id="Configure">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/server.go?s=306:335#L10">Configure</a>
+				<a class="permalink" href="#Configure">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#Configure">Configure</a>(config <a href="#Config">Config</a>)</pre>
+			<p>
+Configure configures model layer with supplied config
+</p>
+
+
+
+
+
+
+
+			<h2 id="IsAdmin">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=930:974#L26">IsAdmin</a>
+				<a class="permalink" href="#IsAdmin">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#IsAdmin">IsAdmin</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+IsAdmin if currently logged in user has admin rights. If not returns an HTTP error
+</p>
+
+
+
+
+
+
+
+			<h2 id="MustLogin">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=242:288#L2">MustLogin</a>
+				<a class="permalink" href="#MustLogin">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#MustLogin">MustLogin</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+MustLogin allows only logged in users. If user is not logged in, MustLogin returns HTTP Error
+</p>
+
+
+
+
+
+
+
+			<h2 id="NewRouter">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/router.go?s=307:336#L4">NewRouter</a>
+				<a class="permalink" href="#NewRouter">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewRouter">NewRouter</a>() <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+NewRouter creates new router for HTTP server
+router decides when users visits certain address which function will handle that request
+</p>
+
+
+
+
+
+
+
+			<h2 id="RedirectToLogin">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/middleware.go?s=563:615#L14">RedirectToLogin</a>
+				<a class="permalink" href="#RedirectToLogin">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#RedirectToLogin">RedirectToLogin</a>(next <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a>) <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Handler">Handler</a></pre>
+			<p>
+RedirectToLogin redirects not logged in users to the /login page
+</p>
+
+
+
+
+
+
+
+			<h2 id="Run">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/server.go?s=448:458#L13">Run</a>
+				<a class="permalink" href="#Run">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#Run">Run</a>()</pre>
+			<p>
+Run inits and runs the HTTP server. Has to be run as last (after model &amp; controller layer)
+</p>
+
+
+
+
+
+
+
+
+			<h2 id="Config">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/server.go?s=172:226#L1">Config</a>
+				<a class="permalink" href="#Config">&#xb6;</a>
+			</h2>
+			<p>
+Config containes all configuration for the view layer
+</p>
+
+			<pre>type Config struct {
+<span id="Config.Address"></span>    Address <a href="/pkg/builtin/#string">string</a>
+<span id="Config.Port"></span>    Port    <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+
+
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+
+
+
+
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="api/">api</a>
+						</td>
+						<td class="pkg-synopsis">
+							Package api is collection of REST methods that communicate with json instead of HTML
+						</td>
+					</tr>
+
+
+
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="session/">session</a>
+						</td>
+						<td class="pkg-synopsis">
+							Package session contains implementation of session handling and some useful functions that will help you to correctly a safely extract certain data from sessions
+						</td>
+					</tr>
+
+
+
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="view/">view</a>
+						</td>
+						<td class="pkg-synopsis">
+							package view is HTTP implementation of view layer of the application
+						</td>
+					</tr>
+
+
+		</table>
+	</div>
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8";</script>
+<script type="text/javascript" src="../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

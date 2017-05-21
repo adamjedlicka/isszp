@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>db - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<a href="/blog/">Blog</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>Package db</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+
+
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "gitlab.fit.cvut.cz/isszp/isszp/src/model/db"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+
+			</div>
+		</div>
+
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+
+
+
+
+				<dd><a href="#Init">func Init(database *gorm.DB)</a></dd>
+
+
+				<dd><a href="#NewComment">func NewComment() model.Comment</a></dd>
+
+
+				<dd><a href="#NewFirm">func NewFirm() model.Firm</a></dd>
+
+
+				<dd><a href="#NewProject">func NewProject() model.Project</a></dd>
+
+
+				<dd><a href="#NewTask">func NewTask() model.Task</a></dd>
+
+
+				<dd><a href="#NewTimeRecord">func NewTimeRecord() model.TimeRecord</a></dd>
+
+
+				<dd><a href="#NewUUID">func NewUUID() string</a></dd>
+
+
+				<dd><a href="#NewUser">func NewUser() model.User</a></dd>
+
+
+				<dd><a href="#QueryComments">func QueryComments(args ...interface{}) []model.Comment</a></dd>
+
+
+				<dd><a href="#QueryFirms">func QueryFirms(args ...interface{}) []model.Firm</a></dd>
+
+
+				<dd><a href="#QueryProjects">func QueryProjects(args ...interface{}) []model.Project</a></dd>
+
+
+				<dd><a href="#QueryTasks">func QueryTasks(args ...interface{}) []model.Task</a></dd>
+
+
+				<dd><a href="#QueryTimeRecords">func QueryTimeRecords(args ...interface{}) []model.TimeRecord</a></dd>
+
+
+				<dd><a href="#QueryUsers">func QueryUsers(args ...interface{}) []model.User</a></dd>
+
+
+
+				<dd><a href="#Comment">type Comment</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.BeforeCreate">func (*Comment) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.Delete">func (c *Comment) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.FillByID">func (c *Comment) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.GetID">func (c Comment) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.GetPostDateTime">func (c Comment) GetPostDateTime() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.GetTask">func (c *Comment) GetTask() model.Task</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.GetText">func (c Comment) GetText() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.GetUser">func (c *Comment) GetUser() model.User</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.Save">func (c *Comment) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.SetPostDateTime">func (c *Comment) SetPostDateTime(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.SetTask">func (c *Comment) SetTask(val model.Task)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.SetText">func (c *Comment) SetText(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.SetUser">func (c *Comment) SetUser(val model.User)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Comment.String">func (c Comment) String() string</a></dd>
+
+
+
+				<dd><a href="#Firm">type Firm</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.BeforeCreate">func (*Firm) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.Delete">func (f *Firm) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.FillByID">func (f *Firm) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.GetDescription">func (f Firm) GetDescription() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.GetEmail">func (f Firm) GetEmail() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.GetID">func (f Firm) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.GetName">func (f Firm) GetName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.GetTelNumber">func (f Firm) GetTelNumber() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.Save">func (f *Firm) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.SetDescription">func (f *Firm) SetDescription(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.SetEmail">func (f *Firm) SetEmail(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.SetName">func (f *Firm) SetName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.SetTelNumber">func (f *Firm) SetTelNumber(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Firm.String">func (f Firm) String() string</a></dd>
+
+
+
+				<dd><a href="#Project">type Project</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.BeforeCreate">func (*Project) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.Delete">func (p *Project) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.FillByID">func (p *Project) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetCode">func (p Project) GetCode() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetDescription">func (p Project) GetDescription() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetEndDate">func (p Project) GetEndDate() *string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetFirm">func (p Project) GetFirm() model.Firm</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetID">func (p Project) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetMaintainer">func (p Project) GetMaintainer() model.User</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetName">func (p Project) GetName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetPlanEndDate">func (p Project) GetPlanEndDate() *string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.GetStartDate">func (p Project) GetStartDate() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.Save">func (p *Project) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetCode">func (p *Project) SetCode(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetDescription">func (p *Project) SetDescription(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetEndDate">func (p *Project) SetEndDate(val *string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetFirm">func (p *Project) SetFirm(val model.Firm)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetMaintainer">func (p *Project) SetMaintainer(val model.User)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetName">func (p *Project) SetName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetPlanEndDate">func (p *Project) SetPlanEndDate(val *string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.SetStartDate">func (p *Project) SetStartDate(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Project.String">func (p Project) String() string</a></dd>
+
+
+
+				<dd><a href="#Task">type Task</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.BeforeCreate">func (*Task) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.Delete">func (t *Task) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.FillByID">func (t *Task) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetDescription">func (t Task) GetDescription() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetEndDate">func (t Task) GetEndDate() *string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetID">func (t Task) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetMaintainer">func (t *Task) GetMaintainer() model.User</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetName">func (t Task) GetName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetPlanEndDate">func (t Task) GetPlanEndDate() *string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetProject">func (t Task) GetProject() model.Project</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetStartDate">func (t Task) GetStartDate() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetState">func (t Task) GetState() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.GetWorker">func (t Task) GetWorker() model.User</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.Save">func (t *Task) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetDescription">func (t *Task) SetDescription(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetEndDate">func (t *Task) SetEndDate(val *string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetMaintainer">func (t *Task) SetMaintainer(val model.User)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetName">func (t *Task) SetName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetPlanEndDate">func (t *Task) SetPlanEndDate(val *string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetProject">func (t *Task) SetProject(val model.Project)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetStartDate">func (t *Task) SetStartDate(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetState">func (t *Task) SetState(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.SetWorker">func (t *Task) SetWorker(val model.User)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Task.String">func (t Task) String() string</a></dd>
+
+
+
+				<dd><a href="#TimeRecord">type TimeRecord</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.BeforeCreate">func (*TimeRecord) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.Delete">func (t *TimeRecord) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.FillByID">func (t *TimeRecord) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetDate">func (t TimeRecord) GetDate() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetDescription">func (t TimeRecord) GetDescription() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetID">func (t TimeRecord) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetStart">func (t TimeRecord) GetStart() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetStop">func (t TimeRecord) GetStop() *string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetTask">func (t TimeRecord) GetTask() model.Task</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetTimeInMs">func (t TimeRecord) GetTimeInMs() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.GetUser">func (t TimeRecord) GetUser() model.User</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.InProgress">func (t TimeRecord) InProgress() bool</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.Save">func (t *TimeRecord) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetDate">func (t *TimeRecord) SetDate(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetDescription">func (t *TimeRecord) SetDescription(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetStart">func (t *TimeRecord) SetStart(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetStop">func (t *TimeRecord) SetStop(val *string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetTask">func (t *TimeRecord) SetTask(val model.Task)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetTimeInMs">func (t *TimeRecord) SetTimeInMs(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.SetUser">func (t *TimeRecord) SetUser(val model.User)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#TimeRecord.String">func (t TimeRecord) String() string</a></dd>
+
+
+
+				<dd><a href="#User">type User</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.AddPermission">func (u *User) AddPermission(val model.Permission)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.BeforeCreate">func (*User) BeforeCreate(scope *gorm.Scope) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.CheckPassword">func (u *User) CheckPassword(p string) bool</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.Delete">func (u *User) Delete() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.FillByID">func (u *User) FillByID(id string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.FillByUserName">func (u *User) FillByUserName(userName string) error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetFirstName">func (u User) GetFirstName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetID">func (u User) GetID() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetLastName">func (u User) GetLastName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetPassword">func (u User) GetPassword() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetPermission">func (u User) GetPermission() model.Permission</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.GetUserName">func (u User) GetUserName() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.Save">func (u *User) Save() error</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.SetFirstName">func (u *User) SetFirstName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.SetLastName">func (u *User) SetLastName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.SetPassword">func (u *User) SetPassword(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.SetPermission">func (u *User) SetPermission(val model.Permission)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.SetUserName">func (u *User) SetUserName(val string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#User.String">func (u User) String() string</a></dd>
+
+
+
+			</dl>
+			</div><!-- #manual-nav -->
+
+
+
+
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go">comment.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/common.go">common.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go">firmModel.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go">projectModel.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go">taskModel.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go">timeRecordModel.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go">userModel.go</a>
+
+			</span>
+			</p>
+
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+
+
+
+
+
+			<h2 id="Init">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/common.go?s=62:90#L1">Init</a>
+				<a class="permalink" href="#Init">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#Init">Init</a>(database *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#DB">DB</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="NewComment">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=352:383#L16">NewComment</a>
+				<a class="permalink" href="#NewComment">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewComment">NewComment</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Comment">Comment</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewFirm">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=376:401#L18">NewFirm</a>
+				<a class="permalink" href="#NewFirm">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewFirm">NewFirm</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Firm">Firm</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewProject">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=476:507#L23">NewProject</a>
+				<a class="permalink" href="#NewProject">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewProject">NewProject</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Project">Project</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewTask">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=483:508#L24">NewTask</a>
+				<a class="permalink" href="#NewTask">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewTask">NewTask</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewTimeRecord">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=457:494#L26">NewTimeRecord</a>
+				<a class="permalink" href="#NewTimeRecord">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewTimeRecord">NewTimeRecord</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#TimeRecord">TimeRecord</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewUUID">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/common.go?s=110:131#L1">NewUUID</a>
+				<a class="permalink" href="#NewUUID">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewUUID">NewUUID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+			<h2 id="NewUser">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=398:423#L20">NewUser</a>
+				<a class="permalink" href="#NewUser">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewUser">NewUser</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryComments">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1501:1556#L66">QueryComments</a>
+				<a class="permalink" href="#QueryComments">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryComments">QueryComments</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Comment">Comment</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryFirms">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=1382:1431#L56">QueryFirms</a>
+				<a class="permalink" href="#QueryFirms">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryFirms">QueryFirms</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Firm">Firm</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryProjects">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=2172:2227#L80">QueryProjects</a>
+				<a class="permalink" href="#QueryProjects">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryProjects">QueryProjects</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Project">Project</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryTasks">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=2433:2482#L101">QueryTasks</a>
+				<a class="permalink" href="#QueryTasks">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryTasks">QueryTasks</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryTimeRecords">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=2399:2460#L102">QueryTimeRecords</a>
+				<a class="permalink" href="#QueryTimeRecords">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryTimeRecords">QueryTimeRecords</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#TimeRecord">TimeRecord</a></pre>
+
+
+
+
+
+
+
+			<h2 id="QueryUsers">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1901:1950#L69">QueryUsers</a>
+				<a class="permalink" href="#QueryUsers">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#QueryUsers">QueryUsers</a>(args ...interface{}) []<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="Comment">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=233:350#L7">Comment</a>
+				<a class="permalink" href="#Comment">&#xb6;</a>
+			</h2>
+
+			<pre>type Comment struct {
+<span id="Comment.ID"></span>    ID           <a href="/pkg/builtin/#string">string</a>
+<span id="Comment.Text"></span>    Text         <a href="/pkg/builtin/#string">string</a>
+<span id="Comment.PostDateTime"></span>    PostDateTime <a href="/pkg/builtin/#string">string</a>
+
+<span id="Comment.UserID"></span>    UserID <a href="/pkg/builtin/#string">string</a>
+<span id="Comment.TaskID"></span>    TaskID <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="Comment.BeforeCreate">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1401:1454#L62">BeforeCreate</a>
+					<a class="permalink" href="#Comment.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#Comment">Comment</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="Comment.Delete">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=569:601#L30">Delete</a>
+					<a class="permalink" href="#Comment.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.FillByID">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=419:462#L22">FillByID</a>
+					<a class="permalink" href="#Comment.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.GetID">func (Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=634:665#L34">GetID</a>
+					<a class="permalink" href="#Comment.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (c <a href="#Comment">Comment</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.GetPostDateTime">func (Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=752:793#L36">GetPostDateTime</a>
+					<a class="permalink" href="#Comment.GetPostDateTime">&#xb6;</a>
+				</h3>
+				<pre>func (c <a href="#Comment">Comment</a>) <a href="#GetPostDateTime">GetPostDateTime</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.GetTask">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1124:1162#L49">GetTask</a>
+					<a class="permalink" href="#Comment.GetTask">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#GetTask">GetTask</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.GetText">func (Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=692:725#L35">GetText</a>
+					<a class="permalink" href="#Comment.GetText">&#xb6;</a>
+				</h3>
+				<pre>func (c <a href="#Comment">Comment</a>) <a href="#GetText">GetText</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.GetUser">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=956:994#L41">GetUser</a>
+					<a class="permalink" href="#Comment.GetUser">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#GetUser">GetUser</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.Save">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=508:538#L26">Save</a>
+					<a class="permalink" href="#Comment.Save">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Comment.SetPostDateTime">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=884:929#L39">SetPostDateTime</a>
+					<a class="permalink" href="#Comment.SetPostDateTime">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#SetPostDateTime">SetPostDateTime</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Comment.SetTask">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1222:1263#L55">SetTask</a>
+					<a class="permalink" href="#Comment.SetTask">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#SetTask">SetTask</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Comment.SetText">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=821:858#L38">SetText</a>
+					<a class="permalink" href="#Comment.SetText">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#SetText">SetText</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Comment.SetUser">func (*Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1054:1095#L47">SetUser</a>
+					<a class="permalink" href="#Comment.SetUser">&#xb6;</a>
+				</h3>
+				<pre>func (c *<a href="#Comment">Comment</a>) <a href="#SetUser">SetUser</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Comment.String">func (Comment) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/comment.go?s=1292:1324#L57">String</a>
+					<a class="permalink" href="#Comment.String">&#xb6;</a>
+				</h3>
+				<pre>func (c <a href="#Comment">Comment</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="Firm">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=221:374#L7">Firm</a>
+				<a class="permalink" href="#Firm">&#xb6;</a>
+			</h2>
+
+			<pre>type Firm struct {
+<span id="Firm.ID"></span>    ID <a href="/pkg/builtin/#string">string</a> `gorm:&#34;primary_key&#34;`
+
+<span id="Firm.Name"></span>    Name        <a href="/pkg/builtin/#string">string</a>
+<span id="Firm.Description"></span>    Description <a href="/pkg/builtin/#string">string</a>
+<span id="Firm.Email"></span>    Email       <a href="/pkg/builtin/#string">string</a>
+<span id="Firm.TelNumber"></span>    TelNumber   <a href="/pkg/builtin/#string">string</a>
+
+<span id="Firm.DeletedAt"></span>    DeletedAt *<a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="Firm.BeforeCreate">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=1285:1335#L52">BeforeCreate</a>
+					<a class="permalink" href="#Firm.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#Firm">Firm</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="Firm.Delete">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=578:607#L32">Delete</a>
+					<a class="permalink" href="#Firm.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.FillByID">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=434:474#L24">FillByID</a>
+					<a class="permalink" href="#Firm.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.GetDescription">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=750:787#L38">GetDescription</a>
+					<a class="permalink" href="#Firm.GetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#GetDescription">GetDescription</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.GetEmail">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=813:844#L39">GetEmail</a>
+					<a class="permalink" href="#Firm.GetEmail">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#GetEmail">GetEmail</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.GetID">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=640:668#L36">GetID</a>
+					<a class="permalink" href="#Firm.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.GetName">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=694:724#L37">GetName</a>
+					<a class="permalink" href="#Firm.GetName">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#GetName">GetName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.GetTelNumber">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=870:905#L40">GetTelNumber</a>
+					<a class="permalink" href="#Firm.GetTelNumber">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#GetTelNumber">GetTelNumber</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.Save">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=520:547#L28">Save</a>
+					<a class="permalink" href="#Firm.Save">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Firm.SetDescription">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=991:1032#L43">SetDescription</a>
+					<a class="permalink" href="#Firm.SetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#SetDescription">SetDescription</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Firm.SetEmail">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=1057:1092#L44">SetEmail</a>
+					<a class="permalink" href="#Firm.SetEmail">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#SetEmail">SetEmail</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Firm.SetName">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=932:966#L42">SetName</a>
+					<a class="permalink" href="#Firm.SetName">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#SetName">SetName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Firm.SetTelNumber">func (*Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=1117:1156#L45">SetTelNumber</a>
+					<a class="permalink" href="#Firm.SetTelNumber">&#xb6;</a>
+				</h3>
+				<pre>func (f *<a href="#Firm">Firm</a>) <a href="#SetTelNumber">SetTelNumber</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Firm.String">func (Firm) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/firmModel.go?s=1182:1211#L47">String</a>
+					<a class="permalink" href="#Firm.String">&#xb6;</a>
+				</h3>
+				<pre>func (f <a href="#Firm">Firm</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="Project">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=233:474#L7">Project</a>
+				<a class="permalink" href="#Project">&#xb6;</a>
+			</h2>
+
+			<pre>type Project struct {
+<span id="Project.ID"></span>    ID <a href="/pkg/builtin/#string">string</a> `gorm:&#34;primary_key&#34;`
+
+<span id="Project.Name"></span>    Name        <a href="/pkg/builtin/#string">string</a>
+<span id="Project.Code"></span>    Code        <a href="/pkg/builtin/#string">string</a>
+<span id="Project.Description"></span>    Description <a href="/pkg/builtin/#string">string</a>
+<span id="Project.StartDate"></span>    StartDate   <a href="/pkg/builtin/#string">string</a>
+<span id="Project.PlanEndDate"></span>    PlanEndDate *<a href="/pkg/builtin/#string">string</a>
+<span id="Project.EndDate"></span>    EndDate     *<a href="/pkg/builtin/#string">string</a>
+
+<span id="Project.MaintainerID"></span>    MaintainerID <a href="/pkg/builtin/#string">string</a>
+<span id="Project.FirmID"></span>    FirmID       <a href="/pkg/builtin/#string">string</a>
+
+<span id="Project.DeletedAt"></span>    DeletedAt *<a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="Project.BeforeCreate">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=2072:2125#L76">BeforeCreate</a>
+					<a class="permalink" href="#Project.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#Project">Project</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="Project.Delete">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=693:725#L37">Delete</a>
+					<a class="permalink" href="#Project.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.FillByID">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=543:586#L29">FillByID</a>
+					<a class="permalink" href="#Project.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetCode">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=876:909#L43">GetCode</a>
+					<a class="permalink" href="#Project.GetCode">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetCode">GetCode</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetDescription">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=936:976#L44">GetDescription</a>
+					<a class="permalink" href="#Project.GetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetDescription">GetDescription</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetEndDate">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1135:1172#L47">GetEndDate</a>
+					<a class="permalink" href="#Project.GetEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetEndDate">GetEndDate</a>() *<a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetFirm">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1709:1746#L62">GetFirm</a>
+					<a class="permalink" href="#Project.GetFirm">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetFirm">GetFirm</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Firm">Firm</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetID">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=758:789#L41">GetID</a>
+					<a class="permalink" href="#Project.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetMaintainer">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1600:1643#L56">GetMaintainer</a>
+					<a class="permalink" href="#Project.GetMaintainer">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetMaintainer">GetMaintainer</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetName">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=816:849#L42">GetName</a>
+					<a class="permalink" href="#Project.GetName">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetName">GetName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetPlanEndDate">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1068:1109#L46">GetPlanEndDate</a>
+					<a class="permalink" href="#Project.GetPlanEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetPlanEndDate">GetPlanEndDate</a>() *<a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.GetStartDate">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1003:1041#L45">GetStartDate</a>
+					<a class="permalink" href="#Project.GetStartDate">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#GetStartDate">GetStartDate</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.Save">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=632:662#L33">Save</a>
+					<a class="permalink" href="#Project.Save">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Project.SetCode">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1262:1299#L50">SetCode</a>
+					<a class="permalink" href="#Project.SetCode">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetCode">SetCode</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetDescription">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1325:1369#L51">SetDescription</a>
+					<a class="permalink" href="#Project.SetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetDescription">SetDescription</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetEndDate">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1533:1574#L54">SetEndDate</a>
+					<a class="permalink" href="#Project.SetEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetEndDate">SetEndDate</a>(val *<a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetFirm">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1887:1928#L69">SetFirm</a>
+					<a class="permalink" href="#Project.SetFirm">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetFirm">SetFirm</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Firm">Firm</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetMaintainer">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1806:1853#L68">SetMaintainer</a>
+					<a class="permalink" href="#Project.SetMaintainer">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetMaintainer">SetMaintainer</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetName">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1199:1236#L49">SetName</a>
+					<a class="permalink" href="#Project.SetName">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetName">SetName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetPlanEndDate">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1463:1508#L53">SetPlanEndDate</a>
+					<a class="permalink" href="#Project.SetPlanEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetPlanEndDate">SetPlanEndDate</a>(val *<a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.SetStartDate">func (*Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1395:1437#L52">SetStartDate</a>
+					<a class="permalink" href="#Project.SetStartDate">&#xb6;</a>
+				</h3>
+				<pre>func (p *<a href="#Project">Project</a>) <a href="#SetStartDate">SetStartDate</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Project.String">func (Project) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/projectModel.go?s=1963:1995#L71">String</a>
+					<a class="permalink" href="#Project.String">&#xb6;</a>
+				</h3>
+				<pre>func (p <a href="#Project">Project</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="Task">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=221:481#L7">Task</a>
+				<a class="permalink" href="#Task">&#xb6;</a>
+			</h2>
+
+			<pre>type Task struct {
+<span id="Task.ID"></span>    ID <a href="/pkg/builtin/#string">string</a> `gorm:&#34;primary_key&#34;`
+
+<span id="Task.Name"></span>    Name        <a href="/pkg/builtin/#string">string</a>
+<span id="Task.Description"></span>    Description <a href="/pkg/builtin/#string">string</a>
+<span id="Task.State"></span>    State       <a href="/pkg/builtin/#string">string</a>
+<span id="Task.StartDate"></span>    StartDate   <a href="/pkg/builtin/#string">string</a>
+<span id="Task.PlanEndDate"></span>    PlanEndDate *<a href="/pkg/builtin/#string">string</a>
+<span id="Task.EndDate"></span>    EndDate     *<a href="/pkg/builtin/#string">string</a>
+
+<span id="Task.MaintainerID"></span>    MaintainerID <a href="/pkg/builtin/#string">string</a>
+<span id="Task.WorkerID"></span>    WorkerID     *<a href="/pkg/builtin/#string">string</a>
+<span id="Task.ProjectID"></span>    ProjectID    <a href="/pkg/builtin/#string">string</a>
+
+<span id="Task.DeletedAt"></span>    DeletedAt *<a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="Task.BeforeCreate">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=2336:2386#L97">BeforeCreate</a>
+					<a class="permalink" href="#Task.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#Task">Task</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="Task.Delete">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=685:714#L38">Delete</a>
+					<a class="permalink" href="#Task.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.FillByID">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=541:581#L30">FillByID</a>
+					<a class="permalink" href="#Task.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetDescription">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=859:896#L44">GetDescription</a>
+					<a class="permalink" href="#Task.GetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetDescription">GetDescription</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetEndDate">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1107:1141#L48">GetEndDate</a>
+					<a class="permalink" href="#Task.GetEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetEndDate">GetEndDate</a>() *<a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetID">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=747:775#L42">GetID</a>
+					<a class="permalink" href="#Task.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetMaintainer">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1552:1593#L57">GetMaintainer</a>
+					<a class="permalink" href="#Task.GetMaintainer">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#GetMaintainer">GetMaintainer</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetName">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=802:832#L43">GetName</a>
+					<a class="permalink" href="#Task.GetName">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetName">GetName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetPlanEndDate">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1043:1081#L47">GetPlanEndDate</a>
+					<a class="permalink" href="#Task.GetPlanEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetPlanEndDate">GetPlanEndDate</a>() *<a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetProject">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=2012:2052#L84">GetProject</a>
+					<a class="permalink" href="#Task.GetProject">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetProject">GetProject</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Project">Project</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetStartDate">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=981:1016#L46">GetStartDate</a>
+					<a class="permalink" href="#Task.GetStartDate">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetStartDate">GetStartDate</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetState">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=923:954#L45">GetState</a>
+					<a class="permalink" href="#Task.GetState">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetState">GetState</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.GetWorker">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1738:1774#L65">GetWorker</a>
+					<a class="permalink" href="#Task.GetWorker">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#GetWorker">GetWorker</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.Save">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=627:654#L34">Save</a>
+					<a class="permalink" href="#Task.Save">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="Task.SetDescription">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1228:1269#L51">SetDescription</a>
+					<a class="permalink" href="#Task.SetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetDescription">SetDescription</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetEndDate">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1488:1526#L55">SetEndDate</a>
+					<a class="permalink" href="#Task.SetEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetEndDate">SetEndDate</a>(val *<a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetMaintainer">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1659:1703#L63">SetMaintainer</a>
+					<a class="permalink" href="#Task.SetMaintainer">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetMaintainer">SetMaintainer</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetName">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1168:1202#L50">SetName</a>
+					<a class="permalink" href="#Task.SetName">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetName">SetName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetPlanEndDate">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1421:1463#L54">SetPlanEndDate</a>
+					<a class="permalink" href="#Task.SetPlanEndDate">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetPlanEndDate">SetPlanEndDate</a>(val *<a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetProject">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=2118:2162#L90">SetProject</a>
+					<a class="permalink" href="#Task.SetProject">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetProject">SetProject</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Project">Project</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetStartDate">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1356:1395#L53">SetStartDate</a>
+					<a class="permalink" href="#Task.SetStartDate">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetStartDate">SetStartDate</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetState">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1295:1330#L52">SetState</a>
+					<a class="permalink" href="#Task.SetState">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetState">SetState</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.SetWorker">func (*Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=1878:1918#L75">SetWorker</a>
+					<a class="permalink" href="#Task.SetWorker">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#Task">Task</a>) <a href="#SetWorker">SetWorker</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>)</pre>
+
+
+
+
+
+
+				<h3 id="Task.String">func (Task) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/taskModel.go?s=2194:2223#L92">String</a>
+					<a class="permalink" href="#Task.String">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#Task">Task</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="TimeRecord">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=265:455#L11">TimeRecord</a>
+				<a class="permalink" href="#TimeRecord">&#xb6;</a>
+			</h2>
+
+			<pre>type TimeRecord struct {
+<span id="TimeRecord.ID"></span>    ID <a href="/pkg/builtin/#string">string</a>
+
+<span id="TimeRecord.Description"></span>    Description <a href="/pkg/builtin/#string">string</a>
+<span id="TimeRecord.Date"></span>    Date        <a href="/pkg/builtin/#string">string</a>
+<span id="TimeRecord.Start"></span>    Start       <a href="/pkg/builtin/#string">string</a>
+<span id="TimeRecord.End"></span>    End         *<a href="/pkg/builtin/#string">string</a>
+<span id="TimeRecord.TimeInMs"></span>    TimeInMs    <a href="/pkg/builtin/#string">string</a>
+
+<span id="TimeRecord.UserID"></span>    UserID <a href="/pkg/builtin/#string">string</a>
+<span id="TimeRecord.TaskID"></span>    TaskID <a href="/pkg/builtin/#string">string</a>
+
+<span id="TimeRecord.DeletedAt"></span>    DeletedAt *<a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="TimeRecord.BeforeCreate">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=2296:2352#L98">BeforeCreate</a>
+					<a class="permalink" href="#TimeRecord.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#TimeRecord">TimeRecord</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="TimeRecord.Delete">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=975:1010#L57">Delete</a>
+					<a class="permalink" href="#TimeRecord.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.FillByID">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=533:579#L32">FillByID</a>
+					<a class="permalink" href="#TimeRecord.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetDate">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1171:1207#L62">GetDate</a>
+					<a class="permalink" href="#TimeRecord.GetDate">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetDate">GetDate</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetDescription">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1102:1145#L61">GetDescription</a>
+					<a class="permalink" href="#TimeRecord.GetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetDescription">GetDescription</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetID">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1042:1076#L60">GetID</a>
+					<a class="permalink" href="#TimeRecord.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetStart">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1233:1270#L63">GetStart</a>
+					<a class="permalink" href="#TimeRecord.GetStart">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetStart">GetStart</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetStop">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1296:1333#L64">GetStop</a>
+					<a class="permalink" href="#TimeRecord.GetStop">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetStop">GetStop</a>() *<a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetTask">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1934:1974#L81">GetTask</a>
+					<a class="permalink" href="#TimeRecord.GetTask">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetTask">GetTask</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetTimeInMs">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1357:1397#L65">GetTimeInMs</a>
+					<a class="permalink" href="#TimeRecord.GetTimeInMs">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetTimeInMs">GetTimeInMs</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.GetUser">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1761:1801#L73">GetUser</a>
+					<a class="permalink" href="#TimeRecord.GetUser">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#GetUser">GetUser</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.InProgress">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=2201:2238#L93">InProgress</a>
+					<a class="permalink" href="#TimeRecord.InProgress">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#InProgress">InProgress</a>() <a href="/pkg/builtin/#bool">bool</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.Save">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=625:658#L36">Save</a>
+					<a class="permalink" href="#TimeRecord.Save">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetDate">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1496:1536#L68">SetDate</a>
+					<a class="permalink" href="#TimeRecord.SetDate">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetDate">SetDate</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetDescription">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1424:1471#L67">SetDescription</a>
+					<a class="permalink" href="#TimeRecord.SetDescription">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetDescription">SetDescription</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetStart">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1561:1602#L69">SetStart</a>
+					<a class="permalink" href="#TimeRecord.SetStart">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetStart">SetStart</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetStop">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1627:1668#L70">SetStop</a>
+					<a class="permalink" href="#TimeRecord.SetStop">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetStop">SetStop</a>(val *<a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetTask">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=2037:2081#L87">SetTask</a>
+					<a class="permalink" href="#TimeRecord.SetTask">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetTask">SetTask</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Task">Task</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetTimeInMs">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1691:1735#L71">SetTimeInMs</a>
+					<a class="permalink" href="#TimeRecord.SetTimeInMs">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetTimeInMs">SetTimeInMs</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.SetUser">func (*TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=1861:1905#L79">SetUser</a>
+					<a class="permalink" href="#TimeRecord.SetUser">&#xb6;</a>
+				</h3>
+				<pre>func (t *<a href="#TimeRecord">TimeRecord</a>) <a href="#SetUser">SetUser</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>)</pre>
+
+
+
+
+
+
+				<h3 id="TimeRecord.String">func (TimeRecord) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/timeRecordModel.go?s=2110:2145#L89">String</a>
+					<a class="permalink" href="#TimeRecord.String">&#xb6;</a>
+				</h3>
+				<pre>func (t <a href="#TimeRecord">TimeRecord</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+			<h2 id="User">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=221:396#L7">User</a>
+				<a class="permalink" href="#User">&#xb6;</a>
+			</h2>
+
+			<pre>type User struct {
+<span id="User.ID"></span>    ID <a href="/pkg/builtin/#string">string</a> `gorm:&#34;primary_key&#34;`
+
+<span id="User.UserName"></span>    UserName  <a href="/pkg/builtin/#string">string</a>
+<span id="User.Password"></span>    Password  <a href="/pkg/builtin/#string">string</a>
+<span id="User.FirstName"></span>    FirstName <a href="/pkg/builtin/#string">string</a>
+<span id="User.LastName"></span>    LastName  <a href="/pkg/builtin/#string">string</a>
+
+<span id="User.Permission"></span>    Permission <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Permission">Permission</a>
+
+<span id="User.DeletedAt"></span>    DeletedAt *<a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="User.AddPermission">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1548:1598#L54">AddPermission</a>
+					<a class="permalink" href="#User.AddPermission">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#AddPermission">AddPermission</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Permission">Permission</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.BeforeCreate">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1804:1854#L65">BeforeCreate</a>
+					<a class="permalink" href="#User.BeforeCreate">&#xb6;</a>
+				</h3>
+				<pre>func (*<a href="#User">User</a>) <a href="#BeforeCreate">BeforeCreate</a>(scope *<a href="/pkg/github.com/jinzhu/gorm/">gorm</a>.<a href="/pkg/github.com/jinzhu/gorm/#Scope">Scope</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+BeforeCreate is a GORM hook
+</p>
+
+
+
+
+
+
+				<h3 id="User.CheckPassword">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1624:1667#L56">CheckPassword</a>
+					<a class="permalink" href="#User.CheckPassword">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#CheckPassword">CheckPassword</a>(p <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+
+
+
+
+
+
+				<h3 id="User.Delete">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=711:740#L38">Delete</a>
+					<a class="permalink" href="#User.Delete">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#Delete">Delete</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="User.FillByID">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=456:496#L26">FillByID</a>
+					<a class="permalink" href="#User.FillByID">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#FillByID">FillByID</a>(id <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="User.FillByUserName">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=542:594#L30">FillByUserName</a>
+					<a class="permalink" href="#User.FillByUserName">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#FillByUserName">FillByUserName</a>(userName <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetFirstName">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=974:1009#L45">GetFirstName</a>
+					<a class="permalink" href="#User.GetFirstName">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetFirstName">GetFirstName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetID">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=773:801#L42">GetID</a>
+					<a class="permalink" href="#User.GetID">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetID">GetID</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetLastName">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1044:1078#L46">GetLastName</a>
+					<a class="permalink" href="#User.GetLastName">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetLastName">GetLastName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetPassword">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=905:939#L44">GetPassword</a>
+					<a class="permalink" href="#User.GetPassword">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetPassword">GetPassword</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetPermission">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1113:1159#L47">GetPermission</a>
+					<a class="permalink" href="#User.GetPermission">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetPermission">GetPermission</a>() <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Permission">Permission</a></pre>
+
+
+
+
+
+
+				<h3 id="User.GetUserName">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=836:870#L43">GetUserName</a>
+					<a class="permalink" href="#User.GetUserName">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#GetUserName">GetUserName</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="User.Save">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=653:680#L34">Save</a>
+					<a class="permalink" href="#User.Save">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#Save">Save</a>() <a href="/pkg/builtin/#error">error</a></pre>
+
+
+
+
+
+
+				<h3 id="User.SetFirstName">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1329:1368#L51">SetFirstName</a>
+					<a class="permalink" href="#User.SetFirstName">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#SetFirstName">SetFirstName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.SetLastName">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1402:1440#L52">SetLastName</a>
+					<a class="permalink" href="#User.SetLastName">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#SetLastName">SetLastName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.SetPassword">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1257:1295#L50">SetPassword</a>
+					<a class="permalink" href="#User.SetPassword">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#SetPassword">SetPassword</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.SetPermission">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1474:1524#L53">SetPermission</a>
+					<a class="permalink" href="#User.SetPermission">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#SetPermission">SetPermission</a>(val <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#Permission">Permission</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.SetUserName">func (*User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1185:1223#L49">SetUserName</a>
+					<a class="permalink" href="#User.SetUserName">&#xb6;</a>
+				</h3>
+				<pre>func (u *<a href="#User">User</a>) <a href="#SetUserName">SetUserName</a>(val <a href="/pkg/builtin/#string">string</a>)</pre>
+
+
+
+
+
+
+				<h3 id="User.String">func (User) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/db/userModel.go?s=1697:1726#L60">String</a>
+					<a class="permalink" href="#User.String">&#xb6;</a>
+				</h3>
+				<pre>func (u <a href="#User">User</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8";</script>
+<script type="text/javascript" src="../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

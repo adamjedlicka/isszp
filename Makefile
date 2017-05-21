@@ -8,3 +8,7 @@ build:
 
 clean:
 	rm -rf ./dist
+
+doc:
+	@echo Documentation running on: http://localhost:6060/pkg/gitlab.fit.cvut.cz/isszp/isszp/
+	godoc -http localhost:6060

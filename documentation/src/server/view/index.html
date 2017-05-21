@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>view - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<a href="/blog/">Blog</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>Package view</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+
+
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "gitlab.fit.cvut.cz/isszp/isszp/src/server/view"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+package view is HTTP implementation of view layer of the application
+</p>
+
+			</div>
+		</div>
+
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+
+				<dd><a href="#pkg-constants">Constants</a></dd>
+
+
+
+
+				<dd><a href="#CommentSavePOST">func CommentSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmDelGET">func FirmDelGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmEditGET">func FirmEditGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmNewGET">func FirmNewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmSavePOST">func FirmSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmViewGET">func FirmViewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#FirmsGET">func FirmsGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#HomeGET">func HomeGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#LoginGET">func LoginGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#LoginPOST">func LoginPOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#LogoutGET">func LogoutGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectDeleteGET">func ProjectDeleteGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectEditGET">func ProjectEditGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectNewGET">func ProjectNewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectSavePOST">func ProjectSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectViewGET">func ProjectViewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#ProjectsGET">func ProjectsGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TaskDeleteGET">func TaskDeleteGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TaskEditGET">func TaskEditGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TaskNewGET">func TaskNewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TaskSavePOST">func TaskSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TaskViewGET">func TaskViewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TasksGET">func TasksGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TimerecordDeleteGET">func TimerecordDeleteGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TimerecordEditGET">func TimerecordEditGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TimerecordSavePOST">func TimerecordSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TimerecordViewGET">func TimerecordViewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#TimerecordsGET">func TimerecordsGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserDeleteGET">func UserDeleteGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserEditGET">func UserEditGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserNewGET">func UserNewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserPasswordPOST">func UserPasswordPOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserSavePOST">func UserSavePOST(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UserViewGET">func UserViewGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+				<dd><a href="#UsersGET">func UsersGET(w http.ResponseWriter, r *http.Request)</a></dd>
+
+
+
+				<dd><a href="#View">type View</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#NewView">func NewView(r *http.Request, name string) *View</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#View.AppendTemplates">func (v *View) AppendTemplates(templates ...string)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#View.Render">func (v *View) Render(w http.ResponseWriter)</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#View.SetPagination">func (v *View) SetPagination(r *http.Request, len, itemsPerPage int) (int, int)</a></dd>
+
+
+
+			</dl>
+			</div><!-- #manual-nav -->
+
+
+
+
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/commentView.go">commentView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go">firmView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/homeView.go">homeView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/loginView.go">loginView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go">projectView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go">taskView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go">timerecordsView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go">usersView.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go">view.go</a>
+
+			</span>
+			</p>
+
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+
+			<h2 id="pkg-constants">Constants</h2>
+
+
+				<pre>const FirmsPerPage = 5</pre>
+
+
+
+
+
+
+			<h2 id="CommentSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/commentView.go?s=192:252#L2">CommentSavePOST</a>
+				<a class="permalink" href="#CommentSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#CommentSavePOST">CommentSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmDelGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=1471:1526#L63">FirmDelGET</a>
+				<a class="permalink" href="#FirmDelGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmDelGET">FirmDelGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmEditGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=1091:1147#L45">FirmEditGET</a>
+				<a class="permalink" href="#FirmEditGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmEditGET">FirmEditGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmNewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=458:513#L14">FirmNewGET</a>
+				<a class="permalink" href="#FirmNewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmNewGET">FirmNewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=1946:2003#L86">FirmSavePOST</a>
+				<a class="permalink" href="#FirmSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmSavePOST">FirmSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmViewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=642:698#L23">FirmViewGET</a>
+				<a class="permalink" href="#FirmViewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmViewGET">FirmViewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="FirmsGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/firmView.go?s=134:187#L3">FirmsGET</a>
+				<a class="permalink" href="#FirmsGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#FirmsGET">FirmsGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="HomeGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/homeView.go?s=136:188#L1">HomeGET</a>
+				<a class="permalink" href="#HomeGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#HomeGET">HomeGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="LoginGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/loginView.go?s=200:253#L3">LoginGET</a>
+				<a class="permalink" href="#LoginGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#LoginGET">LoginGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="LoginPOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/loginView.go?s=425:479#L15">LoginPOST</a>
+				<a class="permalink" href="#LoginPOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#LoginPOST">LoginPOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="LogoutGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/loginView.go?s=1402:1456#L53">LogoutGET</a>
+				<a class="permalink" href="#LogoutGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#LogoutGET">LogoutGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectDeleteGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=1085:1146#L40">ProjectDeleteGET</a>
+				<a class="permalink" href="#ProjectDeleteGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectDeleteGET">ProjectDeleteGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectEditGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=613:672#L21">ProjectEditGET</a>
+				<a class="permalink" href="#ProjectEditGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectEditGET">ProjectEditGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectNewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=338:396#L10">ProjectNewGET</a>
+				<a class="permalink" href="#ProjectNewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectNewGET">ProjectNewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=2033:2093#L79">ProjectSavePOST</a>
+				<a class="permalink" href="#ProjectSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectSavePOST">ProjectSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectViewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=1485:1544#L57">ProjectViewGET</a>
+				<a class="permalink" href="#ProjectViewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectViewGET">ProjectViewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="ProjectsGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/projectView.go?s=110:166#L1">ProjectsGET</a>
+				<a class="permalink" href="#ProjectsGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#ProjectsGET">ProjectsGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TaskDeleteGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=1915:1973#L68">TaskDeleteGET</a>
+				<a class="permalink" href="#TaskDeleteGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TaskDeleteGET">TaskDeleteGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TaskEditGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=1461:1517#L49">TaskEditGET</a>
+				<a class="permalink" href="#TaskEditGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TaskEditGET">TaskEditGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TaskNewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=426:481#L13">TaskNewGET</a>
+				<a class="permalink" href="#TaskNewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TaskNewGET">TaskNewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TaskSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=2300:2357#L85">TaskSavePOST</a>
+				<a class="permalink" href="#TaskSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TaskSavePOST">TaskSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TaskViewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=695:751#L24">TaskViewGET</a>
+				<a class="permalink" href="#TaskViewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TaskViewGET">TaskViewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TasksGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/taskView.go?s=219:272#L4">TasksGET</a>
+				<a class="permalink" href="#TasksGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TasksGET">TasksGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TimerecordDeleteGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go?s=1533:1597#L55">TimerecordDeleteGET</a>
+				<a class="permalink" href="#TimerecordDeleteGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TimerecordDeleteGET">TimerecordDeleteGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TimerecordEditGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go?s=910:972#L32">TimerecordEditGET</a>
+				<a class="permalink" href="#TimerecordEditGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TimerecordEditGET">TimerecordEditGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TimerecordSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go?s=2024:2087#L77">TimerecordSavePOST</a>
+				<a class="permalink" href="#TimerecordSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TimerecordSavePOST">TimerecordSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TimerecordViewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go?s=359:421#L10">TimerecordViewGET</a>
+				<a class="permalink" href="#TimerecordViewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TimerecordViewGET">TimerecordViewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="TimerecordsGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/timerecordsView.go?s=110:169#L1">TimerecordsGET</a>
+				<a class="permalink" href="#TimerecordsGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#TimerecordsGET">TimerecordsGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserDeleteGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=2519:2577#L82">UserDeleteGET</a>
+				<a class="permalink" href="#UserDeleteGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserDeleteGET">UserDeleteGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserEditGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=1607:1663#L53">UserEditGET</a>
+				<a class="permalink" href="#UserEditGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserEditGET">UserEditGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserNewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=419:474#L12">UserNewGET</a>
+				<a class="permalink" href="#UserNewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserNewGET">UserNewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserPasswordPOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=4079:4140#L148">UserPasswordPOST</a>
+				<a class="permalink" href="#UserPasswordPOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserPasswordPOST">UserPasswordPOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserSavePOST">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=3006:3063#L105">UserSavePOST</a>
+				<a class="permalink" href="#UserSavePOST">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserSavePOST">UserSavePOST</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UserViewGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=603:659#L21">UserViewGET</a>
+				<a class="permalink" href="#UserViewGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UserViewGET">UserViewGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+			<h2 id="UsersGET">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/usersView.go?s=212:265#L3">UsersGET</a>
+				<a class="permalink" href="#UsersGET">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#UsersGET">UsersGET</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+
+
+
+
+
+
+
+
+			<h2 id="View">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go?s=509:630#L11">View</a>
+				<a class="permalink" href="#View">&#xb6;</a>
+			</h2>
+			<p>
+View is default template of the web page. It is responsible for rendering the page, marking proper files
+to be sent to the client, ... Every view should be created using this struct
+</p>
+
+			<pre>type View struct {
+<span id="View.Name"></span>    Name <a href="/pkg/builtin/#string">string</a>
+<span id="View.Vars"></span>    Vars map[<a href="/pkg/builtin/#string">string</a>]interface{}
+<span id="View.L"></span>    L    map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="NewView">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go?s=1013:1061#L24">NewView</a>
+					<a class="permalink" href="#NewView">&#xb6;</a>
+				</h3>
+				<pre>func <a href="#NewView">NewView</a>(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, name <a href="/pkg/builtin/#string">string</a>) *<a href="#View">View</a></pre>
+				<p>
+NewView creates new view based on passed in http.Request and name
+It always creates 2 global variables in template space
+</p>
+<pre>- Name : name of the current view
+- IsLoggedInt : bool if user is logged in or not. if true then two new variables are added:
+  - LoggedUser : model.User of currently logged in user
+  - UserName : userName of currently logged in user
+</pre>
+
+
+
+
+
+
+
+				<h3 id="View.AppendTemplates">func (*View) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go?s=1844:1895#L49">AppendTemplates</a>
+					<a class="permalink" href="#View.AppendTemplates">&#xb6;</a>
+				</h3>
+				<pre>func (v *<a href="#View">View</a>) <a href="#AppendTemplates">AppendTemplates</a>(templates ...<a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+AppendTemplates adds html templates to the render pipeline which are later sent to the client
+every HTML template (except base.html) hase to be added with AppendTemplates
+template paths are without .html suffix and path begins in /template direcotry
+example:
+</p>
+<pre>v.AppendTemplates(&#34;/firms/firm-view&#34;, &#34;/component/firm-list&#34;)
+</pre>
+
+
+
+
+
+
+				<h3 id="View.Render">func (*View) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go?s=2025:2069#L54">Render</a>
+					<a class="permalink" href="#View.Render">&#xb6;</a>
+				</h3>
+				<pre>func (v *<a href="#View">View</a>) <a href="#Render">Render</a>(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>)</pre>
+				<p>
+Render renders the HTML page and sends it to he supplied ResponseWriter
+</p>
+
+
+
+
+
+
+				<h3 id="View.SetPagination">func (*View) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/server/view/view.go?s=2722:2801#L79">SetPagination</a>
+					<a class="permalink" href="#View.SetPagination">&#xb6;</a>
+				</h3>
+				<pre>func (v *<a href="#View">View</a>) <a href="#SetPagination">SetPagination</a>(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, len, itemsPerPage <a href="/pkg/builtin/#int">int</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#int">int</a>)</pre>
+				<p>
+SetPagination computes pagination for the current view and set Pages variable which is later used in template
+to render the pagination buttons
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8";</script>
+<script type="text/javascript" src="../../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

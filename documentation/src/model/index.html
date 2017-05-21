@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>model - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<a href="/blog/">Blog</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>Package model</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+
+
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "gitlab.fit.cvut.cz/isszp/isszp/src/model"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+				<dd><a href="#pkg-subdirectories">Subdirectories</a></dd>
+
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package model describes common interface for communicating with model layer
+this metods allows for easily implementing new independent models that use their own sepcific method of storing data
+</p>
+
+			</div>
+		</div>
+
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+
+
+				<dd><a href="#pkg-variables">Variables</a></dd>
+
+
+
+
+				<dd><a href="#Comment">type Comment</a></dd>
+
+
+
+
+				<dd><a href="#Firm">type Firm</a></dd>
+
+
+
+
+				<dd><a href="#Model">type Model</a></dd>
+
+
+
+
+				<dd><a href="#Permission">type Permission</a></dd>
+
+
+
+
+				<dd><a href="#Project">type Project</a></dd>
+
+
+
+
+				<dd><a href="#Task">type Task</a></dd>
+
+
+
+
+				<dd><a href="#TimeRecord">type TimeRecord</a></dd>
+
+
+
+
+				<dd><a href="#User">type User</a></dd>
+
+
+
+
+			</dl>
+			</div><!-- #manual-nav -->
+
+
+
+
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go">common.go</a>
+
+			</span>
+			</p>
+
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+
+
+			<h2 id="pkg-variables">Variables</h2>
+
+
+				<pre>var (
+    <span class="comment">// NewTask returns new empty task, that can be filled with .FillByID()</span>
+    NewTask func() <a href="#Task">Task</a>
+
+    <span class="comment">// QueryTasks allows for querying tasks using Queryable interface</span>
+    QueryTasks func(...interface{}) []<a href="#Task">Task</a>
+)</pre>
+
+
+				<pre>var (
+    <span class="comment">// NewProject returns new empty project, that can be filled with .FillByID()</span>
+    NewProject func() <a href="#Project">Project</a>
+
+    <span class="comment">// QueryProjects allows for querying projects using Queryable interface</span>
+    QueryProjects func(...interface{}) []<a href="#Project">Project</a>
+)</pre>
+
+
+				<pre>var (
+    <span class="comment">// NewUser returns new empty project, that can be filled with .FillByID()</span>
+    NewUser func() <a href="#User">User</a>
+
+    <span class="comment">// QueryUsers allows for querying users using Queryable interface</span>
+    QueryUsers func(...interface{}) []<a href="#User">User</a>
+)</pre>
+
+
+				<pre>var (
+    <span class="comment">// NewFirm returns new empty project, that can be filled with .FillByID()</span>
+    NewFirm func() <a href="#Firm">Firm</a>
+
+    <span class="comment">// QueryFirm allows for querying users using Queryable interface</span>
+    QueryFirms func(...interface{}) []<a href="#Firm">Firm</a>
+)</pre>
+
+
+				<pre>var (
+    <span class="comment">// NewTimeRecord returns new empty project, that can be filled with .FillByID()</span>
+    NewTimeRecord func() <a href="#TimeRecord">TimeRecord</a>
+
+    <span class="comment">// QueryTimeRecords allows for querying users using Queryable interface</span>
+    QueryTimeRecords func(...interface{}) []<a href="#TimeRecord">TimeRecord</a>
+)</pre>
+
+
+				<pre>var (
+    <span class="comment">// NewComment returns new empty project, that can be filled with .FillByID()</span>
+    NewComment func() <a href="#Comment">Comment</a>
+
+    <span class="comment">// QueryComments allows for querying users using Queryable interface</span>
+    QueryComments func(...interface{}) []<a href="#Comment">Comment</a>
+)</pre>
+
+
+
+
+
+
+			<h2 id="Comment">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=4517:4700#L176">Comment</a>
+				<a class="permalink" href="#Comment">&#xb6;</a>
+			</h2>
+			<p>
+Comment describes interface for communicating with firm model
+</p>
+
+			<pre>type Comment interface {
+    <a href="#Model">Model</a>
+
+    GetText() <a href="/pkg/builtin/#string">string</a>
+    SetText(<a href="/pkg/builtin/#string">string</a>)
+    GetPostDateTime() <a href="/pkg/builtin/#string">string</a>
+    SetPostDateTime(<a href="/pkg/builtin/#string">string</a>)
+
+    GetUser() <a href="#User">User</a>
+    SetUser(<a href="#User">User</a>)
+    GetTask() <a href="#Task">Task</a>
+    SetTask(<a href="#Task">Task</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Firm">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=3420:3617#L124">Firm</a>
+				<a class="permalink" href="#Firm">&#xb6;</a>
+			</h2>
+			<p>
+Firm describes interface for communicating with firm model
+</p>
+
+			<pre>type Firm interface {
+    <a href="#Model">Model</a>
+
+    GetName() <a href="/pkg/builtin/#string">string</a>
+    SetName(<a href="/pkg/builtin/#string">string</a>)
+    GetDescription() <a href="/pkg/builtin/#string">string</a>
+    SetDescription(<a href="/pkg/builtin/#string">string</a>)
+    GetEmail() <a href="/pkg/builtin/#string">string</a>
+    SetEmail(<a href="/pkg/builtin/#string">string</a>)
+    GetTelNumber() <a href="/pkg/builtin/#string">string</a>
+    SetTelNumber(<a href="/pkg/builtin/#string">string</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Model">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=327:812#L1">Model</a>
+				<a class="permalink" href="#Model">&#xb6;</a>
+			</h2>
+			<p>
+Model is common interface of every model. It must be composited by every other model interface
+</p>
+
+			<pre>type Model interface {
+    <span class="comment">// GetID returns unique UUID of the model</span>
+    GetID() <a href="/pkg/builtin/#string">string</a>
+
+    <span class="comment">// FillByID fils model with data based on supplied ID. If no record with this ID is found returns an error</span>
+    FillByID(<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a>
+
+    <span class="comment">// Save saves the model. If ID == &#34;&#34; creates new record, othervise update existing one</span>
+    Save() <a href="/pkg/builtin/#error">error</a>
+
+    <span class="comment">// Delete deletes the model. If possible hide the data instead of deleting</span>
+    Delete() <a href="/pkg/builtin/#error">error</a>
+
+    <span class="comment">// String returns string representation of the models</span>
+    String() <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Permission">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=3167:3189#L114">Permission</a>
+				<a class="permalink" href="#Permission">&#xb6;</a>
+			</h2>
+			<p>
+Permission is data type used to store User permission
+Every permission is different bit in 64-bit integer which can be obtained with masks defined below
+example:
+p := 0b00101 - can manage projects and cam manage users =&gt; (p | CanManageProjects == CanManageProjects) : true
+p := 0b11111 - can do everything - is an admin =&gt; (p | IsAdmin == IsAdmin) : true
+</p>
+
+			<pre>type Permission <a href="/pkg/builtin/#uint64">uint64</a></pre>
+
+
+
+				<pre>const (
+    IsAdmin           <a href="#Permission">Permission</a> = <a href="/pkg/math/">math</a>.<a href="/pkg/math/#MaxUint64">MaxUint64</a> &gt;&gt; 1 <span class="comment">// 2^63 - 9223372036854775808</span>
+    CanManageProjects <a href="#Permission">Permission</a> = 1 &lt;&lt; <a href="/pkg/builtin/#iota">iota</a>
+    CanManageTasks
+    CanManageUsers
+)</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Project">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=1569:1937#L49">Project</a>
+				<a class="permalink" href="#Project">&#xb6;</a>
+			</h2>
+			<p>
+Project describes interface for communicating with project model
+</p>
+
+			<pre>type Project interface {
+    <a href="#Model">Model</a>
+
+    GetName() <a href="/pkg/builtin/#string">string</a>
+    SetName(<a href="/pkg/builtin/#string">string</a>)
+    GetCode() <a href="/pkg/builtin/#string">string</a>
+    SetCode(<a href="/pkg/builtin/#string">string</a>)
+    GetDescription() <a href="/pkg/builtin/#string">string</a>
+    SetDescription(<a href="/pkg/builtin/#string">string</a>)
+    GetStartDate() <a href="/pkg/builtin/#string">string</a>
+    SetStartDate(<a href="/pkg/builtin/#string">string</a>)
+    GetPlanEndDate() *<a href="/pkg/builtin/#string">string</a>
+    SetPlanEndDate(*<a href="/pkg/builtin/#string">string</a>)
+    GetEndDate() *<a href="/pkg/builtin/#string">string</a>
+    SetEndDate(*<a href="/pkg/builtin/#string">string</a>)
+
+    GetMaintainer() <a href="#User">User</a>
+    SetMaintainer(<a href="#User">User</a>)
+
+    GetFirm() <a href="#Firm">Firm</a>
+    SetFirm(<a href="#Firm">Firm</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Task">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=876:1289#L16">Task</a>
+				<a class="permalink" href="#Task">&#xb6;</a>
+			</h2>
+			<p>
+Task describes interface for communicating with task model
+</p>
+
+			<pre>type Task interface {
+    <a href="#Model">Model</a>
+
+    GetName() <a href="/pkg/builtin/#string">string</a>
+    SetName(<a href="/pkg/builtin/#string">string</a>)
+    GetDescription() <a href="/pkg/builtin/#string">string</a>
+    SetDescription(<a href="/pkg/builtin/#string">string</a>)
+    GetState() <a href="/pkg/builtin/#string">string</a>
+    SetState(<a href="/pkg/builtin/#string">string</a>)
+    GetStartDate() <a href="/pkg/builtin/#string">string</a>
+    SetStartDate(<a href="/pkg/builtin/#string">string</a>)
+    GetPlanEndDate() *<a href="/pkg/builtin/#string">string</a>
+    SetPlanEndDate(*<a href="/pkg/builtin/#string">string</a>)
+    GetEndDate() *<a href="/pkg/builtin/#string">string</a>
+    SetEndDate(*<a href="/pkg/builtin/#string">string</a>)
+
+    GetMaintainer() <a href="#User">User</a>
+    SetMaintainer(<a href="#User">User</a>)
+    GetWorker() <a href="#User">User</a>
+    SetWorker(<a href="#User">User</a>)
+    GetProject() <a href="#Project">Project</a>
+    SetProject(<a href="#Project">Project</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="TimeRecord">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=3899:4201#L146">TimeRecord</a>
+				<a class="permalink" href="#TimeRecord">&#xb6;</a>
+			</h2>
+			<p>
+TimeRecord describes interface for communicating with firm model
+</p>
+
+			<pre>type TimeRecord interface {
+    <a href="#Model">Model</a>
+
+    GetDescription() <a href="/pkg/builtin/#string">string</a>
+    SetDescription(<a href="/pkg/builtin/#string">string</a>)
+    GetDate() <a href="/pkg/builtin/#string">string</a>
+    SetDate(<a href="/pkg/builtin/#string">string</a>)
+    GetStart() <a href="/pkg/builtin/#string">string</a>
+    SetStart(<a href="/pkg/builtin/#string">string</a>)
+    InProgress() <a href="/pkg/builtin/#bool">bool</a>
+
+    SetStop(*<a href="/pkg/builtin/#string">string</a>)
+    SetTimeInMs(<a href="/pkg/builtin/#string">string</a>)
+    GetTimeInMs() <a href="/pkg/builtin/#string">string</a>
+
+    GetTask() <a href="#Task">Task</a>
+    SetTask(<a href="#Task">Task</a>)
+    GetUser() <a href="#User">User</a>
+    SetUser(<a href="#User">User</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="User">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/model/common.go?s=2235:2582#L81">User</a>
+				<a class="permalink" href="#User">&#xb6;</a>
+			</h2>
+			<p>
+User describes interface for communicating with user model
+</p>
+
+			<pre>type User interface {
+    <a href="#Model">Model</a>
+
+    FillByUserName(<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a>
+
+    GetUserName() <a href="/pkg/builtin/#string">string</a>
+    SetUserName(<a href="/pkg/builtin/#string">string</a>)
+    SetPassword(<a href="/pkg/builtin/#string">string</a>)
+    GetPassword() <a href="/pkg/builtin/#string">string</a>
+    CheckPassword(<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a>
+    GetFirstName() <a href="/pkg/builtin/#string">string</a>
+    SetFirstName(<a href="/pkg/builtin/#string">string</a>)
+    GetLastName() <a href="/pkg/builtin/#string">string</a>
+    SetLastName(<a href="/pkg/builtin/#string">string</a>)
+
+    GetPermission() <a href="#Permission">Permission</a>
+    SetPermission(<a href="#Permission">Permission</a>)
+    AddPermission(<a href="#Permission">Permission</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<h2 id="pkg-subdirectories">Subdirectories</h2>
+
+
+
+
+	<div class="pkg-dir">
+		<table>
+			<tr>
+				<th class="pkg-name">Name</th>
+				<th class="pkg-synopsis">Synopsis</th>
+			</tr>
+
+
+			<tr>
+				<td colspan="2"><a href="..">..</a></td>
+			</tr>
+
+
+
+
+					<tr>
+						<td class="pkg-name" style="padding-left: 0px;">
+							<a href="db/">db</a>
+						</td>
+						<td class="pkg-synopsis">
+
+						</td>
+					</tr>
+
+
+		</table>
+	</div>
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8";</script>
+<script type="text/javascript" src="../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+

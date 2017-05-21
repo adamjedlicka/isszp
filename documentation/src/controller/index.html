@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>controller - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="../../lib/godoc/style.css">
+
+<link rel="stylesheet" href="../../lib/godoc/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<a href="/blog/">Blog</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>Package controller</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type='text/javascript'>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+
+
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "gitlab.fit.cvut.cz/isszp/isszp/src/controller"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+
+
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package controller is business logic of this application
+it servers as an middleground between view layer and model layer
+</p>
+
+			</div>
+		</div>
+
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+
+
+
+
+				<dd><a href="#CheckUserHashedPassword">func CheckUserHashedPassword(user model.User, password string) bool</a></dd>
+
+
+				<dd><a href="#Configure">func Configure(config Config)</a></dd>
+
+
+				<dd><a href="#GetNotifications">func GetNotifications(userID string) []Notification</a></dd>
+
+
+				<dd><a href="#Init">func Init()</a></dd>
+
+
+				<dd><a href="#NewComment">func NewComment(userName, taskID, text string) error</a></dd>
+
+
+				<dd><a href="#SendNotification">func SendNotification(userID, message string, opts ...Option)</a></dd>
+
+
+				<dd><a href="#SetUserHashedPassword">func SetUserHashedPassword(user model.User, password string)</a></dd>
+
+
+
+				<dd><a href="#Config">type Config</a></dd>
+
+
+
+
+				<dd><a href="#Notification">type Notification</a></dd>
+
+
+
+
+				<dd><a href="#Option">type Option</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#NotifyWithAddress">func NotifyWithAddress(address string) Option</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#NotifyWithHeader">func NotifyWithHeader(header string) Option</a></dd>
+
+
+
+
+				<dd><a href="#Query">type Query</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#NewQuery">func NewQuery(table string) *Query</a></dd>
+
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.GroupBy">func (q *Query) GroupBy(column ...string) *Query</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.Like">func (q *Query) Like(val string, i interface{}) *Query</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.NotLike">func (q *Query) NotLike(val string, i interface{}) *Query</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.OrderBy">func (q *Query) OrderBy(column ...string) *Query</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.String">func (q Query) String() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.ToData">func (q *Query) ToData() []interface{}</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.ToSQL">func (q *Query) ToSQL() string</a></dd>
+
+
+					<dd>&nbsp; &nbsp; <a href="#Query.Where">func (q *Query) Where(val string, i interface{}) *Query</a></dd>
+
+
+
+				<dd><a href="#Queryable">type Queryable</a></dd>
+
+
+
+
+			</dl>
+			</div><!-- #manual-nav -->
+
+
+
+
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/commentController.go">commentController.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/controller.go">controller.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go">notifyController.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go">sqlParser.go</a>
+
+				<a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/userController.go">userController.go</a>
+
+			</span>
+			</p>
+
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls&mdash;perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+
+
+
+
+
+			<h2 id="CheckUserHashedPassword">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/userController.go?s=596:663#L14">CheckUserHashedPassword</a>
+				<a class="permalink" href="#CheckUserHashedPassword">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#CheckUserHashedPassword">CheckUserHashedPassword</a>(user <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>, password <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			<p>
+CheckUserHashedPassword compares hashed password stored in the user model with passed in password
+password is in plain-text
+</p>
+
+
+
+
+
+
+
+			<h2 id="Configure">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/controller.go?s=409:438#L9">Configure</a>
+				<a class="permalink" href="#Configure">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#Configure">Configure</a>(config <a href="#Config">Config</a>)</pre>
+			<p>
+Configure configures controller package with passed in config
+</p>
+
+
+
+
+
+
+
+			<h2 id="GetNotifications">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=1074:1125#L30">GetNotifications</a>
+				<a class="permalink" href="#GetNotifications">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#GetNotifications">GetNotifications</a>(userID <a href="/pkg/builtin/#string">string</a>) []<a href="#Notification">Notification</a></pre>
+			<p>
+GetNotifications returns an array of all notification sent to user defined by userID
+and marks all these notifications as sent which prevents them from being received a second time
+</p>
+
+
+
+
+
+
+
+			<h2 id="Init">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/controller.go?s=576:587#L13">Init</a>
+				<a class="permalink" href="#Init">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#Init">Init</a>()</pre>
+			<p>
+Init initializes default state of controller package
+it is required to be called before initzializing view layer
+</p>
+
+
+
+
+
+
+
+			<h2 id="NewComment">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/commentController.go?s=232:284#L2">NewComment</a>
+				<a class="permalink" href="#NewComment">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#NewComment">NewComment</a>(userName, taskID, text <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+NewComment creates a new comment to task defined by taskID
+it sets PostDateTime as current time
+</p>
+
+
+
+
+
+
+
+			<h2 id="SendNotification">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=603:664#L13">SendNotification</a>
+				<a class="permalink" href="#SendNotification">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#SendNotification">SendNotification</a>(userID, message <a href="/pkg/builtin/#string">string</a>, opts ...<a href="#Option">Option</a>)</pre>
+			<p>
+SendNotification sends notification to user defined by userID with text message
+it can be configured with number of options
+</p>
+
+
+
+
+
+
+
+			<h2 id="SetUserHashedPassword">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/userController.go?s=234:294#L3">SetUserHashedPassword</a>
+				<a class="permalink" href="#SetUserHashedPassword">&#xb6;</a>
+			</h2>
+			<pre>func <a href="#SetUserHashedPassword">SetUserHashedPassword</a>(user <a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/">model</a>.<a href="/pkg/gitlab.fit.cvut.cz/isszp/isszp/src/model/#User">User</a>, password <a href="/pkg/builtin/#string">string</a>)</pre>
+			<p>
+SetUserHashedPassword hashes password with BCrypt and stores it in supplied user model
+password is in plain-text
+</p>
+
+
+
+
+
+
+
+
+			<h2 id="Config">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/controller.go?s=284:321#L1">Config</a>
+				<a class="permalink" href="#Config">&#xb6;</a>
+			</h2>
+			<p>
+Config is structure that holds configuration for controller package
+</p>
+
+			<pre>type Config struct {
+<span id="Config.Secret"></span>    Secret <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Notification">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=165:261#L1">Notification</a>
+				<a class="permalink" href="#Notification">&#xb6;</a>
+			</h2>
+			<p>
+Notification holds data that are neccessary to send notification between two clients
+each notification when sent can be received only once
+</p>
+
+			<pre>type Notification struct {
+<span id="Notification.ToUserID"></span>    ToUserID <a href="/pkg/builtin/#string">string</a>
+<span id="Notification.Header"></span>    Header   <a href="/pkg/builtin/#string">string</a>
+<span id="Notification.Message"></span>    Message  <a href="/pkg/builtin/#string">string</a>
+<span id="Notification.Address"></span>    Address  <a href="/pkg/builtin/#string">string</a>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h2 id="Option">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=329:360#L3">Option</a>
+				<a class="permalink" href="#Option">&#xb6;</a>
+			</h2>
+			<p>
+Option is data types used during creatiuon of new notification
+</p>
+
+			<pre>type Option func(*<a href="#Notification">Notification</a>)</pre>
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="NotifyWithAddress">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=1365:1410#L42">NotifyWithAddress</a>
+					<a class="permalink" href="#NotifyWithAddress">&#xb6;</a>
+				</h3>
+				<pre>func <a href="#NotifyWithAddress">NotifyWithAddress</a>(address <a href="/pkg/builtin/#string">string</a>) <a href="#Option">Option</a></pre>
+				<p>
+NotifyWithAddress is an option that sets an URL to be opened when clicked on the notification
+</p>
+
+
+
+
+
+				<h3 id="NotifyWithHeader">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/notifyController.go?s=1542:1585#L49">NotifyWithHeader</a>
+					<a class="permalink" href="#NotifyWithHeader">&#xb6;</a>
+				</h3>
+				<pre>func <a href="#NotifyWithHeader">NotifyWithHeader</a>(header <a href="/pkg/builtin/#string">string</a>) <a href="#Option">Option</a></pre>
+				<p>
+NotifyWithHeader is an option that sets title of the notification
+</p>
+
+
+
+
+
+
+
+
+
+			<h2 id="Query">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=489:635#L8">Query</a>
+				<a class="permalink" href="#Query">&#xb6;</a>
+			</h2>
+			<p>
+Query holds all the neccessary data for succesfull construction of query
+Query is abstract &#34;language&#34; that is used to query data. It is similar to SQL so it can be easily translated to it.
+It is used so controller and model do no&#39;t have to use SQL which would bound them to implementations fo model that
+supports it.
+</p>
+
+			<pre>type Query struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+				<h3 id="NewQuery">func <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=684:718#L21">NewQuery</a>
+					<a class="permalink" href="#NewQuery">&#xb6;</a>
+				</h3>
+				<pre>func <a href="#NewQuery">NewQuery</a>(table <a href="/pkg/builtin/#string">string</a>) *<a href="#Query">Query</a></pre>
+				<p>
+NewQuery returns a new query with set table
+</p>
+
+
+
+
+
+
+
+				<h3 id="Query.GroupBy">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=992:1040#L36">GroupBy</a>
+					<a class="permalink" href="#Query.GroupBy">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#GroupBy">GroupBy</a>(column ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Query">Query</a></pre>
+				<p>
+GroupBy groups rows by a columns
+</p>
+
+
+
+
+
+
+				<h3 id="Query.Like">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=1296:1350#L50">Like</a>
+					<a class="permalink" href="#Query.Like">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#Like">Like</a>(val <a href="/pkg/builtin/#string">string</a>, i interface{}) *<a href="#Query">Query</a></pre>
+				<p>
+Like is similar to where but can use expand macros
+</p>
+
+
+
+
+
+
+				<h3 id="Query.NotLike">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=1456:1513#L58">NotLike</a>
+					<a class="permalink" href="#Query.NotLike">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#NotLike">NotLike</a>(val <a href="/pkg/builtin/#string">string</a>, i interface{}) *<a href="#Query">Query</a></pre>
+				<p>
+NotLike is negation to Like
+</p>
+
+
+
+
+
+
+				<h3 id="Query.OrderBy">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=1135:1183#L43">OrderBy</a>
+					<a class="permalink" href="#Query.OrderBy">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#OrderBy">OrderBy</a>(column ...<a href="/pkg/builtin/#string">string</a>) *<a href="#Query">Query</a></pre>
+				<p>
+OrderBy orsers data by a columns
+</p>
+
+
+
+
+
+
+				<h3 id="Query.String">func (Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=2970:3000#L132">String</a>
+					<a class="permalink" href="#Query.String">&#xb6;</a>
+				</h3>
+				<pre>func (q <a href="#Query">Query</a>) <a href="#String">String</a>() <a href="/pkg/builtin/#string">string</a></pre>
+
+
+
+
+
+
+				<h3 id="Query.ToData">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=2911:2949#L128">ToData</a>
+					<a class="permalink" href="#Query.ToData">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#ToData">ToData</a>() []interface{}</pre>
+				<p>
+ToData returns data that will be used in a query
+</p>
+
+
+
+
+
+
+				<h3 id="Query.ToSQL">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=1638:1668#L66">ToSQL</a>
+					<a class="permalink" href="#Query.ToSQL">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#ToSQL">ToSQL</a>() <a href="/pkg/builtin/#string">string</a></pre>
+				<p>
+ToSQL generates valid SQL from the Query
+</p>
+
+
+
+
+
+
+				<h3 id="Query.Where">func (*Query) <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=824:879#L28">Where</a>
+					<a class="permalink" href="#Query.Where">&#xb6;</a>
+				</h3>
+				<pre>func (q *<a href="#Query">Query</a>) <a href="#Where">Where</a>(val <a href="/pkg/builtin/#string">string</a>, i interface{}) *<a href="#Query">Query</a></pre>
+				<p>
+Where limits queried to data certain values of certain column
+</p>
+
+
+
+
+
+
+
+
+			<h2 id="Queryable">type <a href="/src/gitlab.fit.cvut.cz/isszp/isszp/src/controller/sqlParser.go?s=97:158#L1">Queryable</a>
+				<a class="permalink" href="#Queryable">&#xb6;</a>
+			</h2>
+			<p>
+Queryable describes model that can be queried
+</p>
+
+			<pre>type Queryable interface {
+    Query() <a href="#Query">Query</a>
+    ExecQuery(<a href="#Query">Query</a>)
+}</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.8.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="../../lib/godoc/jquery.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.js"></script>
+<script type="text/javascript" src="../../lib/godoc/jquery.treeview.edit.js"></script>
+
+
+<script>var goVersion = "go1.8";</script>
+<script type="text/javascript" src="../../lib/godoc/godocs.js"></script>
+
+</body>
+</html>
+
