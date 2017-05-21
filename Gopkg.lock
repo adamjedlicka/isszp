@@ -1,4 +1,4 @@
-memo = "92213d6460e53ebdddefa34f3ccc93b1e2ccc161eda04601a75b9c7747c3734e"
+memo = "37dc01f4cb4de63baf6f89fb5b184206623bcd0c86792154dbd940fe8b490bcf"
 
 [[projects]]
   name = "github.com/go-sql-driver/mysql"
@@ -41,6 +41,12 @@ memo = "92213d6460e53ebdddefa34f3ccc93b1e2ccc161eda04601a75b9c7747c3734e"
   name = "github.com/jinzhu/inflection"
   packages = ["."]
   revision = "1c35d901db3da928c72a72d8458480cc9ade058f"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/skratchdot/open-golang"
+  packages = ["open"]
+  revision = "75fb7ed4208cf72d323d7d02fd1a5964a7a9073c"
 
 [[projects]]
   branch = "master"

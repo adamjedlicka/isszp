@@ -3,11 +3,13 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"math/rand"
 	"time"
 
+	"gitlab.fit.cvut.cz/isszp/isszp/cmd/doc"
 	"gitlab.fit.cvut.cz/isszp/isszp/cmd/install"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/controller"
 	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
@@ -37,6 +39,24 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+	} else if flag.Arg(0) == "doc" {
+		doc.Run()
+		return
+	} else if flag.Arg(0) != "run" {
+		fmt.Println("ISSZP usage:")
+		fmt.Println("  isszp command [arguments...]")
+		fmt.Println()
+		fmt.Println("Commands:")
+		fmt.Println("  install")
+		fmt.Println("    install the database and creates default users")
+		fmt.Println("  run")
+		fmt.Println("    runs the HTTP web server")
+		fmt.Println("  doc [port]")
+		fmt.Println("    generates the documentation and displays it on http://localhost:6060")
+		fmt.Println("    or if port argument is specified it uses it instead of 6060")
+		fmt.Println()
+
+		return
 	}
 
 	bytes, err := ioutil.ReadFile("./config/config.json")

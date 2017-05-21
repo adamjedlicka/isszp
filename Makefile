@@ -1,7 +1,7 @@
-default: clean build
+default: clean build doc
 
 build:
-	mkdir ./dist
+	mkdir -p ./dist
 	go build ./main.go
 	mv ./main ./dist/isszp
 	cp -rf ./template ./static ./config ./dist
@@ -10,5 +10,6 @@ clean:
 	rm -rf ./dist
 
 doc:
-	@echo Documentation running on: http://localhost:6060/pkg/gitlab.fit.cvut.cz/isszp/isszp/
-	godoc -http localhost:6060
+	mkdir -p ./dist
+	go build golang.org/x/tools/cmd/godoc
+	mv ./godoc ./dist/godoc
