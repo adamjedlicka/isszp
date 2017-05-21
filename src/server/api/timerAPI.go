@@ -1,3 +1,4 @@
+// Package api is collection of REST methods that communicate with json instead of HTML
 package api
 
 import (
@@ -10,6 +11,7 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
+// TimerGET returns a JSON-formatted message with info about currently running timer for logged in user
 func TimerGET(w http.ResponseWriter, r *http.Request) {
 	tr := model.QueryTimeRecords("UserID = ? AND End IS NULL", session.GetUserUUID(r))
 	bytes, err := json.MarshalIndent(tr, "", "\t")
@@ -25,6 +27,7 @@ func TimerGET(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// TimerStartPOST starts a timer for currently logged in user and creates new TimeRecord with nil End time
 func TimerStartPOST(w http.ResponseWriter, r *http.Request) {
 	task := model.NewTask()
 	task.FillByID(r.FormValue("TaskID"))
@@ -48,6 +51,7 @@ func TimerStartPOST(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// TimerStopPOST stops timer for currently logged in user and updates TimeRecord with proper End time
 func TimerStopPOST(w http.ResponseWriter, r *http.Request) {
 	records := model.QueryTimeRecords("UserID = ? AND End IS NULL", session.GetUserUUID(r))
 	if len(records) == 0 {

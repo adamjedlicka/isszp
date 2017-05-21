@@ -1,3 +1,5 @@
+// Package database describes common interface for comunicating with a database
+// It uses GORM framework can default SQL querries can be used too
 package database
 
 import (
@@ -9,6 +11,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
+// Config stores all config variables fro database package
 type Config struct {
 	User     string
 	Password string
@@ -22,8 +25,11 @@ var (
 	sq *sql.DB
 )
 
+// Configure configures database package with supplied config
 func Configure(config Config) { cfg = config }
 
+// Init connects to a database supplied in Config and returns its descriptor
+// if any error occurs it panics. Must be called before controller or view Init
 func Init() *gorm.DB {
 	var err error
 	db, err = gorm.Open("mysql", fmt.Sprintf("%s:%s@/%s", cfg.User, cfg.Password, cfg.Database))

@@ -7,6 +7,8 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 )
 
+// NewComment creates a new comment to task defined by taskID
+// it sets PostDateTime as current time
 func NewComment(userName, taskID, text string) error {
 	u := model.NewUser()
 	err := u.FillByUserName(userName)

@@ -1,3 +1,4 @@
+// Package common is a collection of helper functions, data types & constatns
 package common
 
 import (
@@ -36,6 +37,7 @@ func Max(x, y int) int {
 	return y
 }
 
+// CamelToSnake transforms input string in CamelCase to sring in snake_case
 func CamelToSnake(s string) string {
 	buf := bytes.Buffer{}
 
@@ -59,6 +61,7 @@ func CamelToSnake(s string) string {
 	return buf.String()
 }
 
+// Copy file copies src file to the dst file. If any error occurs returns an error
 func CopyFile(dst, src string) error {
 	in, err := os.Open(src)
 	if err != nil {
@@ -80,6 +83,7 @@ func CopyFile(dst, src string) error {
 	return nil
 }
 
+// RandomString generates random string of length n from RandomRunes rune pool
 func RandomString(n int) string {
 	str := make([]byte, n)
 
@@ -90,6 +94,8 @@ func RandomString(n int) string {
 	return string(str)
 }
 
+// Encrypt encrypts text using AES encryption. key is encryption key used to encrypt text.
+// returns encryptet text and errror if any occured
 func Encrypt(key, text []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
@@ -110,6 +116,8 @@ func Encrypt(key, text []byte) ([]byte, error) {
 	return ciphertext, nil
 }
 
+// Decrypt decpryts text using AES ancryption algorithm and key.
+// returns decrypted data an error if any occured
 func Decrypt(key, text []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {

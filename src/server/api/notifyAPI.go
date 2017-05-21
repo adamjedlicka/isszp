@@ -9,6 +9,7 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server/session"
 )
 
+// NotifyGET returns JSON-formatted array of notifications for currently logged int user
 func NotifyGET(w http.ResponseWriter, r *http.Request) {
 	u := model.NewUser()
 	u.FillByUserName(session.GetUserName(r))

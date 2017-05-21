@@ -5,11 +5,16 @@ import (
 	"fmt"
 )
 
+// Queryable describes model that can be queried
 type Queryable interface {
 	Query() Query
 	ExecQuery(Query)
 }
 
+// Query holds all the neccessary data for succesfull construction of query
+// Query is abstract "language" that is used to query data. It is similar to SQL so it can be easily translated to it.
+// It is used so controller and model do no't have to use SQL which would bound them to implementations fo model that
+// supports it.
 type Query struct {
 	table string
 	where []string
@@ -22,51 +27,52 @@ type Query struct {
 	notLike []string
 }
 
+// NewQuery returns a new query with set table
 func NewQuery(table string) *Query {
 	return &Query{
 		table: table,
 	}
 }
 
+// Where limits queried to data certain values of certain column
 func (q *Query) Where(val string, i interface{}) *Query {
-
 	q.where = append(q.where, val)
-
 	q.data = append(q.data, i)
 
 	return q
 }
 
+// GroupBy groups rows by a columns
 func (q *Query) GroupBy(column ...string) *Query {
-
 	q.groupBy = append(q.groupBy, column...)
 
 	return q
 }
 
+// OrderBy orsers data by a columns
 func (q *Query) OrderBy(column ...string) *Query {
-
 	q.orderBy = append(q.orderBy, column...)
 
 	return q
 }
 
+// Like is similar to where but can use expand macros
 func (q *Query) Like(val string, i interface{}) *Query {
 	q.like = append(q.like, val)
-
 	q.data = append(q.data, i)
 
 	return q
 }
 
+// NotLike is negation to Like
 func (q *Query) NotLike(val string, i interface{}) *Query {
 	q.notLike = append(q.notLike, val)
-
 	q.data = append(q.data, i)
 
 	return q
 }
 
+// ToSQL generates valid SQL from the Query
 func (q *Query) ToSQL() string {
 	var tmp bytes.Buffer
 
@@ -128,8 +134,8 @@ func (q *Query) ToSQL() string {
 	return tmp.String()
 }
 
+// ToData returns data that will be used in a query
 func (q *Query) ToData() []interface{} {
-
 	return q.data
 }
 

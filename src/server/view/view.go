@@ -1,3 +1,4 @@
+// package view is HTTP implementation of view layer of the application
 package view
 
 import (
@@ -15,6 +16,8 @@ var (
 	templateBase = "layout/base"
 )
 
+// View is default template of the web page. It is responsible for rendering the page, marking proper files
+// to be sent to the client, ... Every view should be created using this struct
 type View struct {
 	Name      string
 	Vars      map[string]interface{}
@@ -22,6 +25,12 @@ type View struct {
 	templates []string
 }
 
+// NewView creates new view based on passed in http.Request and name
+// It always creates 2 global variables in template space
+//   - Name : name of the current view
+//   - IsLoggedInt : bool if user is logged in or not. if true then two new variables are added:
+//     - LoggedUser : model.User of currently logged in user
+//     - UserName : userName of currently logged in user
 func NewView(r *http.Request, name string) *View {
 	v := new(View)
 	v.Name = name
@@ -42,10 +51,16 @@ func NewView(r *http.Request, name string) *View {
 	return v
 }
 
+// AppendTemplates adds html templates to the render pipeline which are later sent to the client
+// every HTML template (except base.html) hase to be added with AppendTemplates
+// template paths are without .html suffix and path begins in /template direcotry
+// example:
+//   v.AppendTemplates("/firms/firm-view", "/component/firm-list")
 func (v *View) AppendTemplates(templates ...string) {
 	v.templates = append(v.templates, templates...)
 }
 
+// Render renders the HTML page and sends it to he supplied ResponseWriter
 func (v *View) Render(w http.ResponseWriter) {
 	templateList := make([]string, len(v.templates))
 
@@ -69,6 +84,8 @@ func (v *View) Render(w http.ResponseWriter) {
 	}
 }
 
+// SetPagination computes pagination for the current view and set Pages variable which is later used in template
+// to render the pagination buttons
 func (v *View) SetPagination(r *http.Request, len, itemsPerPage int) (int, int) {
 	nr := len / itemsPerPage
 	if len%itemsPerPage != 0 {

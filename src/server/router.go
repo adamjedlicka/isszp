@@ -9,6 +9,8 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/server/view"
 )
 
+// NewRouter creates new router for HTTP server
+// router decides when users visits certain address which function will handle that request
 func NewRouter() http.Handler {
 	r := mux.NewRouter()
 

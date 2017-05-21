@@ -32,6 +32,7 @@ func RedirectToLogin(next http.Handler) http.Handler {
 	})
 }
 
+// IsAdmin if currently logged in user has admin rights. If not returns an HTTP error
 func IsAdmin(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := model.NewUser()
@@ -54,6 +55,7 @@ func IsAdmin(next http.Handler) http.Handler {
 	})
 }
 
+// IsAdmin if currently logged in user can manage projects. If not returns an HTTP error
 func CanManageProjects(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := model.NewUser()
@@ -76,6 +78,7 @@ func CanManageProjects(next http.Handler) http.Handler {
 	})
 }
 
+// IsAdmin if currently logged in user can manage tasks. If not returns an HTTP error
 func CanManageTasks(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := model.NewUser()
@@ -98,6 +101,7 @@ func CanManageTasks(next http.Handler) http.Handler {
 	})
 }
 
+// IsAdmin if currently logged in user can manage users. If not returns an HTTP error
 func CanManageUsers(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := model.NewUser()
