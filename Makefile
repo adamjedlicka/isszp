@@ -2,8 +2,9 @@ default: clean build doc
 
 build:
 	mkdir -p ./dist
-	go build ./main.go
-	mv ./main ./dist/isszp
+	GOOS=linux go build -o ./dist/isszp_linux ./main.go
+	GOOS=windows go build -o ./dist/isszp_windows.exe ./main.go
+	GOOS=darwin go build -o ./dist/isszp_macos ./main.go
 	cp -rf ./template ./static ./config ./dist
 
 clean:
@@ -11,5 +12,6 @@ clean:
 
 doc:
 	mkdir -p ./dist
-	go build golang.org/x/tools/cmd/godoc
-	mv ./godoc ./dist/godoc
+	GOOS=linux go build -o ./dist/godoc_darwin golang.org/x/tools/cmd/godoc
+	GOOS=windows go build -o ./dist/godoc_windows golang.org/x/tools/cmd/godoc
+	GOOS=darwin go build -o ./dist/godoc_macos golang.org/x/tools/cmd/godoc

@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"time"
 
 	"github.com/skratchdot/open-golang/open"
@@ -42,7 +43,16 @@ func Run() {
 		log.Fatal(err)
 	}
 
-	cmd := exec.Command(filepath.Join(dir, "godoc"), "-http", "localhost:"+port)
+	godoc := ""
+	if runtime.GOOS == "widnows" {
+		godoc = "godoc_windows"
+	} else if runtime.GOOS == "linux" {
+		godoc = "godoc_linux"
+	} else if runtime.GOOS == "darwin" {
+		godoc = "godoc_macos"
+	}
+
+	cmd := exec.Command(filepath.Join(dir, godoc), "-http", "localhost:"+port)
 	err = cmd.Run()
 	if err != nil {
 		cmd := exec.Command("godoc", "-http", "localhost:"+port)
