@@ -7,6 +7,7 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/model"
 )
 
+// InstallUsers hashes password for default users. It usses UserNames as new passwords
 func InstallUsers() {
 	log.Println("Installing users...")
 

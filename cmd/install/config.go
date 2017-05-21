@@ -1,3 +1,5 @@
+// Install package provides installation process of the application.
+// From creating database to settings default user passwords
 package install
 
 import (
@@ -13,6 +15,7 @@ var (
 	CustomConfig  = "./config/config.json"
 )
 
+// InstallConfig copies the default config.default.json, generates new data and saves it as config.json
 func InstallConfig() error {
 	err := common.CopyFile(CustomConfig, DefaultConfig)
 	if err != nil {

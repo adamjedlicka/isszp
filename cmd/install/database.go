@@ -11,6 +11,8 @@ import (
 	"gitlab.fit.cvut.cz/isszp/isszp/src/database"
 )
 
+// InstallDatabase deletes previous isszp database, creates new, creates neccessary structures and fill it with data
+// It uses /config/ddl.sql & /config/dml.sql
 func InstallDatabase(cfg database.Config) {
 	log.Println("Installing database...")
 
